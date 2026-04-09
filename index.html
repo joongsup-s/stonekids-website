@@ -101,12 +101,22 @@
     display: inline-block;
   }
 
-  .nav-label {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    letter-spacing: 1px;
     color: var(--gray-600);
-    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--red);
   }
 
   /* ── HERO ── */
@@ -507,11 +517,14 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo">
+    <a href="index.html" class="logo">
       <span class="logo-dot"></span>
       STONEKIDS
     </a>
-    <span class="nav-label">Video Reference Reel</span>
+    <div class="nav-links">
+      <a href="index.html" class="active">Portfolio</a>
+      <a href="about.html">About</a>
+    </div>
   </div>
 </nav>
 

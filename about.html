@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STONEKIDS — 회사소개</title>
+<meta name="description" content="스톤키즈는 2016년 설립된 강원도 춘천 기반 영상제작 스튜디오입니다. 기획부터 납품까지 원스톱 제작 시스템.">
+<link rel="canonical" href="https://stonekids.tv/about">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23E60012'/></svg>">
+<meta name="theme-color" content="#E60012">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FAFAFA;
+    --black: #0A0A0A;
+    --red: #E60012;
+    --gray-100: #F5F5F5;
+    --gray-200: #E8E8E8;
+    --gray-400: #AAAAAA;
+    --gray-600: #666666;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 4px;
+    color: var(--black);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--red); }
+
+  /* HERO */
+  .hero {
+    padding: 160px 48px 100px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 80px);
+    letter-spacing: 4px;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--gray-600);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* SECTION */
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 48px;
+  }
+  .section-header {
+    margin-bottom: 60px;
+  }
+  .section-eyebrow {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 3px;
+  }
+
+  /* STATS */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 60px 0;
+    border-top: 1px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--black);
+    letter-spacing: 2px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--gray-600);
+    letter-spacing: 1px;
+    margin-top: 8px;
+  }
+
+  /* PHILOSOPHY */
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .philosophy-item {
+    padding: 32px;
+    background: var(--gray-100);
+    border-radius: 4px;
+  }
+  .philosophy-item h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .philosophy-item p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.7;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .service-card {
+    padding: 40px;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+  .service-card:hover { border-color: var(--red); }
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--red);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .service-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .service-card p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.7;
+  }
+  .service-tag {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--gray-400);
+    padding: 6px 12px;
+    border: 1px solid var(--gray-200);
+  }
+
+  /* PROCESS */
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+  .process-step { text-align: center; }
+  .process-num {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--red);
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+  .process-step h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .process-step p {
+    font-size: 12px;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+
+  /* CREDENTIALS */
+  .credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .credential-item {
+    padding: 24px;
+    background: var(--gray-100);
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .credential-item strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--black);
+  }
+
+  /* CLIENTS */
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .client-item {
+    padding: 24px;
+    background: var(--gray-100);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 48px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .footer-text {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--gray-400);
+    letter-spacing: 2px;
+  }
+  .footer-contact {
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--gray-600);
+  }
+  .footer-contact a {
+    color: var(--red);
+    text-decoration: none;
+  }
+  .footer-address {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--gray-400);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .philosophy-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: repeat(3, 1fr); }
+    .credentials-grid { grid-template-columns: 1fr; }
+    .clients-grid { grid-template-columns: repeat(2, 1fr); }
+    .section { padding: 60px 24px; }
+    .nav-inner { padding: 0 24px; }
+    .hero { padding: 140px 24px 60px; }
+  }
+  @media (max-width: 600px) {
+    .process-steps { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-dot"></span>
+      STONEKIDS
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Portfolio</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Since 2016 · Chuncheon, Gangwon</div>
+  <h1>필요한 영상,<br>정확하게 제작합니다</h1>
+  <p class="hero-sub">
+    스톤키즈는 강원도 춘천에 기반을 둔 영상제작 스튜디오입니다.<br>
+    기획부터 납품까지, 클라이언트가 요청한 결과물을 그대로 납품합니다.
+  </p>
+</section>
+
+<section class="section">
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">프로젝트 완료</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">8+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">라이브 중계</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">공공기관 납품</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Our Philosophy</div>
+    <h2 class="section-title">WHY STONEKIDS</h2>
+  </div>
+  <div class="philosophy-grid">
+    <div class="philosophy-item">
+      <h3>요청 사항 정확히 반영</h3>
+      <p>불필요한 과장을 배제하고, 프로젝트의 본래 목적과 클라이언트의 의도에 부합하는 결과물을 제작합니다.</p>
+    </div>
+    <div class="philosophy-item">
+      <h3>공공기관 납품 경험 다수</h3>
+      <p>국가기관 및 지자체의 엄격한 제작 가이드라인과 행정 절차를 숙지하고 있으며, 안정적인 납품을 보장합니다.</p>
+    </div>
+    <div class="philosophy-item">
+      <h3>기획부터 납품까지 원스톱</h3>
+      <p>사전 기획, 현장 촬영, 후반 색보정 및 사운드 믹싱까지 외주 없이 자체 인력과 시스템으로 완수합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--gray-100);">
+  <div class="section-header">
+    <div class="section-eyebrow">Our Services</div>
+    <h2 class="section-title">WHAT WE DO</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <h3>기업 브랜드 영상</h3>
+      <p>제품 소개, 회사 홍보, 채용 영상 등 기업의 가치를 담아내는 브랜드 필름을 제작합니다.</p>
+      <span class="service-tag">50+ PROJECTS</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <h3>공공기관 정책 홍보</h3>
+      <p>지자체, 국가기관의 정책 및 사업을 대중이 쉽게 이해할 수 있도록 스토리텔링합니다.</p>
+      <span class="service-tag">30+ CLIENTS</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <h3>실시간 라이브 중계</h3>
+      <p>행사, 세미나, 공연 등 멀티캠 중계. 다국어 동시통역과 안정적인 송출 시스템을 제공합니다.</p>
+      <span class="service-tag">100+ BROADCASTS</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <h3>문화예술 아카이빙</h3>
+      <p>전시, 공연, 문화공간의 미학을 시네마틱한 영상미로 기록하고 보존합니다.</p>
+      <span class="service-tag">20+ PROJECTS</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Work Process</div>
+    <h2 class="section-title">HOW WE WORK</h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <h4>상담 & 분석</h4>
+      <p>클라이언트의 요구사항을 분석하여 핵심 메시지를 도출합니다.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <h4>전략 & 기획</h4>
+      <p>프로젝트 목적에 부합하는 콘텐츠 구성안을 수립합니다.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <h4>현장 & 촬영</h4>
+      <p>모든 변수를 통제하며 현장의 생동감을 정교하게 담아냅니다.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <h4>편집 & 완성</h4>
+      <p>컷 편집, 색보정, 모션그래픽, 사운드 디자인을 진행합니다.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">05</div>
+      <h4>납품 & 관리</h4>
+      <p>최종 결과물 전달과 철저한 사후 관리까지 책임집니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--gray-100);">
+  <div class="section-header">
+    <div class="section-eyebrow">Credentials</div>
+    <h2 class="section-title">VERIFIED</h2>
+  </div>
+  <div class="credentials-grid">
+    <div class="credential-item">
+      <strong>비디오물제작업 정식 등록</strong>
+      문화체육관광부 소관 법령에 따른 정식 영상 제작 업체
+    </div>
+    <div class="credential-item">
+      <strong>드론/무선국 면허 보유</strong>
+      합법적인 드론 촬영 자격과 중계용 무선국 면허 보유
+    </div>
+    <div class="credential-item">
+      <strong>DaVinci Resolve 국제 자격</strong>
+      ICA 인증 컬러리스트 라이센스 취득
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header">
+    <div class="section-eyebrow">Trusted By</div>
+    <h2 class="section-title">OUR CLIENTS</h2>
+  </div>
+  <div class="clients-grid">
+    <div class="client-item">춘천시청</div>
+    <div class="client-item">강원도청</div>
+    <div class="client-item">한국관광공사</div>
+    <div class="client-item">춘천문화재단</div>
+    <div class="client-item">강원테크노파크</div>
+    <div class="client-item">한국콘텐츠진흥원</div>
+    <div class="client-item">소양강댐관리단</div>
+    <div class="client-item">강원정보문화진흥원</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <span class="logo-dot"></span>
+    STONEKIDS
+  </div>
+  <div class="footer-text">CHUNCHEON, GANGWON — SINCE 2016</div>
+  <div class="footer-contact">
+    <a href="tel:1600-2867">1600-2867</a> · <a href="mailto:support@stonekids.tv">support@stonekids.tv</a>
+  </div>
+  <div class="footer-address">
+    강원특별자치도 춘천시 후석로420번길 7 808호
+  </div>
+</footer>
+
+</body>
+</html>
