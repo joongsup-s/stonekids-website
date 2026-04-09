@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STONEKIDS — 영상제작 스튜디오 | 춘천</title>
+<meta name="description" content="스톤키즈는 강원도 춘천에 위치한 영상제작 스튜디오입니다. 브랜드 필름, 홍보영상, 다큐멘터리 등 다양한 영상 콘텐츠를 제작합니다.">
+<meta name="keywords" content="영상제작, 스톤키즈, STONEKIDS, 춘천, 강원도, 브랜드필름, 홍보영상, 다큐멘터리">
+<meta name="author" content="STONEKIDS">
+<link rel="canonical" href="https://stonekids.tv">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://stonekids.tv">
+<meta property="og:title" content="STONEKIDS — 영상제작 스튜디오">
+<meta property="og:description" content="스톤키즈는 강원도 춘천에 위치한 영상제작 스튜디오입니다. 브랜드 필름, 홍보영상, 다큐멘터리 등 다양한 영상 콘텐츠를 제작합니다.">
+<meta property="og:image" content="https://stonekids.tv/og-image.jpg">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="STONEKIDS">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="STONEKIDS — 영상제작 스튜디오">
+<meta name="twitter:description" content="스톤키즈는 강원도 춘천에 위치한 영상제작 스튜디오입니다.">
+<meta name="twitter:image" content="https://stonekids.tv/og-image.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23E60012'/></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23E60012'/></svg>">
+<meta name="theme-color" content="#E60012">
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #FAFAFA;
+    --black: #0A0A0A;
+    --red: #E60012;
+    --red-dark: #C4000F;
+    --gray-100: #F5F5F5;
+    --gray-200: #E8E8E8;
+    --gray-400: #AAAAAA;
+    --gray-600: #666666;
+    --gray-800: #333333;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--gray-200);
+    transition: transform 0.4s ease;
+  }
+
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 4px;
+    color: var(--black);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    display: inline-block;
+  }
+
+  .nav-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    font-weight: 400;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 48px;
+    position: relative;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--gray-400));
+    animation: pulse-line 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-line {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 32px;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 10vw, 140px);
+    letter-spacing: 8px;
+    line-height: 0.95;
+    color: var(--black);
+  }
+
+  .hero h1 span {
+    color: var(--red);
+  }
+
+  .hero-sub {
+    margin-top: 28px;
+    font-size: 14px;
+    color: var(--gray-600);
+    letter-spacing: 2px;
+    font-weight: 300;
+    max-width: 460px;
+    line-height: 1.8;
+  }
+
+  .hero-count {
+    margin-top: 48px;
+    display: flex;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-count-item {
+    text-align: center;
+  }
+
+  .hero-count-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--black);
+    letter-spacing: 2px;
+  }
+
+  .hero-count-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-top: 4px;
+  }
+
+  /* ── GRID SECTION ── */
+  .section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 120px 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 4px;
+    color: var(--black);
+  }
+
+  .section-index {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: var(--red);
+  }
+
+  /* ── VIDEO GRID ── */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 40px;
+  }
+
+  .video-card {
+    position: relative;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .video-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .video-card.featured {
+    grid-column: 1 / -1;
+  }
+
+  .thumb-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: var(--gray-100);
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .video-card.featured .thumb-wrap {
+    padding-bottom: 45%;
+  }
+
+  .thumb-wrap iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .thumb-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease, filter 0.6s ease;
+  }
+
+  .video-card:hover .thumb-wrap img {
+    transform: scale(1.04);
+  }
+
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    background: rgba(230, 0, 18, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+  }
+
+  .play-btn::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 18px;
+    border-color: transparent transparent transparent white;
+    margin-left: 3px;
+  }
+
+  .video-card:hover .play-btn {
+    background: rgba(230, 0, 18, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 8px 32px rgba(230, 0, 18, 0.35);
+  }
+
+  .video-meta {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .video-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--red);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .video-info {
+    flex: 1;
+  }
+
+  .video-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.5;
+    letter-spacing: -0.2px;
+  }
+
+  .video-tag {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    padding: 4px 10px;
+    border: 1px solid var(--gray-200);
+    border-radius: 1px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 48px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 6px;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .footer-text {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--gray-400);
+    letter-spacing: 2px;
+  }
+
+  .footer-contact {
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--gray-600);
+    letter-spacing: 1px;
+  }
+
+  .footer-contact a {
+    color: var(--red);
+    text-decoration: none;
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .lightbox.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .lightbox-content {
+    width: 100%;
+    max-width: 1100px;
+    aspect-ratio: 16/9;
+    position: relative;
+  }
+
+  .lightbox-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 2px;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    background: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+
+  .lightbox-close:hover {
+    background: var(--red);
+    border-color: var(--red);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .video-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .video-card.featured .thumb-wrap {
+      padding-bottom: 56.25%;
+    }
+
+    .section { padding: 80px 24px; }
+    .nav-inner { padding: 0 24px; }
+    .hero { padding: 0 24px; }
+    .hero-count { gap: 32px; }
+    .lightbox { padding: 16px; }
+  }
+
+  @media (max-width: 600px) {
+    .hero h1 { letter-spacing: 4px; }
+    .nav-label { display: none; }
+    .section-header { flex-direction: column; gap: 8px; }
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-dot"></span>
+      STONEKIDS
+    </a>
+    <span class="nav-label">Video Reference Reel</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Selected Works & References</div>
+  <h1>VIDEO<br>REFERENCE<span>.</span></h1>
+  <p class="hero-sub">
+    클라이언트 프로젝트를 위한 영상 레퍼런스 컬렉션.<br>
+    스톤키즈가 지향하는 톤과 퀄리티를 담았습니다.
+  </p>
+  <div class="hero-count">
+    <div class="hero-count-item">
+      <div class="hero-count-num">10</div>
+      <div class="hero-count-label">References</div>
+    </div>
+    <div class="hero-count-item">
+      <div class="hero-count-num">2026</div>
+      <div class="hero-count-label">Season</div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section class="section">
+  <div class="section-header fade-up">
+    <h2 class="section-title">REFERENCES</h2>
+    <span class="section-index">01 — 10</span>
+  </div>
+
+  <div class="video-grid" id="videoGrid">
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span class="logo-dot"></span>
+    STONEKIDS
+  </div>
+  <div class="footer-text">CHUNCHEON, GANGWON — SINCE 2016</div>
+  <div class="footer-contact">
+    영상제작 문의 — <a href="mailto:stonekids@stonekids.co.kr">stonekids@stonekids.co.kr</a>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <div class="lightbox-content">
+    <iframe id="lightboxIframe" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+const videos = [
+  {
+    id: "rXODWiR-yJg",
+    title: "2025 SK Innovation Brand Film",
+    tag: "Brand Film",
+    platform: "youtube",
+    featured: true
+  },
+  {
+    id: "wWrbixQDLjc",
+    title: "강원대학교병원 AI 암치유센터",
+    tag: "Promotional",
+    platform: "youtube"
+  },
+  {
+    id: "l4ljeZGMwec",
+    title: "2025 포스코청암상 시상식 인트로영상",
+    tag: "Event Intro",
+    platform: "youtube"
+  },
+  {
+    id: "Ggt6XPovFxo",
+    title: "2024 건국대학교 홍보영상",
+    tag: "University PR",
+    platform: "youtube"
+  },
+  {
+    id: "1176037587",
+    title: "토스뱅크 K-패스 체크카드",
+    tag: "Commercial",
+    platform: "vimeo"
+  },
+  {
+    id: "LLCWfbLbHIc",
+    title: "[글.캠.라.] 실리콘밸리에서 창업을 한다고요?",
+    tag: "Documentary",
+    platform: "youtube"
+  },
+  {
+    id: "WZKgjLDHJuc",
+    title: '본격 해방 프로젝트 "알아서 할 테니까" 2기 Teaser',
+    tag: "Teaser",
+    platform: "youtube"
+  },
+  {
+    id: "qBSutC-LCYg",
+    title: '본격 해방 "내 모양이 어때서" 티저 1',
+    tag: "Teaser",
+    platform: "youtube"
+  },
+  {
+    id: "GE0SdTrjHis",
+    title: '본격 해방 "내 모양이 어때서" 티저 2',
+    tag: "Teaser",
+    platform: "youtube"
+  },
+  {
+    id: "Q2Px1K-PemM",
+    title: "일본에서 놀 사람을 찾습니다 — 숨은 감성찾기",
+    tag: "Short-form",
+    platform: "youtube-short"
+  }
+];
+
+function getThumb(v) {
+  if (v.platform === "vimeo") {
+    return `https://vumbnail.com/${v.id}.jpg`;
+  }
+  return `https://img.youtube.com/vi/${v.id}/maxresdefault.jpg`;
+}
+
+function getEmbedUrl(v) {
+  if (v.platform === "vimeo") {
+    return `https://player.vimeo.com/video/${v.id}?autoplay=1&title=0&byline=0&portrait=0`;
+  }
+  return `https://www.youtube.com/embed/${v.id}?autoplay=1&rel=0&modestbranding=1`;
+}
+
+const grid = document.getElementById('videoGrid');
+
+videos.forEach((v, i) => {
+  const card = document.createElement('div');
+  card.className = `video-card${v.featured ? ' featured' : ''}`;
+  card.style.transitionDelay = `${i * 0.08}s`;
+
+  card.innerHTML = `
+    <div class="thumb-wrap">
+      <img src="${getThumb(v)}" alt="${v.title}" loading="lazy" 
+           onerror="this.src='https://img.youtube.com/vi/${v.id}/hqdefault.jpg'">
+      <div class="play-btn"></div>
+    </div>
+    <div class="video-meta">
+      <span class="video-num">${String(i + 1).padStart(2, '0')}</span>
+      <div class="video-info">
+        <div class="video-title">${v.title}</div>
+        <span class="video-tag">${v.tag}</span>
+      </div>
+    </div>
+  `;
+
+  card.addEventListener('click', () => openLightbox(v));
+  grid.appendChild(card);
+});
+
+// Lightbox
+const lightbox = document.getElementById('lightbox');
+const lightboxIframe = document.getElementById('lightboxIframe');
+const lightboxClose = document.getElementById('lightboxClose');
+
+function openLightbox(v) {
+  lightboxIframe.src = getEmbedUrl(v);
+  lightbox.style.display = 'flex';
+  requestAnimationFrame(() => lightbox.classList.add('active'));
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  setTimeout(() => {
+    lightbox.style.display = 'none';
+    lightboxIframe.src = '';
+  }, 300);
+  document.body.style.overflow = '';
+}
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.video-card, .fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
