@@ -383,6 +383,46 @@
     margin: 0 auto;
   }
 
+  /* CREDENTIALS */
+  .credentials-section {
+    background: var(--gray-50);
+  }
+  .credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .credential-item {
+    padding: 40px;
+    background: var(--white);
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s;
+  }
+  .credential-item:hover {
+    border-color: var(--red);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+  }
+  .credential-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  .credential-item strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .credential-item p {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+
   /* CLIENTS */
   .clients-section {
     background: var(--black);
@@ -619,6 +659,25 @@
       <div class="process-num">05</div>
       <h4>납품 & 관리</h4>
       <p>결과물 전달 및 사후 관리</p>
+    </div>
+  </div>
+</section>
+
+<section class="section credentials-section">
+  <div class="section-header">
+    <div class="section-eyebrow">Credentials</div>
+    <h2 class="section-title">공식 자격 및 등록</h2>
+  </div>
+  <div class="credentials-grid">
+    <div class="credential-item">
+      <div class="credential-icon">🚁</div>
+      <strong>드론 1종 조종자격증</strong>
+      <p>국토교통부 공인 무인멀티콥터 1종 자격 보유</p>
+    </div>
+    <div class="credential-item">
+      <div class="credential-icon">📋</div>
+      <strong>초경량비행장치 사업등록</strong>
+      <p>항공안전법에 따른 초경량비행장치 사용사업 등록</p>
     </div>
   </div>
 </section>
