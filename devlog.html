@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STONEKIDS — 개발로그 / DEV LOG</title>
+<meta name="description" content="스톤키즈가 프로덕션 현장의 불편을 직접 코드로 푼 자체 도구·서비스 기록. 겟로고(getlogo.kr), NDI 방송 그래픽 송출기 등.">
+<link rel="canonical" href="https://stonekids.tv/devlog">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23E60012'/></svg>">
+<meta name="theme-color" content="#0A0A0A">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white:#FFFFFF; --off-white:#FAFAFA; --black:#0A0A0A; --red:#E60012; --red-dark:#C4000F;
+    --gray-50:#F8F8F8; --gray-100:#F0F0F0; --gray-200:#E0E0E0; --gray-400:#999; --gray-600:#666; --gray-800:#333;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Noto Sans KR',-apple-system,sans-serif; background:var(--white); color:var(--black); -webkit-font-smoothing:antialiased; line-height:1.6; }
+
+  /* NAV */
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(0,0,0,0.06); }
+  .nav-inner { max-width:1200px; margin:0 auto; padding:0 40px; height:72px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:5px; color:var(--black); text-decoration:none; display:flex; align-items:center; gap:12px; }
+  .logo-dot { width:10px; height:10px; border-radius:50%; background:var(--red); }
+  .nav-links { display:flex; gap:36px; }
+  .nav-links a { font-size:14px; font-weight:500; letter-spacing:0.5px; color:var(--gray-600); text-decoration:none; transition:color 0.3s; position:relative; }
+  .nav-links a:hover { color:var(--black); }
+  .nav-links a.active { color:var(--red); }
+  .nav-links a.active::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:2px; background:var(--red); }
+
+  /* HERO */
+  .hero { padding:160px 40px 60px; max-width:1000px; margin:0 auto; }
+  .hero-eyebrow { display:inline-block; font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gray-600); margin-bottom:20px; padding:8px 16px; background:var(--gray-100); border-radius:4px; }
+  .hero h1 { font-size:clamp(34px,6vw,60px); font-weight:900; letter-spacing:-2px; line-height:1.2; margin-bottom:24px; word-break:keep-all; }
+  .hero h1 .accent { color:var(--red); }
+  .hero p { font-size:17px; color:var(--gray-600); line-height:1.9; max-width:620px; word-break:keep-all; }
+
+  /* TIMELINE / LIST */
+  .log { max-width:1000px; margin:0 auto; padding:20px 40px 120px; }
+  .log-item { display:grid; grid-template-columns:160px 1fr; gap:32px; padding:40px 0; border-top:1px solid var(--gray-200); }
+  .log-item:first-child { border-top:0; }
+  .log-meta { display:flex; flex-direction:column; gap:10px; }
+  .log-status { display:inline-flex; align-items:center; gap:7px; align-self:flex-start; font-size:12px; font-weight:700; letter-spacing:0.5px; padding:6px 12px; border-radius:100px; }
+  .log-status::before { content:''; width:7px; height:7px; border-radius:50%; }
+  .status-live { background:rgba(22,163,74,0.1); color:#15803d; }
+  .status-live::before { background:#22c55e; }
+  .status-dev { background:rgba(230,0,18,0.08); color:var(--red); }
+  .status-dev::before { background:var(--red); }
+  .log-period { font-size:13px; color:var(--gray-400); letter-spacing:0.5px; }
+  .log-body h2 { font-size:26px; font-weight:800; letter-spacing:-0.5px; margin-bottom:6px; }
+  .log-body .sub { font-size:14px; color:var(--gray-400); margin-bottom:16px; font-weight:500; }
+  .log-body .desc { font-size:15.5px; color:var(--gray-800); line-height:1.85; margin-bottom:18px; word-break:keep-all; }
+  .log-feats { list-style:none; display:flex; flex-direction:column; gap:7px; margin-bottom:20px; }
+  .log-feats li { font-size:14.5px; color:var(--gray-600); padding-left:18px; position:relative; line-height:1.6; }
+  .log-feats li::before { content:''; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:var(--gray-200); }
+  .log-stack { display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px; }
+  .log-stack span { font-size:12px; font-weight:600; color:var(--gray-600); background:var(--gray-100); padding:5px 11px; border-radius:6px; }
+  .log-link { display:inline-flex; align-items:center; gap:6px; font-size:14px; font-weight:700; color:var(--red); text-decoration:none; }
+  .log-link:hover { gap:9px; }
+
+  /* CTA */
+  .cta { background:var(--black); color:var(--white); padding:90px 40px; text-align:center; }
+  .cta h2 { font-size:clamp(24px,4vw,34px); font-weight:800; letter-spacing:-1px; margin-bottom:16px; word-break:keep-all; }
+  .cta p { color:rgba(255,255,255,0.85); font-size:15px; margin-bottom:32px; }
+  .cta a { display:inline-flex; align-items:center; gap:8px; font-size:15px; font-weight:700; background:var(--white); color:var(--black); padding:15px 32px; border-radius:100px; text-decoration:none; transition:transform 0.2s; }
+  .cta a:hover { transform:translateY(-2px); }
+
+  /* FOOTER */
+  footer { background:var(--gray-50); padding:48px 40px; text-align:center; }
+  .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:6px; display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:18px; }
+  .footer-contact { font-size:14px; color:var(--gray-600); margin-bottom:8px; }
+  .footer-contact a { color:var(--red); text-decoration:none; font-weight:500; }
+  .footer-copy { font-size:12px; color:var(--gray-400); letter-spacing:1px; }
+
+  @media (max-width:760px) {
+    .nav-inner { padding:0 24px; }
+    .nav-links { gap:20px; }
+    .hero { padding:120px 24px 40px; }
+    .log { padding:0 24px 80px; }
+    .log-item { grid-template-columns:1fr; gap:14px; padding:32px 0; }
+    .cta { padding:70px 24px; }
+  }
+  @media (max-width:600px) { .nav-links a:nth-child(1) { display:none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-dot"></span>STONEKIDS</a>
+    <div class="nav-links">
+      <a href="index.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="devlog.html" class="active">Lab</a>
+      <a href="about.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-eyebrow">Stone Kids Lab · 개발로그</div>
+  <h1>필요해서, <span class="accent">직접 만듭니다.</span></h1>
+  <p>현장에서 겪은 불편을 그냥 넘기지 않고 코드로 풉니다. 영상·방송 프로덕션을 하며 마주친 문제들을 해결하기 위해 스톤키즈가 직접 설계하고 개발한 자체 도구·서비스의 기록입니다.</p>
+</header>
+
+<main class="log">
+
+  <article class="log-item">
+    <div class="log-meta">
+      <span class="log-status status-live">운영 중</span>
+      <span class="log-period">2026 ~</span>
+    </div>
+    <div class="log-body">
+      <h2>겟로고 (GetLogo)</h2>
+      <p class="sub">getlogo.kr · 관공서·공공기관 로고 허브</p>
+      <p class="desc">기관 로고 하나 찾으려고 수십 개 홈페이지를 헤매던 경험에서 출발했습니다. 전국 중앙정부·지자체·공공기관 <strong>465곳</strong>의 상징(CI/BI)·로고를 한 곳에 모아, 원본은 직접 호스팅하지 않고 공식 출처로 바로 연결하는 링크 허브입니다.</p>
+      <ul class="log-feats">
+        <li>기관명 검색 + 분류·지역·포맷 계층 필터</li>
+        <li>로고 자동 수집·정규화 및 정확도 검증 파이프라인</li>
+        <li>누락 기관 제보·등록 시스템(소유·관리권 확인)</li>
+        <li>SEO/AEO 최적화 — "○○시 로고" 검색 대응</li>
+      </ul>
+      <div class="log-stack"><span>Astro</span><span>Firebase Hosting</span><span>Cloudflare</span><span>GA4</span></div>
+      <a class="log-link" href="https://getlogo.kr" target="_blank" rel="noopener">사이트 보기 →</a>
+    </div>
+  </article>
+
+  <article class="log-item">
+    <div class="log-meta">
+      <span class="log-status status-dev">개발 중</span>
+      <span class="log-period">2026 ~</span>
+    </div>
+    <div class="log-body">
+      <h2>NDI 방송 그래픽 송출기</h2>
+      <p class="sub">라이브 자막·점수판 송출 도구 (내부 프로덕션용)</p>
+      <p class="desc">태권도 품새대회·라이브 스트리밍 현장에서 자막·로고·하단띠·점수판·타이머를 빠르게 띄우기 위해 만드는 방송 그래픽 송출기입니다. 카드 단위로 그래픽을 큐잉해 알파 채널 포함 <strong>NDI</strong>로 내보내고, OBS·vMix와 바로 결합합니다.</p>
+      <ul class="log-feats">
+        <li>자막·하단띠·점수판·타이머를 카드로 큐잉/송출</li>
+        <li>알파 포함 NDI 송출(Program) + 앱 내 Preview 격리</li>
+        <li>PDF 큐시트 ↔ 카드 양방향 연결</li>
+        <li>오픈소스 에디터(OpenCut) 포크로 디자인 자유도 확보</li>
+      </ul>
+      <div class="log-stack"><span>Electron</span><span>Next.js · React</span><span>NDI (grandiose)</span><span>Rust/WASM</span></div>
+    </div>
+  </article>
+
+</main>
+
+<section class="cta">
+  <h2>같이 만들고 싶은 게 있으신가요?</h2>
+  <p>영상 제작부터 현장에 필요한 도구 개발까지 — 편하게 제안 주세요.</p>
+  <a href="about.html#contact">협업 제안하기 →</a>
+</section>
+
+<footer>
+  <div class="footer-logo"><span class="logo-dot"></span>STONEKIDS</div>
+  <div class="footer-contact"><a href="tel:1600-2867">1600-2867</a> · <a href="mailto:pm@stonekids.tv">pm@stonekids.tv</a></div>
+  <div class="footer-copy">© 2016-2026 STONEKIDS. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
