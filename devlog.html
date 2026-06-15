@@ -133,15 +133,15 @@
     </div>
     <div class="log-body">
       <h2>NDI 방송 그래픽 송출기</h2>
-      <p class="sub">라이브 자막·점수판 송출 도구 (내부 프로덕션용)</p>
-      <p class="desc">태권도 품새대회·라이브 스트리밍 현장에서 자막·로고·하단띠·점수판·타이머를 빠르게 띄우기 위해 만드는 방송 그래픽 송출기입니다. 카드 단위로 그래픽을 큐잉해 알파 채널 포함 <strong>NDI</strong>로 내보내고, OBS·vMix와 바로 결합합니다.</p>
+      <p class="sub">라이브 방송·스트리밍 그래픽 송출 도구 (내부 프로덕션용)</p>
+      <p class="desc">라이브 방송·스트리밍 현장에서 자막·로고·하단띠·점수판·타이머 같은 그래픽을 카드 단위로 큐잉해, 알파 채널 포함 <strong>NDI</strong>로 송출하는 도구입니다. OBS·vMix와 바로 결합합니다. 오픈소스 에디터(OpenCut) 포크를 먼저 시도했으나 한계에 부딪혀, 지금은 <strong>자체 엔진으로 처음부터 개발</strong> 중입니다.</p>
       <ul class="log-feats">
         <li>자막·하단띠·점수판·타이머를 카드로 큐잉/송출</li>
         <li>알파 포함 NDI 송출(Program) + 앱 내 Preview 격리</li>
-        <li>PDF 큐시트 ↔ 카드 양방향 연결</li>
-        <li>오픈소스 에디터(OpenCut) 포크로 디자인 자유도 확보</li>
+        <li>OBS·vMix 연동, 1인 운영 워크플로</li>
+        <li>오픈소스 포크 → 자체 그래픽 엔진 직접 개발로 전환</li>
       </ul>
-      <div class="log-stack"><span>Electron</span><span>Next.js · React</span><span>NDI (grandiose)</span><span>Rust/WASM</span></div>
+      <div class="log-stack"><span>Electron</span><span>NDI (grandiose)</span><span>자체 그래픽 엔진</span></div>
     </div>
   </article>
 
