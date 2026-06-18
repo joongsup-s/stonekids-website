@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YTgif — 유튜브를 GIF로, 내 워크플로에 맞게 | STONEKIDS Lab</title>
+<meta name="description" content="유튜브 영상의 한 구간을 골라 바로 GIF로 만드는 데스크톱 도구 YTgif. allo.io 캔버스에서 '이미지보다 GIF로 말하자'는 판단에서 출발해, 개발자 심중섭이 자신의 사용성에 맞춰 직접 만든 유튜브 GIF 생성기입니다.">
+<link rel="canonical" href="https://stonekids.tv/ytgif">
+<meta property="og:title" content="YTgif — 유튜브를 GIF로, 내 워크플로에 맞게">
+<meta property="og:description" content="구간 선택부터 배치 렌더링, 도킹 레이아웃까지. 소통을 위해 직접 만든 유튜브 GIF 생성기.">
+<meta property="og:image" content="https://stonekids.tv/assets/ytgif/overview.png">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="assets/ytgif/ytgif-logo.svg">
+<meta name="theme-color" content="#6634d8">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white:#FFFFFF; --off-white:#FAFAFA; --black:#0A0A0A; --red:#E60012; --red-dark:#C4000F;
+    --gray-50:#F8F8F8; --gray-100:#F0F0F0; --gray-200:#E0E0E0; --gray-400:#999; --gray-600:#666; --gray-800:#333;
+    --vio:#7447EE; --vio-dark:#6634D8; --vio-soft:#F1ECFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Noto Sans KR',-apple-system,sans-serif; background:var(--white); color:var(--black); -webkit-font-smoothing:antialiased; line-height:1.6; }
+  img { display:block; max-width:100%; }
+
+  /* NAV */
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(0,0,0,0.06); }
+  .nav-inner { max-width:1200px; margin:0 auto; padding:0 40px; height:72px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:5px; color:var(--black); text-decoration:none; display:flex; align-items:center; gap:12px; }
+  .logo-dot { width:10px; height:10px; border-radius:50%; background:var(--red); }
+  .nav-links { display:flex; gap:36px; }
+  .nav-links a { font-size:14px; font-weight:500; letter-spacing:0.5px; color:var(--gray-600); text-decoration:none; transition:color 0.3s; position:relative; }
+  .nav-links a:hover { color:var(--black); }
+  .nav-links a.active { color:var(--red); }
+  .nav-links a.active::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:2px; background:var(--red); }
+
+  /* HERO */
+  .hero { padding:150px 40px 50px; max-width:1080px; margin:0 auto; }
+  .hero-top { display:flex; align-items:center; gap:22px; margin-bottom:28px; }
+  .hero-icon { width:86px; height:86px; border-radius:22px; box-shadow:0 14px 30px rgba(58,28,140,0.28); flex-shrink:0; }
+  .hero-eyebrow { font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--vio-dark); margin-bottom:8px; }
+  .hero-name { font-family:'Bebas Neue',sans-serif; font-size:52px; letter-spacing:2px; line-height:1; color:var(--black); }
+  .hero h1 { font-size:clamp(30px,5vw,52px); font-weight:900; letter-spacing:-1.5px; line-height:1.25; margin-bottom:22px; word-break:keep-all; }
+  .hero h1 .accent { color:var(--vio-dark); }
+  .hero .lede { font-size:18px; color:var(--gray-600); line-height:1.9; max-width:760px; word-break:keep-all; }
+  .hero-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:26px; }
+  .hero-meta span { font-size:12.5px; font-weight:600; color:var(--vio-dark); background:var(--vio-soft); padding:6px 13px; border-radius:100px; }
+
+  .shot { max-width:1080px; margin:0 auto; padding:0 40px; }
+  .shot-frame { border:1px solid var(--gray-200); border-radius:16px; overflow:hidden; background:var(--gray-50); box-shadow:0 24px 60px rgba(10,10,10,0.10); }
+  .shot-frame img { width:100%; }
+  .shot-cap { font-size:13px; color:var(--gray-400); text-align:center; margin-top:14px; }
+
+  /* STORY */
+  .story { max-width:820px; margin:0 auto; padding:80px 40px 30px; }
+  .story h2 { font-size:clamp(24px,3.6vw,32px); font-weight:800; letter-spacing:-0.8px; margin-bottom:22px; word-break:keep-all; }
+  .story p { font-size:16.5px; color:var(--gray-800); line-height:1.95; margin-bottom:18px; word-break:keep-all; }
+  .story p strong { color:var(--black); font-weight:700; }
+  .pull { border-left:4px solid var(--vio); background:var(--vio-soft); padding:22px 26px; border-radius:0 12px 12px 0; margin:30px 0; }
+  .pull p { font-size:17px; color:var(--vio-dark); font-weight:600; margin:0; line-height:1.8; }
+
+  /* FEATURES */
+  .features { max-width:1080px; margin:0 auto; padding:50px 40px 40px; }
+  .features-head { text-align:center; margin-bottom:54px; }
+  .features-head .kicker { font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gray-400); margin-bottom:12px; }
+  .features-head h2 { font-size:clamp(26px,4vw,38px); font-weight:900; letter-spacing:-1px; word-break:keep-all; }
+
+  .feat { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; padding:46px 0; border-top:1px solid var(--gray-100); }
+  .feat:nth-child(even) .feat-media { order:2; }
+  .feat-num { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:2px; color:var(--vio); margin-bottom:10px; }
+  .feat-body h3 { font-size:23px; font-weight:800; letter-spacing:-0.5px; margin-bottom:14px; word-break:keep-all; }
+  .feat-body p { font-size:15.5px; color:var(--gray-800); line-height:1.9; margin-bottom:14px; word-break:keep-all; }
+  .feat-body ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .feat-body li { font-size:14.5px; color:var(--gray-600); padding-left:20px; position:relative; line-height:1.6; word-break:keep-all; }
+  .feat-body li::before { content:''; position:absolute; left:0; top:8px; width:7px; height:7px; border-radius:2px; background:var(--vio); }
+  .feat-media { border:1px solid var(--gray-200); border-radius:14px; overflow:hidden; background:var(--gray-50); box-shadow:0 14px 36px rgba(10,10,10,0.08); }
+  .feat-media img { width:100%; }
+
+  /* RESULT */
+  .result { background:#13101f; color:var(--white); padding:90px 40px; margin-top:30px; }
+  .result-inner { max-width:980px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+  .result-inner .kicker { font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#b79bff; margin-bottom:14px; }
+  .result-inner h2 { font-size:clamp(24px,3.6vw,34px); font-weight:800; letter-spacing:-0.8px; margin-bottom:18px; line-height:1.3; word-break:keep-all; }
+  .result-inner p { font-size:15.5px; color:rgba(255,255,255,0.78); line-height:1.9; margin-bottom:14px; word-break:keep-all; }
+  .result-gif { border-radius:14px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,0.5); border:1px solid rgba(255,255,255,0.1); background:#000; }
+  .result-gif img { width:100%; }
+  .result-gif-cap { font-size:12.5px; color:rgba(255,255,255,0.5); margin-top:12px; text-align:center; }
+
+  /* CLOSING */
+  .closing { max-width:820px; margin:0 auto; padding:84px 40px 40px; text-align:center; }
+  .closing h2 { font-size:clamp(24px,4vw,34px); font-weight:900; letter-spacing:-1px; margin-bottom:20px; word-break:keep-all; }
+  .closing p { font-size:16.5px; color:var(--gray-600); line-height:1.95; word-break:keep-all; }
+  .closing p strong { color:var(--vio-dark); }
+
+  /* CTA */
+  .cta { background:var(--black); color:var(--white); padding:90px 40px; text-align:center; }
+  .cta h2 { font-size:clamp(24px,4vw,34px); font-weight:800; letter-spacing:-1px; margin-bottom:16px; word-break:keep-all; }
+  .cta p { color:rgba(255,255,255,0.85); font-size:15px; margin-bottom:32px; }
+  .cta-row { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .cta a { display:inline-flex; align-items:center; gap:8px; font-size:15px; font-weight:700; padding:15px 30px; border-radius:100px; text-decoration:none; transition:transform 0.2s; }
+  .cta a.primary { background:var(--white); color:var(--black); }
+  .cta a.ghost { background:transparent; color:var(--white); border:1px solid rgba(255,255,255,0.3); }
+  .cta a:hover { transform:translateY(-2px); }
+
+  /* FOOTER */
+  footer { background:var(--gray-50); padding:48px 40px; text-align:center; }
+  .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:6px; display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:18px; }
+  .footer-contact { font-size:14px; color:var(--gray-600); margin-bottom:8px; }
+  .footer-contact a { color:var(--red); text-decoration:none; font-weight:500; }
+  .footer-copy { font-size:12px; color:var(--gray-400); letter-spacing:1px; }
+
+  @media (max-width:820px) {
+    .nav-inner { padding:0 24px; }
+    .nav-links { gap:18px; }
+    .hero { padding:118px 24px 36px; }
+    .hero-icon { width:64px; height:64px; border-radius:16px; }
+    .hero-name { font-size:40px; }
+    .shot, .features { padding-left:24px; padding-right:24px; }
+    .story, .closing { padding-left:24px; padding-right:24px; }
+    .feat { grid-template-columns:1fr; gap:22px; padding:38px 0; }
+    .feat:nth-child(even) .feat-media { order:0; }
+    .result { padding:64px 24px; }
+    .result-inner { grid-template-columns:1fr; gap:28px; }
+    .cta { padding:70px 24px; }
+  }
+  @media (max-width:600px) { .nav-links a:nth-child(1) { display:none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-dot"></span>STONEKIDS</a>
+    <div class="nav-links">
+      <a href="index.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="devlog.html" class="active">Lab</a>
+      <a href="about.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-top">
+    <img class="hero-icon" src="assets/ytgif/ytgif-logo.svg" alt="YTgif 앱 아이콘">
+    <div>
+      <div class="hero-eyebrow">Stone Kids Lab · 자체 도구</div>
+      <div class="hero-name">YTgif</div>
+    </div>
+  </div>
+  <h1>유튜브의 그 장면, <span class="accent">한 칸의 GIF</span>로.<br>그것도 내 손에 맞게.</h1>
+  <p class="lede">유튜브 영상에서 보여주고 싶은 구간만 골라, 프레임 단위로 다듬어, 바로 GIF로 뽑는 데스크톱 도구입니다. 캔버스 위 협업에서 "말로 설명하지 말고 그냥 움직이는 걸 보여주자"는 생각에서 출발해, 개발자 <strong>심중섭</strong>이 자신의 작업 방식에 맞춰 처음부터 직접 만들었습니다.</p>
+  <div class="hero-meta">
+    <span>YouTube → GIF</span><span>프레임 단위 구간 선택</span><span>배치 렌더 큐</span><span>도킹 레이아웃</span><span>로컬 파일 지원</span>
+  </div>
+</header>
+
+<section class="shot">
+  <div class="shot-frame">
+    <img src="assets/ytgif/overview.png" alt="YTgif 전체 화면 — 소스 추가, 미리보기, 구간 선택, GIF 옵션, 렌더 큐, 배치 렌더링" loading="lazy">
+  </div>
+  <p class="shot-cap">한 화면에서 끝납니다 — 불러오기 · 구간 선택 · 옵션 · 큐 적재 · 배치 렌더링</p>
+</section>
+
+<section class="story">
+  <h2>왜 만들었나 — "이미지로는 부족했다"</h2>
+  <p>스톤키즈의 협업은 <strong>allo.io</strong> 무한 캔버스 위에서 이뤄집니다. 레퍼런스를 붙이고, 편집 방향을 논의하고, "이 느낌"을 공유하는 자리죠. 그런데 캔버스에 정지 이미지 한 장을 올려두면 늘 같은 한계에 부딪혔습니다 — <strong>움직임은 말로 풀어 써야 했고</strong>, 받는 사람은 그 말을 머릿속에서 다시 영상으로 되돌려야 했습니다.</p>
+  <p>심중섭은 단순한 판단을 내렸습니다. <strong>"캔버스 위 소통에는 이미지보다 GIF가 낫다."</strong> 짧게 반복 재생되는 한 칸의 움직임은, 긴 설명문보다 빠르고 정확하게 의도를 전달했으니까요. 유튜브 레퍼런스의 바로 그 3초를, 클릭 몇 번으로 캔버스에 얹을 수 있다면.</p>
+  <div class="pull">
+    <p>"내가 쓰기 편한 방식이 곧 사양서였다. 남이 만든 GIF 변환기를 참는 대신, 내 손에 맞는 도구를 직접 만들기로 했다."</p>
+  </div>
+  <p>시중의 GIF 변환기는 대개 한 번에 하나씩, 웹 업로드와 광고를 거쳐, 원하는 옵션은 반쯤만 줬습니다. YTgif는 그 반대로 설계했습니다. <strong>로컬에서 빠르게</strong>, <strong>프레임 단위로 정확하게</strong>, 여러 개를 <strong>큐에 쌓아 한 번에</strong>. 철저히 한 사람의 실제 작업 동선에 맞춰 다듬은, 그래서 군더더기가 없는 도구입니다.</p>
+</section>
+
+<section class="features">
+  <div class="features-head">
+    <div class="kicker">What it does</div>
+    <h2>기능 하나하나가, 실제로 쓰던 동선입니다</h2>
+  </div>
+
+  <div class="feat">
+    <div class="feat-media"><img src="assets/ytgif/preview.png" alt="유튜브 웹뷰 플레이어로 미리보며 구간을 잡는 화면" loading="lazy"></div>
+    <div class="feat-body">
+      <div class="feat-num">01</div>
+      <h3>유튜브 URL을 붙이면, 웹뷰로 바로 재생</h3>
+      <p>주소만 붙여 넣으면 유튜브 웹뷰 플레이어가 곧장 열립니다. 영상을 보면서 원하는 지점에서 <strong>IN 설정 · OUT 설정</strong>을 누르면 그 자리가 구간이 됩니다. 별도의 다운로드 앱도, 화면 녹화도 필요 없습니다.</p>
+      <ul>
+        <li>유튜브 재생바 그대로 — 익숙한 방식으로 위치 탐색</li>
+        <li>현재 재생 위치를 한 번에 IN/OUT으로 지정</li>
+        <li>임베드가 막힌 영상은 "다운로드 후 진행"으로 우회</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="feat-media"><img src="assets/ytgif/timeline.png" alt="프레임 단위 구간 선택 — START/END, -10f/-1f/+1f/+10f, 재생 시간·프레임 표시" loading="lazy"></div>
+    <div class="feat-body">
+      <div class="feat-num">02</div>
+      <h3>프레임 단위로 정확하게 잘라낸다</h3>
+      <p>"대충 3초쯤"이 아니라, <strong>정확히 그 프레임</strong>에서 시작하고 끝납니다. START·END를 직접 입력하거나 <strong>−10f / −1f / +1f / +10f</strong> 버튼으로 미세 조정하면, 선택 구간의 길이와 프레임 수가 실시간으로 표시됩니다.</p>
+      <ul>
+        <li>소스 영상의 실제 FPS 기준으로 프레임 스냅</li>
+        <li>F0 – F75 처럼 프레임 범위와 길이를 즉시 확인</li>
+        <li>Loop Preview로 잘라낸 구간만 반복 재생해 검수</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="feat-media"><img src="assets/ytgif/options.png" alt="GIF 옵션 — 프리셋, 해상도, FPS, 256색, 품질, 반복, 방향" loading="lazy"></div>
+    <div class="feat-body">
+      <div class="feat-num">03</div>
+      <h3>화질은 타협하지 않는다</h3>
+      <p>해상도·FPS·색상 수·품질·반복·재생 방향(정방향/역방향/핑퐁)까지 손에 잡힙니다. 팔레트는 <strong>프레임 전체 기준(full)</strong>으로 뽑고 <strong>sierra2_4a 오차확산 디더링</strong>을 써서, 같은 GIF여도 원본 색감에 훨씬 가깝게 — 띠 무늬(밴딩) 없이 매끈하게 나옵니다.</p>
+      <ul>
+        <li>인스타·디스코드·텔레그램·카카오·트위터 프리셋</li>
+        <li>예상 파일 크기·렌더 시간을 미리 가늠</li>
+        <li>플랫폼별 용량 한도에 맞춰 색상 수만 낮춰도 깔끔</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="feat-media"><img src="assets/ytgif/queue.png" alt="렌더 큐 — 썸네일, 구간, 설정, 상태, 진행률, 예상 크기, 열기·폴더 작업" loading="lazy"></div>
+    <div class="feat-body">
+      <div class="feat-num">04</div>
+      <h3>여러 개를 쌓아, 한 번에 굽는다</h3>
+      <p>장면 하나 고를 때마다 변환을 기다리지 않습니다. 만들 GIF를 <strong>큐에 차곡차곡 쌓아</strong> 두고 배치 렌더링을 돌리면 알아서 처리합니다. 각 작업의 썸네일·구간·설정·진행률·예상 용량이 한눈에 보이고, 완료된 건 <strong>열기·폴더</strong>로 바로 확인합니다.</p>
+      <ul>
+        <li>드래그로 순서 변경, 실패 작업만 재시도</li>
+        <li>완료 시 결과 GIF를 Finder에서 바로 열기</li>
+        <li>작업 목록은 프로젝트로 저장·복구</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="feat-media"><img src="assets/ytgif/render.png" alt="배치 렌더링 바 — 동시 작업 수, 자원, 엔진, 출력 폴더, 전체 진행률" loading="lazy"></div>
+    <div class="feat-body">
+      <div class="feat-num">05</div>
+      <h3>로컬 파일도, 끌어다 놓기만</h3>
+      <p>유튜브만이 아닙니다. 손에 있는 영상 파일을 <strong>드래그 &amp; 드롭</strong>하면 그대로 소스가 됩니다. 업로드되는 즉시 썸네일을 만들어 보여주고, 같은 구간 선택·배치 렌더링 흐름을 똑같이 탑니다. 동시 작업 수와 출력 폴더까지, 내 장비에 맞게 설정합니다.</p>
+      <ul>
+        <li>mp4·mov·mkv·webm·avi 등 폭넓은 포맷</li>
+        <li>업로드 영상에서 대표 프레임 썸네일 자동 생성</li>
+        <li>출력 폴더 지정 — 결과물을 내 폴더 구조에 정리</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="feat-media"><img src="assets/ytgif/dock.png" alt="프리미어식 도킹 레이아웃 — 패널 경계를 끌어 크기 조절, 헤더를 끌어 재배치" loading="lazy"></div>
+    <div class="feat-body">
+      <div class="feat-num">06</div>
+      <h3>작업대는 내 마음대로 — 도킹 레이아웃</h3>
+      <p>프리미어처럼, 패널 사이 <strong>경계선을 끌면 양옆이 함께</strong> 늘고 줄며 빈틈 없이 타일로 채워집니다. 패널 <strong>제목 줄을 끌어</strong> 다른 패널 가장자리에 놓으면 그쪽으로 도킹돼 배치가 바뀝니다. 미리보기를 크게, 큐를 넓게 — 그날 작업에 맞춰 화면을 짭니다. 배치는 저장되어 다음에도 그대로입니다.</p>
+      <ul>
+        <li>경계 스플리터로 패널 크기 동시 조절</li>
+        <li>헤더 드래그 → 상·하·좌·우 도킹, 중앙 교환</li>
+        <li>레이아웃 저장·복원, 메뉴에서 초기화</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="result">
+  <div class="result-inner">
+    <div>
+      <div class="kicker">The output</div>
+      <h2>설명 대신, 그냥 보여주면 됩니다</h2>
+      <p>오른쪽은 YTgif로 뽑은 실제 결과물입니다. 캔버스에 이 한 칸을 얹는 순간, "여기서 이렇게 움직였으면 좋겠어요"라는 긴 문장은 필요 없어집니다.</p>
+      <p>full 팔레트 + 오차확산 디더링으로 만든 GIF는 색이 뭉개지지 않고, 작은 용량으로도 의도를 또렷이 전달합니다. <strong>도구가 사람에게 맞춰질 때</strong> 일어나는 일입니다.</p>
+    </div>
+    <div>
+      <div class="result-gif"><img src="assets/ytgif/result.gif" alt="YTgif로 생성한 실제 GIF 결과물 예시" loading="lazy"></div>
+      <p class="result-gif-cap">YTgif로 만든 실제 GIF · 360×202 · 12fps · 256색</p>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <h2>필요는 내가 가장 잘 안다</h2>
+  <p>YTgif는 거창한 제품이 아니라, <strong>한 사람의 하루를 더 매끄럽게</strong> 만들려고 시작한 도구입니다. 현장에서 겪은 불편을 그냥 넘기지 않고, 내게 맞는 사용성으로 직접 풀어낸 결과 — 그게 스톤키즈 Lab이 일하는 방식입니다.</p>
+</section>
+
+<section class="cta">
+  <h2>스톤키즈는 영상 프로덕션입니다.</h2>
+  <p>여기 있는 도구들은 더 좋은 영상을 만들려다 직접 만든 결과물입니다. 촬영·편집·라이브 중계 등 영상 제작이 필요하시면 편하게 연락 주세요.</p>
+  <div class="cta-row">
+    <a class="primary" href="about.html#contact">영상 제작 문의하기 →</a>
+    <a class="ghost" href="devlog.html">다른 자체 도구 보기</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><span class="logo-dot"></span>STONEKIDS</div>
+  <div class="footer-contact"><a href="tel:1600-2867">1600-2867</a> · <a href="mailto:pm@stonekids.tv">pm@stonekids.tv</a></div>
+  <div class="footer-copy">© 2016-2026 STONEKIDS. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
