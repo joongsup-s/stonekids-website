@@ -51,6 +51,8 @@
   .log-body h2 { font-size:26px; font-weight:800; letter-spacing:-0.5px; margin-bottom:6px; }
   .log-body .sub { font-size:14px; color:var(--gray-400); margin-bottom:16px; font-weight:500; }
   .log-body .desc { font-size:15.5px; color:var(--gray-800); line-height:1.85; margin-bottom:18px; word-break:keep-all; }
+  .log-body .desc a { color:var(--red); font-weight:600; text-decoration:none; border-bottom:1px solid rgba(230,0,18,0.28); }
+  .log-body .desc a:hover { border-bottom-color:var(--red); }
   .log-feats { list-style:none; display:flex; flex-direction:column; gap:7px; margin-bottom:20px; }
   .log-feats li { font-size:14.5px; color:var(--gray-600); padding-left:18px; position:relative; line-height:1.6; }
   .log-feats li::before { content:''; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:var(--gray-200); }
@@ -117,7 +119,7 @@
     <div class="log-body">
       <h2>YTgif</h2>
       <p class="sub">유튜브·로컬 영상 → GIF 데스크톱 도구 (내부 협업용)</p>
-      <p class="desc">allo.io 캔버스 협업에서 <strong>"이미지보다 GIF가 낫다"</strong>는 판단으로 출발했습니다. 유튜브 영상의 한 구간을 프레임 단위로 골라 바로 GIF로 뽑고, 여러 개를 큐에 쌓아 한 번에 렌더링하는 도구입니다. 개발자 심중섭이 자신의 작업 동선·사용성에 맞춰 직접 설계했습니다.</p>
+      <p class="desc"><a href="https://allo.io" target="_blank" rel="noopener">allo.io</a> 캔버스 협업에서 <strong>"이미지보다 GIF가 낫다"</strong>는 판단으로 출발했습니다. 유튜브 영상의 한 구간을 프레임 단위로 골라 바로 GIF로 뽑고, 여러 개를 큐에 쌓아 한 번에 렌더링하는 도구입니다. 시중 도구에 맞추는 대신, 실제 작업 동선·사용성에 맞춰 직접 설계했습니다.</p>
       <figure class="log-shot">
         <img src="assets/ytgif/overview.png" alt="YTgif 화면 — 미리보기, 프레임 단위 구간 선택, GIF 옵션, 배치 렌더 큐" loading="lazy">
         <figcaption>웹뷰 미리보기 · 프레임 단위 구간 선택 · GIF 옵션 · 배치 렌더 큐 — 실제 화면</figcaption>

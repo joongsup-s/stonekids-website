@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YTgif — 유튜브를 GIF로, 내 워크플로에 맞게 | STONEKIDS Lab</title>
-<meta name="description" content="유튜브 영상의 한 구간을 골라 바로 GIF로 만드는 데스크톱 도구 YTgif. allo.io 캔버스에서 '이미지보다 GIF로 말하자'는 판단에서 출발해, 개발자 심중섭이 자신의 사용성에 맞춰 직접 만든 유튜브 GIF 생성기입니다.">
+<meta name="description" content="유튜브 영상의 한 구간을 골라 바로 GIF로 만드는 데스크톱 도구 YTgif. allo.io 캔버스 협업에서 '이미지보다 GIF로 말하자'는 판단에서 출발해, 실제 작업 동선과 사용성에 맞춰 직접 만든 유튜브 GIF 생성기입니다.">
 <link rel="canonical" href="https://stonekids.tv/ytgif">
 <meta property="og:title" content="YTgif — 유튜브를 GIF로, 내 워크플로에 맞게">
 <meta property="og:description" content="구간 선택부터 배치 렌더링, 도킹 레이아웃까지. 소통을 위해 직접 만든 유튜브 GIF 생성기.">
@@ -57,6 +57,8 @@
   .story h2 { font-size:clamp(24px,3.6vw,32px); font-weight:800; letter-spacing:-0.8px; margin-bottom:22px; word-break:keep-all; }
   .story p { font-size:16.5px; color:var(--gray-800); line-height:1.95; margin-bottom:18px; word-break:keep-all; }
   .story p strong { color:var(--black); font-weight:700; }
+  .story a { color:var(--vio-dark); font-weight:700; text-decoration:none; border-bottom:2px solid var(--vio-soft); transition:border-color 0.2s; }
+  .story a:hover { border-bottom-color:var(--vio); }
   .pull { border-left:4px solid var(--vio); background:var(--vio-soft); padding:22px 26px; border-radius:0 12px 12px 0; margin:30px 0; }
   .pull p { font-size:17px; color:var(--vio-dark); font-weight:600; margin:0; line-height:1.8; }
 
@@ -150,7 +152,7 @@
     </div>
   </div>
   <h1>유튜브의 그 장면, <span class="accent">한 칸의 GIF</span>로.<br>그것도 내 손에 맞게.</h1>
-  <p class="lede">유튜브 영상에서 보여주고 싶은 구간만 골라, 프레임 단위로 다듬어, 바로 GIF로 뽑는 데스크톱 도구입니다. 캔버스 위 협업에서 "말로 설명하지 말고 그냥 움직이는 걸 보여주자"는 생각에서 출발해, 개발자 <strong>심중섭</strong>이 자신의 작업 방식에 맞춰 처음부터 직접 만들었습니다.</p>
+  <p class="lede">유튜브 영상에서 보여주고 싶은 구간만 골라, 프레임 단위로 다듬어, 바로 GIF로 뽑는 데스크톱 도구입니다. 캔버스 협업에서 "말로 설명하지 말고 그냥 움직이는 걸 보여주자"는 생각에서 출발해, 시중 도구에 맞추는 대신 <strong>실제 작업 방식에 딱 맞게</strong> 처음부터 직접 만들었습니다.</p>
   <div class="hero-meta">
     <span>YouTube → GIF</span><span>프레임 단위 구간 선택</span><span>배치 렌더 큐</span><span>도킹 레이아웃</span><span>로컬 파일 지원</span>
   </div>
@@ -165,12 +167,13 @@
 
 <section class="story">
   <h2>왜 만들었나 — "이미지로는 부족했다"</h2>
-  <p>스톤키즈의 협업은 <strong>allo.io</strong> 무한 캔버스 위에서 이뤄집니다. 레퍼런스를 붙이고, 편집 방향을 논의하고, "이 느낌"을 공유하는 자리죠. 그런데 캔버스에 정지 이미지 한 장을 올려두면 늘 같은 한계에 부딪혔습니다 — <strong>움직임은 말로 풀어 써야 했고</strong>, 받는 사람은 그 말을 머릿속에서 다시 영상으로 되돌려야 했습니다.</p>
-  <p>심중섭은 단순한 판단을 내렸습니다. <strong>"캔버스 위 소통에는 이미지보다 GIF가 낫다."</strong> 짧게 반복 재생되는 한 칸의 움직임은, 긴 설명문보다 빠르고 정확하게 의도를 전달했으니까요. 유튜브 레퍼런스의 바로 그 3초를, 클릭 몇 번으로 캔버스에 얹을 수 있다면.</p>
+  <p>스톤키즈는 협업의 많은 부분을 <a href="https://allo.io" target="_blank" rel="noopener">allo.io</a> 위에서 합니다. 흩어진 초안과 레퍼런스, 피드백을 하나의 캔버스에 모아 나란히 두고, 함께 보며 결정하는 비주얼 협업 도구죠. 레퍼런스를 붙이고, 편집 방향을 논의하고, "이 느낌"을 맞춰가는 자리입니다.</p>
+  <p>그런데 캔버스에 정지 이미지 한 장을 올려두면 늘 같은 벽에 부딪혔습니다 — <strong>움직임은 결국 말로 풀어 써야 했고</strong>, 받는 사람은 그 설명을 머릿속에서 다시 영상으로 되돌려야 했습니다. "여기서 이렇게 휙 지나가는 느낌"은 글로는 좀처럼 전해지지 않으니까요.</p>
+  <p>그래서 답은 단순했습니다. <strong>"캔버스 위 소통에는 이미지보다 GIF가 낫다."</strong> 짧게 반복되는 한 칸의 움직임은 긴 설명문보다 빠르고 정확하게 의도를 전합니다. 유튜브 레퍼런스의 바로 그 3초를 클릭 몇 번으로 캔버스에 얹을 수 있다면, 회의는 그만큼 짧아집니다.</p>
   <div class="pull">
-    <p>"내가 쓰기 편한 방식이 곧 사양서였다. 남이 만든 GIF 변환기를 참는 대신, 내 손에 맞는 도구를 직접 만들기로 했다."</p>
+    <p>"쓰기 편한 방식이 곧 사양서였다. 남이 만든 변환기에 나를 맞추는 대신, 내 손에 맞는 도구를 직접 만들기로 했다."</p>
   </div>
-  <p>시중의 GIF 변환기는 대개 한 번에 하나씩, 웹 업로드와 광고를 거쳐, 원하는 옵션은 반쯤만 줬습니다. YTgif는 그 반대로 설계했습니다. <strong>로컬에서 빠르게</strong>, <strong>프레임 단위로 정확하게</strong>, 여러 개를 <strong>큐에 쌓아 한 번에</strong>. 철저히 한 사람의 실제 작업 동선에 맞춰 다듬은, 그래서 군더더기가 없는 도구입니다.</p>
+  <p>시중의 GIF 변환기는 대개 한 번에 하나씩, 웹 업로드와 광고를 거쳐, 정작 원하는 옵션은 반만 줬습니다. YTgif는 그 반대로 설계했습니다. <strong>로컬에서 빠르게</strong>, <strong>프레임 단위로 정확하게</strong>, 여러 개를 <strong>큐에 쌓아 한 번에</strong>. 실제 작업 동선을 그대로 본떠 다듬었기에, 군더더기가 없습니다.</p>
 </section>
 
 <section class="features">
