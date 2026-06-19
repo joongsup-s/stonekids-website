@@ -49,12 +49,19 @@
   .hero-meta span { display:inline-flex; align-items:center; gap:7px; }
   .hero-meta span::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--red); }
 
-  /* VIDEO EMBED */
+  /* VIDEO POSTER + WATCH */
   .stage { max-width:1100px; margin:0 auto; padding:14px 40px 10px; }
-  .video-frame { position:relative; width:100%; aspect-ratio:1920/822; background:#000; border-radius:14px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.22); }
-  .video-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
-  .stage-cap { text-align:center; font-size:13px; color:var(--gray-400); margin-top:14px; letter-spacing:0.3px; }
-  .stage-cap a { color:var(--red); text-decoration:none; font-weight:600; }
+  .video-poster { position:relative; display:block; width:100%; aspect-ratio:1920/822; background:#000; border-radius:14px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.22); }
+  .video-poster img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
+  .video-poster:hover img { transform:scale(1.03); }
+  .video-poster .play { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:84px; height:84px; border-radius:50%; background:rgba(10,10,10,0.55); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); display:flex; align-items:center; justify-content:center; transition:all 0.3s ease; }
+  .video-poster .play::after { content:''; width:0; height:0; border-style:solid; border-width:13px 0 13px 22px; border-color:transparent transparent transparent #fff; margin-left:5px; }
+  .video-poster:hover .play { background:var(--red); transform:translate(-50%,-50%) scale(1.08); box-shadow:0 12px 44px rgba(230,0,18,0.42); }
+  .watch-wrap { text-align:center; margin-top:22px; }
+  .watch-btn { display:inline-flex; align-items:center; gap:10px; font-size:15px; font-weight:700; color:#fff; background:var(--black); padding:15px 32px; border-radius:100px; text-decoration:none; transition:transform 0.2s, background 0.2s; }
+  .watch-btn::before { content:''; width:0; height:0; border-style:solid; border-width:7px 0 7px 12px; border-color:transparent transparent transparent #fff; }
+  .watch-btn:hover { transform:translateY(-2px); background:var(--red); }
+  .watch-sub { display:block; margin-top:13px; font-size:13px; color:var(--gray-400); letter-spacing:0.3px; }
 
   /* ARTICLE */
   .article { max-width:1000px; margin:0 auto; padding:40px 40px 40px; }
@@ -164,12 +171,16 @@
   </div>
 </header>
 
-<!-- 완성품 먼저 -->
+<!-- 완성품 먼저 — 썸네일 + 동영상 보기 -->
 <section class="stage">
-  <div class="video-frame">
-    <iframe src="https://player.vimeo.com/video/1147566419?title=0&byline=0&portrait=0" title="강원후평의 AX — 완성 영상" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  <a class="video-poster" href="https://vimeo.com/1147566419" target="_blank" rel="noopener" aria-label="동영상 보기 — 강원후평의 AX">
+    <img src="assets/ax/final_1920.jpg" alt="강원후평의 AX — 완성 영상 타이틀 프레임" loading="eager">
+    <span class="play"></span>
+  </a>
+  <div class="watch-wrap">
+    <a class="watch-btn" href="https://vimeo.com/1147566419" target="_blank" rel="noopener">동영상 보기</a>
+    <span class="watch-sub">완성 영상 — 「강원후평의 AX」 · 1분 52초 · Vimeo</span>
   </div>
-  <p class="stage-cap">완성 영상 — 「강원후평의 AX」 · <a href="https://vimeo.com/1147566419" target="_blank" rel="noopener">Vimeo에서 보기 ↗</a></p>
 </section>
 
 <main class="article">
