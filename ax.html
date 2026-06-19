@@ -72,6 +72,8 @@
   .chapter p { font-size:16.5px; color:var(--gray-800); line-height:1.95; margin-bottom:18px; word-break:keep-all; }
   .chapter p .hl { color:var(--black); font-weight:700; box-shadow:inset 0 -10px 0 rgba(230,0,18,0.10); }
   .chapter p strong { color:var(--black); font-weight:700; }
+  .chapter p a { color:var(--red); font-weight:600; text-decoration:none; border-bottom:1px solid rgba(230,0,18,0.30); }
+  .chapter p a:hover { border-bottom-color:var(--red); }
 
   /* FIGURE */
   figure.shot { margin:30px 0 8px; border:1px solid var(--gray-200); border-radius:14px; overflow:hidden; background:var(--gray-50); }
@@ -79,6 +81,8 @@
   figure.shot img { display:block; width:100%; height:auto; }
   figure.shot figcaption { font-size:13px; color:var(--gray-400); padding:13px 16px; border-top:1px solid var(--gray-200); line-height:1.55; }
   figure.shot.dark figcaption { border-top-color:#1c1c20; color:#8a8a92; }
+  figure.shot figcaption a { color:var(--gray-600); font-weight:600; text-decoration:none; border-bottom:1px solid var(--gray-200); }
+  figure.shot figcaption a:hover { color:var(--red); border-bottom-color:var(--red); }
   .fig-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:30px 0 8px; }
   .fig-grid figure.shot { margin:0; }
   @media (max-width:720px){ .fig-grid { grid-template-columns:1fr; } }
@@ -210,7 +214,7 @@
     <div class="ch-num">CHAPTER 03 — 방법</div>
     <h2>가장 중요한 한 수 — 드론 실사를 ‘좌표’로</h2>
     <p>AI로 만든 에셋이 실사 위에서 떠 보이지 않으려면, 둘이 같은 공간에 ‘있어야’ 합니다. 그래서 제일 먼저 한 일은 후평동을 <strong>드론으로 촬영</strong>하는 것이었습니다. 단, 이 드론 영상은 배경이 아니라 <span class="hl">3D 씬 전체의 기준 좌표</span>입니다. 건물 높이, 도로 폭, 카메라 무브 — 모든 CG와 AI 연출이 이 실사 위에 좌표를 맞춰 얹힙니다.</p>
-    <p>그 위에서 제작은 여섯 단계로 흘러갔습니다.</p>
+    <p>이 모든 기획과 레퍼런스는 <a href="https://allo.io" target="_blank" rel="noopener">allo.io</a> 캔버스 위에 한데 모아 정리했고, 그 위에서 제작은 여섯 단계로 흘러갔습니다.</p>
     <ul class="steps">
       <li><span class="si">01</span><span class="st"><b>드론 소스 확보</b> — 후평 바이오산단의 형태·스케일·신뢰성 확보. 관객이 “저기다”라고 인지하는 기준점.</span></li>
       <li><span class="si">02</span><span class="st"><b>공간 분석 &amp; 매칭</b> — 카메라 트래킹, 바닥·도로·건물 레벨 구분, 기준 스케일 설정.</span></li>
@@ -221,7 +225,7 @@
     </ul>
     <figure class="shot">
       <img src="assets/ax/pipeline.jpg" alt="6단계 제작 파이프라인과 단계별 To-Do 기획 보드" loading="lazy">
-      <figcaption>실제 기획 보드 — 드론 소스부터 합성·파이널까지, 단계별 To-Do와 ‘AI 활용 포인트’를 미리 못박아 두었습니다.</figcaption>
+      <figcaption>실제 기획 보드(<a href="https://allo.io" target="_blank" rel="noopener">allo.io</a>) — 드론 소스부터 합성·파이널까지, 단계별 To-Do와 ‘AI 활용 포인트’를 미리 못박아 두었습니다.</figcaption>
     </figure>
   </article>
 
