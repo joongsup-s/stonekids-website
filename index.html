@@ -371,6 +371,20 @@
     border-radius: 1px;
   }
 
+  .video-making {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 8px;
+    margin-left: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    color: var(--red);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+  .video-making:hover { text-decoration: underline; }
+
   /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--gray-200);
@@ -540,7 +554,7 @@
   </p>
   <div class="hero-count">
     <div class="hero-count-item">
-      <div class="hero-count-num">10</div>
+      <div class="hero-count-num">11</div>
       <div class="hero-count-label">References</div>
     </div>
     <div class="hero-count-item">
@@ -554,7 +568,7 @@
 <section class="section">
   <div class="section-header fade-up">
     <h2 class="section-title">REFERENCES</h2>
-    <span class="section-index">01 — 10</span>
+    <span class="section-index">01 — 11</span>
   </div>
 
   <div class="video-grid" id="videoGrid">
@@ -587,11 +601,18 @@
 <script>
 const videos = [
   {
+    id: "1147566419",
+    title: "강원후평 AX — 행사 주제영상",
+    tag: "AI Cinematic",
+    platform: "vimeo",
+    featured: true,
+    link: "ax.html"
+  },
+  {
     id: "rXODWiR-yJg",
     title: "2025 SK Innovation Brand Film",
     tag: "Brand Film",
-    platform: "youtube",
-    featured: true
+    platform: "youtube"
   },
   {
     id: "wWrbixQDLjc",
@@ -681,11 +702,14 @@ videos.forEach((v, i) => {
       <div class="video-info">
         <div class="video-title">${v.title}</div>
         <span class="video-tag">${v.tag}</span>
+        ${v.link ? `<a class="video-making" href="${v.link}">제작기 보기 →</a>` : ``}
       </div>
     </div>
   `;
 
   card.addEventListener('click', () => openLightbox(v));
+  const making = card.querySelector('.video-making');
+  if (making) making.addEventListener('click', (e) => e.stopPropagation());
   grid.appendChild(card);
 });
 
