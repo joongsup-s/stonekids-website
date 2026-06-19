@@ -494,6 +494,39 @@
   .cta-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,0,0,0.22); }
   .cta-btn--ghost { background: rgba(255,255,255,0.12); color: var(--white); border: 1px solid rgba(255,255,255,0.45); }
   .cta-btn--ghost:hover { background: rgba(255,255,255,0.22); }
+
+  /* INQUIRY FORM */
+  .inq { max-width: 560px; margin: 8px auto 0; text-align: left; }
+  .inq-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .inq-field { margin-bottom: 14px; }
+  .inq-field.full { grid-column: 1 / -1; }
+  .inq label { display: block; font-size: 12.5px; font-weight: 600; letter-spacing: 0.5px; color: rgba(255,255,255,0.75); margin-bottom: 7px; }
+  .inq label .req { color: var(--red); }
+  .inq input, .inq textarea {
+    width: 100%; font-family: inherit; font-size: 15px; color: var(--white);
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 10px; padding: 13px 15px; transition: border-color .2s, background .2s;
+  }
+  .inq input::placeholder, .inq textarea::placeholder { color: rgba(255,255,255,0.4); }
+  .inq input:focus, .inq textarea:focus { outline: none; border-color: var(--red); background: rgba(255,255,255,0.1); }
+  .inq textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+  .inq-consent { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 18px; }
+  .inq-consent input { width: 18px; height: 18px; flex: none; margin-top: 2px; accent-color: var(--red); }
+  .inq-consent label { font-size: 13px; color: rgba(255,255,255,0.7); margin: 0; font-weight: 400; line-height: 1.6; letter-spacing: 0; }
+  .inq-submit {
+    width: 100%; font-size: 16px; font-weight: 700; color: var(--red); background: var(--white);
+    border: 0; border-radius: 100px; padding: 16px; cursor: pointer; transition: transform .2s, box-shadow .2s, opacity .2s;
+  }
+  .inq-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(0,0,0,0.25); }
+  .inq-submit:disabled { opacity: 0.55; cursor: default; }
+  .inq-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .inq-status { margin-top: 16px; text-align: center; font-size: 14px; font-weight: 600; line-height: 1.6; display: none; }
+  .inq-status.ok { display: block; color: #74e6a4; }
+  .inq-status.err { display: block; color: #ff8f8f; }
+  .inq-alt { margin-top: 22px; text-align: center; font-size: 13px; color: rgba(255,255,255,0.58); }
+  .inq-alt a { color: rgba(255,255,255,0.85); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3); }
+  .inq-alt a:hover { color: var(--white); border-bottom-color: var(--white); }
+  @media (max-width: 560px) { .inq-row { grid-template-columns: 1fr; } }
   @media (max-width: 600px) { .cta-section { padding: 80px 24px; } }
 
   /* FOOTER */
@@ -746,10 +779,34 @@
     <div class="cta-eyebrow">Let's Work Together</div>
     <h2>함께 만들 영상이 있으신가요?</h2>
     <p>브랜드 필름부터 공공기관 정책 홍보, 실시간 라이브 중계, 문화예술 아카이빙까지 — 기획부터 납품까지 한 번에 책임집니다. 프로젝트가 있으시면 편하게 제안 주세요.</p>
-    <div class="cta-actions">
-      <a class="cta-btn cta-btn--primary" href="mailto:pm@stonekids.tv?subject=%5B%ED%98%91%EC%97%85%20%EC%A0%9C%EC%95%88%5D%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AC%B8%EC%9D%98">협업 제안하기 →</a>
-      <a class="cta-btn cta-btn--ghost" href="tel:1600-2867">📞 1600-2867</a>
-    </div>
+    <form class="inq" id="inqForm" novalidate>
+      <div class="inq-row">
+        <div class="inq-field">
+          <label for="inqName">이름 / 회사 <span class="req">*</span></label>
+          <input id="inqName" type="text" autocomplete="organization" placeholder="홍길동 / (주)스톤키즈" required>
+        </div>
+        <div class="inq-field">
+          <label for="inqEmail">이메일 <span class="req">*</span></label>
+          <input id="inqEmail" type="email" autocomplete="email" placeholder="name@company.com" required>
+        </div>
+      </div>
+      <div class="inq-field">
+        <label for="inqPhone">연락처 (전화)</label>
+        <input id="inqPhone" type="tel" autocomplete="tel" placeholder="010-0000-0000">
+      </div>
+      <div class="inq-field full">
+        <label for="inqMessage">문의 내용 <span class="req">*</span></label>
+        <textarea id="inqMessage" placeholder="프로젝트 개요, 일정, 예산 범위 등 편하게 적어주세요." required></textarea>
+      </div>
+      <div class="inq-consent">
+        <input id="inqConsent" type="checkbox" required>
+        <label for="inqConsent">개인정보(이름·연락처·문의내용) 수집·이용에 동의합니다. 문의 응대 목적에만 사용하며 처리 후 파기합니다. <span class="req">*</span></label>
+      </div>
+      <input id="inqBot" type="checkbox" name="botcheck" class="inq-hp" tabindex="-1" autocomplete="off">
+      <button class="inq-submit" type="submit" id="inqSubmit">문의 보내기 →</button>
+      <p class="inq-status" id="inqStatus" role="status" aria-live="polite"></p>
+    </form>
+    <p class="inq-alt">또는 바로 — <a href="mailto:pm@stonekids.tv">pm@stonekids.tv</a> · <a href="tel:1600-2867">1600-2867</a></p>
   </div>
 </section>
 
@@ -766,6 +823,60 @@
   </div>
   <div class="footer-copy">© 2016-2026 STONEKIDS. All rights reserved.</div>
 </footer>
+
+<script>
+(function () {
+  // Web3Forms access key — 공개되어도 안전한 값(실제 수신처는 Web3Forms 서버에 보관). web3forms.com 에서 발급.
+  var WEB3FORMS_KEY = "c09bc1eb-d3f6-4590-ac1a-4dd56bd65c76";
+  var form = document.getElementById('inqForm');
+  if (!form) return;
+  var btn = document.getElementById('inqSubmit');
+  var status = document.getElementById('inqStatus');
+  var $ = function (id) { return document.getElementById(id); };
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    status.className = 'inq-status';
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    if ($('inqBot').checked) return; // honeypot
+
+    var payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: '[제작 문의] STONEKIDS 홈페이지',
+      from_name: 'STONEKIDS 문의폼',
+      '이름/회사': $('inqName').value.trim(),
+      '이메일': $('inqEmail').value.trim(),
+      '전화': $('inqPhone').value.trim() || '-',
+      '문의 내용': $('inqMessage').value.trim(),
+      '개인정보 수집·이용 동의': $('inqConsent').checked ? '동의함' : '미동의',
+      replyto: $('inqEmail').value.trim()
+    };
+
+    var original = btn.textContent;
+    btn.disabled = true; btn.textContent = '보내는 중…';
+    try {
+      var res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      var json = await res.json();
+      if (json.success) {
+        form.reset();
+        status.textContent = '문의가 정상 접수되었습니다. 빠르게 회신드리겠습니다. 감사합니다!';
+        status.classList.add('ok');
+      } else {
+        throw new Error(json.message || 'submit failed');
+      }
+    } catch (err) {
+      status.textContent = '전송에 실패했어요. 잠시 후 다시 시도하시거나 pm@stonekids.tv 로 보내주세요.';
+      status.classList.add('err');
+    } finally {
+      btn.disabled = false; btn.textContent = original;
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
