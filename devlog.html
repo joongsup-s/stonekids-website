@@ -142,19 +142,21 @@
     </div>
     <div class="log-body">
       <h2>겟로고 (GetLogo)</h2>
-      <p class="sub">getlogo.kr · 관공서·공공기관 로고 허브</p>
-      <p class="desc">기관 로고 하나 찾으려고 수십 개 홈페이지를 헤매던 경험에서 출발했습니다. 전국 중앙정부·지자체·공공기관 <strong>465곳</strong>의 상징(CI/BI)·로고를 한 곳에 모아, 원본은 직접 호스팅하지 않고 공식 출처로 바로 연결하는 링크 허브입니다.</p>
+      <p class="sub">getlogo.kr · 관공서·공공기관·기업 로고 허브</p>
+      <p class="desc">기관 로고 하나 찾으려고 수십 개 홈페이지를 헤매던 경험에서 출발했습니다. 중앙정부·지방자치단체·공공기관에 대학·지방공기업·출자출연기관, 그리고 주요 기업까지 <strong>937곳</strong>의 상징(CI/BI)·로고를 한 곳에 모았습니다. 원본은 직접 호스팅하지 않고 공식 출처로 바로 연결하는 링크 허브입니다.</p>
       <figure class="log-shot">
-        <img src="assets/devlog/getlogo.png" alt="겟로고(getlogo.kr) 둘러보기 화면 — 분류·지역·포맷 필터와 기관 로고 그리드" loading="lazy">
-        <figcaption>분류·지역·포맷 필터 + 기관 로고 그리드 — getlogo.kr 둘러보기</figcaption>
+        <img src="assets/devlog/getlogo.png" alt="겟로고(getlogo.kr) 둘러보기 화면 — 분류·세부분류·지역·포맷 필터와 기관 로고 그리드" loading="lazy">
+        <figcaption>분류·세부분류·지역·포맷 필터 + 로고 그리드 — getlogo.kr 둘러보기</figcaption>
       </figure>
       <ul class="log-feats">
-        <li>기관명 검색 + 분류·지역·포맷 계층 필터</li>
-        <li>로고 자동 수집·정규화 및 정확도 검증 파이프라인</li>
+        <li>기관명·초성 검색 + 분류·세부분류·지역·포맷 필터</li>
+        <li>브랜드 대표 컬러 추출 — HEX·RGB·HSL·CMYK 원클릭 복사</li>
+        <li>회원·팀 단위 로고 컬렉션(개인·팀 프라이빗 자산) 관리</li>
+        <li>로고 자동 수집·정규화·검증 파이프라인 + 품질 자동 감사</li>
         <li>누락 기관 제보·등록 시스템(소유·관리권 확인)</li>
         <li>SEO/AEO 최적화 — "○○시 로고" 검색 대응</li>
       </ul>
-      <div class="log-stack"><span>Astro</span><span>Firebase Hosting</span><span>Cloudflare</span><span>GA4</span></div>
+      <div class="log-stack"><span>Astro</span><span>Firebase Hosting</span><span>Firestore</span><span>Auth</span><span>Cloudflare</span><span>GA4</span></div>
       <a class="log-link" href="https://getlogo.kr" target="_blank" rel="noopener">사이트 보기 →</a>
     </div>
   </article>
