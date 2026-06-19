@@ -63,9 +63,7 @@
   .watch-btn:hover { transform:translateY(-2px); background:var(--red); }
   .watch-sub { display:block; margin-top:13px; font-size:13px; color:var(--gray-400); letter-spacing:0.3px; }
   .video-poster.teaser { cursor:default; }
-  .video-poster.teaser::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.58)); }
-  .teaser-hint { position:absolute; left:0; right:0; bottom:24px; z-index:2; text-align:center; color:#fff; font-size:14.5px; font-weight:700; letter-spacing:0.4px; text-shadow:0 2px 14px rgba(0,0,0,0.6); }
-  .teaser-hint small { display:block; margin-top:5px; font-size:12px; font-weight:500; color:rgba(255,255,255,0.8); }
+  .poster-cap { text-align:center; margin-top:14px; font-size:13px; color:var(--gray-400); letter-spacing:0.3px; }
   .stage-end { margin-top:8px; }
   .stage-end .end-eyebrow { text-align:center; font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:3px; color:var(--red); margin-bottom:9px; }
   .stage-end .end-title { text-align:center; font-size:clamp(22px,3.4vw,30px); font-weight:800; letter-spacing:-0.5px; margin-bottom:24px; word-break:keep-all; }
@@ -186,12 +184,12 @@
   </div>
 </header>
 
-<!-- 상단: 완성본 티저 (감상은 맨 아래에서) -->
+<!-- 상단: 완성 스틸컷 (감상은 맨 아래 섹션에서) -->
 <section class="stage">
   <div class="video-poster teaser">
     <img src="assets/ax/final_1920.jpg" alt="강원후평의 AX — 완성 영상 타이틀 프레임" loading="eager">
-    <span class="teaser-hint">제작기를 먼저 읽어보세요<small>완성본은 맨 아래에서 ↓</small></span>
   </div>
+  <p class="poster-cap">완성 영상 스틸컷 — 「강원후평의 AX」</p>
 </section>
 
 <main class="article">
