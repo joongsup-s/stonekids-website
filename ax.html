@@ -62,6 +62,16 @@
   .watch-btn::before { content:''; width:0; height:0; border-style:solid; border-width:7px 0 7px 12px; border-color:transparent transparent transparent #fff; }
   .watch-btn:hover { transform:translateY(-2px); background:var(--red); }
   .watch-sub { display:block; margin-top:13px; font-size:13px; color:var(--gray-400); letter-spacing:0.3px; }
+  .video-poster.teaser { cursor:default; }
+  .video-poster.teaser::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.58)); }
+  .teaser-hint { position:absolute; left:0; right:0; bottom:24px; z-index:2; text-align:center; color:#fff; font-size:14.5px; font-weight:700; letter-spacing:0.4px; text-shadow:0 2px 14px rgba(0,0,0,0.6); }
+  .teaser-hint small { display:block; margin-top:5px; font-size:12px; font-weight:500; color:rgba(255,255,255,0.8); }
+  .stage-end { margin-top:8px; }
+  .stage-end .end-eyebrow { text-align:center; font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:3px; color:var(--red); margin-bottom:9px; }
+  .stage-end .end-title { text-align:center; font-size:clamp(22px,3.4vw,30px); font-weight:800; letter-spacing:-0.5px; margin-bottom:24px; word-break:keep-all; }
+  .credits { text-align:center; margin-top:24px; font-size:13px; color:var(--gray-600); line-height:1.9; }
+  .credits b { color:var(--black); font-weight:700; }
+  .credits .sep { color:var(--gray-200); margin:0 9px; }
 
   /* ARTICLE */
   .article { max-width:1000px; margin:0 auto; padding:40px 40px 40px; }
@@ -172,18 +182,15 @@
     <span>2025. 12. 17.</span>
     <span>강원창작개발센터</span>
     <span>주제영상 · 1분 52초</span>
+    <span>발주 · (주)더픽트 MICE팀</span>
   </div>
 </header>
 
-<!-- 완성품 먼저 — 썸네일 + 동영상 보기 -->
+<!-- 상단: 완성본 티저 (감상은 맨 아래에서) -->
 <section class="stage">
-  <a class="video-poster" href="https://vimeo.com/1147566419" target="_blank" rel="noopener" aria-label="동영상 보기 — 강원후평의 AX">
+  <div class="video-poster teaser">
     <img src="assets/ax/final_1920.jpg" alt="강원후평의 AX — 완성 영상 타이틀 프레임" loading="eager">
-    <span class="play"></span>
-  </a>
-  <div class="watch-wrap">
-    <a class="watch-btn" href="https://vimeo.com/1147566419" target="_blank" rel="noopener">동영상 보기</a>
-    <span class="watch-sub">완성 영상 — 「강원후평의 AX」 · 1분 52초 · Vimeo</span>
+    <span class="teaser-hint">제작기를 먼저 읽어보세요<small>완성본은 맨 아래에서 ↓</small></span>
   </div>
 </section>
 
@@ -194,14 +201,15 @@
     <div class="ch-num">CHAPTER 01 — 발단</div>
     <h2>‘AX’라는 말을, 어떻게 느끼게 할까</h2>
     <p>의뢰는 단순했습니다. 강원후평 AX Connect Meet-up의 오프닝을 여는 주제영상. 하지만 <span class="hl">AX(AI 전환)</span>는 슬라이드 위 키워드일 뿐, 그 자체로는 가슴이 뛰지 않습니다. 로고를 띄우고 자막을 깔면 ‘설명’은 되지만 ‘각인’은 되지 않죠.</p>
-    <p>무대는 정해져 있었습니다. 춘천 <strong>후평동 바이오산업단지</strong>. 우리는 이 실제 공간을 배경 그림이 아니라 <strong>이야기의 출발점</strong>으로 쓰기로 했습니다. “여기에서, 무언가가 시작된다” — 그 한 문장을 90초 동안 시각적으로 증명하는 것. 그게 이번 영상의 과제였습니다.</p>
+    <p>무대는 정해져 있었습니다. 춘천 <strong>후평동 바이오산업단지</strong>. 이 실제 공간을 배경 그림이 아니라 <strong>이야기의 출발점</strong>으로 쓰기로 했습니다. “여기에서, 무언가가 시작된다” — 그 한 문장을 90초 동안 시각적으로 증명하는 것. 그게 이번 영상의 과제였습니다.</p>
+    <p>먼저 밝혀둡니다. 이 영상은 <strong>(주)더픽트 MICE팀</strong>이 진행한 행사의 콘텐츠로, 스톤키즈가 제작을 <strong>수주</strong>해 만든 작업입니다. <span class="hl">기본 기획 의도와 방향은 더픽트 측에서 전달</span>받았고, 스톤키즈의 몫은 그 방향을 ‘어떻게 영상으로 보이게 할 것인가’ — 비주얼·연출·AI 제작 파이프라인을 설계하고 끝까지 완성하는 일이었습니다.</p>
   </article>
 
   <!-- ② 발상 전환 -->
   <article class="chapter">
     <div class="ch-num">CHAPTER 02 — 발상의 전환</div>
     <h2>기관 로고 대신, 발진하는 로켓</h2>
-    <p>핵심 아이디어는 여기서 나왔습니다. 행사를 이끄는 세 기관 — <strong>강원창작개발센터·한림대학교·강원대학교</strong> — 을 글자로 소개하는 대신, 각각을 상징하는 <span class="hl">세 대의 로켓</span>으로 의인화한 것. AX는 미래로 ‘발진하는 힘’이니까요.</p>
+    <p>전달받은 방향을 영상으로 옮기는 출발점은 여기였습니다. 행사를 이끄는 세 기관 — <strong>강원창작개발센터·한림대학교·강원대학교</strong> — 을 글자로 소개하는 대신, 각각을 상징하는 <span class="hl">세 대의 로켓</span>으로 의인화하는 것. AX는 미래로 ‘발진하는 힘’이니까요.</p>
     <p>여기에 톤을 잡아준 레퍼런스가 <strong>기동전사 건담</strong>이었습니다. 단순히 ‘멋진 메카’를 베끼려는 게 아니라, 건담 특유의 ‘<strong>기계적 설득력</strong>’ — 장난감이 아니라 실제로 존재하고, 움직이면 위험할 것 같은 무게감 — 을 빌려오기 위해서였죠. 누리호 발사 영상, 실제 위성 사진까지 함께 모아 ‘진짜처럼 보이는 SF’의 결을 찾았습니다.</p>
     <figure class="shot dark">
       <img src="assets/ax/concept.jpg" alt="레퍼런스 보드 — 건담식 우주선 컨셉, 실제 AX 사업·누리호 자료, 톤 레퍼런스" loading="lazy">
@@ -307,21 +315,34 @@
     <div class="ch-num">CHAPTER 06 — 완성</div>
     <h2>작은 팀이, 블록버스터의 톤으로</h2>
     <p>마지막 프레임에서 세 갈래의 빛은 하나의 <strong>AX</strong>로 모이고, 지구를 감싼 DNA가 천천히 빛납니다. 그 위에 한 줄 — <span class="hl">“강원후평의 미래를 연결하다.”</span></p>
-    <p>드론 한 번의 촬영, 그리고 이미지·영상·음악을 잇는 AI 파이프라인. 예전이라면 큰 CG 팀과 긴 일정을 요구했을 90초를, 스톤키즈는 작은 팀의 기획력만으로 ‘실제로 거기 있는 것 같은’ 시네마틱으로 완성했습니다. 도구가 바뀌면, 작은 스튜디오가 그릴 수 있는 그림의 크기도 달라집니다.</p>
-    <figure class="shot dark">
-      <img src="assets/ax/final_1920.jpg" alt="완성 프레임 — AX 로고, 지구, DNA 나선, ‘강원후평의 미래를 연결하다’" loading="lazy">
-      <figcaption>완성 타이틀 프레임 — “AX · 강원후평의 미래를 연결하다.”</figcaption>
-    </figure>
+    <p>드론 한 번의 촬영, 그리고 이미지·영상·음악을 잇는 AI 파이프라인. 예전이라면 큰 CG 팀과 긴 일정을 요구했을 90초를, 작은 팀이 ‘실제로 거기 있는 것 같은’ 시네마틱으로 완성했습니다. 도구가 바뀌면, 작은 스튜디오가 그릴 수 있는 그림의 크기도 달라집니다.</p>
   </article>
 
 </main>
+
+<!-- 다 읽은 뒤: 완성본 감상 -->
+<section class="stage stage-end">
+  <div class="end-eyebrow">Now Playing — 완성본</div>
+  <h2 class="end-title">이제, 완성본을 보세요</h2>
+  <a class="video-poster" href="https://vimeo.com/1147566419" target="_blank" rel="noopener" aria-label="동영상 보기 — 강원후평의 AX">
+    <img src="assets/ax/final_1920.jpg" alt="강원후평의 AX — 완성 영상 타이틀 프레임" loading="lazy">
+    <span class="play"></span>
+  </a>
+  <div class="watch-wrap">
+    <a class="watch-btn" href="https://vimeo.com/1147566419" target="_blank" rel="noopener">동영상 보기</a>
+    <span class="watch-sub">「강원후평의 AX」 · 1분 52초 · Vimeo</span>
+  </div>
+  <p class="credits">
+    Client <b>(주)더픽트 MICE팀</b><span class="sep">·</span>Production <b>스톤키즈 (STONEKIDS)</b><br>
+    기본 기획 방향 제공 — 더픽트 &nbsp;|&nbsp; 비주얼·연출·AI 제작 — 스톤키즈
+  </p>
+</section>
 
 <section class="cta">
   <h2>이런 영상, 함께 만들어요.</h2>
   <p>기획부터 AI 파이프라인, 합성·마감까지. 행사 주제영상·브랜드 필름이 필요하시면 편하게 연락 주세요.</p>
   <div class="cta-row">
-    <a class="primary" href="https://vimeo.com/1147566419" target="_blank" rel="noopener">완성 영상 보기 ↗</a>
-    <a class="ghost" href="about.html#contact">영상 제작 문의 →</a>
+    <a class="primary" href="about.html#contact">영상 제작 문의 →</a>
   </div>
 </section>
 
