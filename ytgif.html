@@ -7,8 +7,8 @@
 <meta name="description" content="유튜브 영상의 한 구간을 골라 바로 GIF로 만드는 데스크톱 도구 YTgif. allo.io 캔버스 협업에서 '이미지보다 GIF로 말하자'는 판단에서 출발해, 실제 작업 동선과 사용성에 맞춰 직접 만든 유튜브 GIF 생성기입니다.">
 <link rel="canonical" href="https://stonekids.tv/ytgif">
 <meta property="og:title" content="YTgif — 유튜브를 GIF로, 내 워크플로에 맞게">
-<meta property="og:description" content="구간 선택부터 배치 렌더링, 도킹 레이아웃까지. 소통을 위해 직접 만든 유튜브 GIF 생성기.">
-<meta property="og:image" content="https://stonekids.tv/assets/ytgif/overview.png">
+<meta property="og:description" content="눈금·확대되는 타임라인으로 프레임 단위 구간 선택, 원클릭 변환, 통합 큐·다운로더까지. 다크·컴팩트 한 화면. 소통을 위해 직접 만든 유튜브 GIF 생성기.">
+<meta property="og:image" content="https://stonekids.tv/assets/ytgif/overview-v2.png">
 <meta property="og:type" content="article">
 <link rel="icon" type="image/svg+xml" href="assets/ytgif/ytgif-logo.svg">
 <meta name="theme-color" content="#6634d8">
@@ -171,15 +171,15 @@
   <h1>유튜브의 그 장면, <span class="accent">한 칸의 GIF</span>로.<br>그것도 내 손에 맞게.</h1>
   <p class="lede">유튜브 영상에서 보여주고 싶은 구간만 골라, 프레임 단위로 다듬어, 바로 GIF로 뽑는 데스크톱 도구입니다. 캔버스 협업에서 "말로 설명하지 말고 그냥 움직이는 걸 보여주자"는 생각에서 출발해, 시중 도구에 맞추는 대신 <strong>실제 작업 방식에 딱 맞게</strong> 처음부터 직접 만들었습니다.</p>
   <div class="hero-meta">
-    <span>YouTube → GIF</span><span>프레임 단위 구간 선택</span><span>렌더 + 다운로드 통합 큐</span><span>영상·음원 다운로더</span><span>도킹 레이아웃</span><span>로컬 파일 지원</span>
+    <span>YouTube → GIF</span><span>프레임 단위 구간 선택</span><span>확대되는 타임라인</span><span>렌더 + 다운로드 통합 큐</span><span>영상·음원 다운로더</span><span>다크/라이트 자동</span><span>로컬 파일 지원</span>
   </div>
 </header>
 
 <section class="shot">
   <div class="shot-frame">
-    <img src="assets/ytgif/overview.png" alt="YTgif 전체 화면 — 소스 추가, 미리보기, 구간 선택, GIF 옵션, 렌더 큐, 배치 렌더링" loading="lazy">
+    <img src="assets/ytgif/overview-v2.png" alt="YTgif 새 화면 — 한 줄 소스 입력, 컴팩트 레이아웃, 눈금·핸들·확대가 있는 타임라인, 한 줄 모양 설정, 원클릭 GIF 만들기" loading="lazy">
   </div>
-  <p class="shot-cap">한 화면에서 끝납니다 — 불러오기 · 구간 선택 · 옵션 · 큐 적재 · 배치 렌더링</p>
+  <p class="shot-cap">새 디자인 — 한 화면 컴팩트 · 붙여넣기 자동 로드 · 눈금·확대되는 타임라인 · 원클릭 GIF 만들기</p>
 </section>
 
 <section class="story">
@@ -214,15 +214,15 @@
   </div>
 
   <div class="feat">
-    <div class="feat-media"><img src="assets/ytgif/timeline.png" alt="프레임 단위 구간 선택 — START/END, -10f/-1f/+1f/+10f, 재생 시간·프레임 표시" loading="lazy"></div>
+    <div class="feat-media"><img src="assets/ytgif/timeline-zoom.png" alt="새 타임라인 — 시간 눈금, IN/OUT 핸들과 시간 버블, 미니맵·구간 확대(줌), 정밀 시간 필드와 프레임 스텝" loading="lazy"></div>
     <div class="feat-body">
       <div class="feat-num">02</div>
-      <h3>프레임 단위로 정확하게 잘라낸다</h3>
-      <p>"대충 3초쯤"이 아니라, <strong>정확히 그 프레임</strong>에서 시작하고 끝납니다. START·END를 직접 입력하거나 <strong>−10f / −1f / +1f / +10f</strong> 버튼으로 미세 조정하면, 선택 구간의 길이와 프레임 수가 실시간으로 표시됩니다.</p>
+      <h3>긴 영상도, 2초 구간을 정확히 — 새 타임라인</h3>
+      <p>트랙에 <strong>시간 눈금</strong>이 깔리고, IN/OUT 핸들마다 <strong>현재 시각이 버블</strong>로 붙어 어디를 잡았는지 한눈에 보입니다. 1시간짜리 영상에서 2~3초를 뽑을 땐 <strong>"구간 확대"</strong>로 줌인 — 위쪽 미니맵이 전체 위치를 알려주고, 아래 확대된 트랙에서 핸들을 편하게 끕니다. 정밀하게는 <strong>시간 입력 + 프레임 ±스텝</strong>, 키보드(←/→ 1프레임, I/O로 현재 위치 지정)까지.</p>
       <ul>
-        <li>소스 영상의 실제 FPS 기준으로 프레임 스냅</li>
-        <li>F0 – F75 처럼 프레임 범위와 길이를 즉시 확인</li>
-        <li>Loop Preview로 잘라낸 구간만 반복 재생해 검수</li>
+        <li>시간 눈금·현재 재생위치(playhead)·핸들 시간 버블</li>
+        <li>⌘+휠 확대/축소, 확대 중 가로 스와이프로 이동</li>
+        <li>편집 가능한 시작/끝 필드 + 프레임 단위 미세 조정</li>
       </ul>
     </div>
   </div>
@@ -270,15 +270,15 @@
   </div>
 
   <div class="feat">
-    <div class="feat-media"><img src="assets/ytgif/dock.png" alt="프리미어식 도킹 레이아웃 — 패널 경계를 끌어 크기 조절, 헤더를 끌어 재배치" loading="lazy"></div>
+    <div class="feat-media"><img src="assets/ytgif/overview-v2.png" alt="한 화면 컴팩트 레이아웃 — 한 줄 소스 입력, 미리보기, 타임라인, 한 줄 모양 설정, 원클릭 GIF 만들기" loading="lazy"></div>
     <div class="feat-body">
       <div class="feat-num">06</div>
-      <h3>작업대는 내 마음대로 — 도킹 레이아웃</h3>
-      <p>프리미어처럼, 패널 사이 <strong>경계선을 끌면 양옆이 함께</strong> 늘고 줄며 빈틈 없이 타일로 채워집니다. 패널 <strong>제목 줄을 끌어</strong> 다른 패널 가장자리에 놓으면 그쪽으로 도킹돼 배치가 바뀝니다. 미리보기를 크게, 큐를 넓게 — 그날 작업에 맞춰 화면을 짭니다. 배치는 저장되어 다음에도 그대로입니다.</p>
+      <h3>한 화면에 딱 — 다크·컴팩트·원클릭</h3>
+      <p>스크롤 없이 <strong>한 화면</strong>에 소스·구간·모양·만들기가 모두 들어옵니다. 시스템 테마를 따라 <strong>다크/라이트 자동</strong>. 링크는 <strong>붙여넣기만 하면 바로 로드</strong>되고, 영상 파일은 <strong>앱 어디에 끌어다 놔도</strong> 오버레이로 받습니다. 만들기는 <strong>버튼 하나</strong> — "GIF 만들기"가 추가와 변환을 한 번에 끝내고, 여러 개는 "목록에 담기" 후 큐에서 일괄 처리합니다.</p>
       <ul>
-        <li>경계 스플리터로 패널 크기 동시 조절</li>
-        <li>헤더 드래그 → 상·하·좌·우 도킹, 중앙 교환</li>
-        <li>레이아웃 저장·복원, 메뉴에서 초기화</li>
+        <li>무스크롤 컴팩트 레이아웃 · 다크/라이트 자동</li>
+        <li>붙여넣기 자동 로드 + 전체 화면 드래그 &amp; 드롭</li>
+        <li>원클릭 변환, 차단 영상은 다운로드 진행률까지 표시</li>
       </ul>
     </div>
   </div>
@@ -324,6 +324,18 @@
   <p class="changelog-intro">실제로 쓰면서 필요한 것부터 하나씩 채워가고 있습니다. 펼쳐서 확인하세요.</p>
 
   <details class="cl-item" open>
+    <summary><span class="cl-tag">NEW</span> 전면 리디자인 &amp; 새 타임라인 <span class="cl-date">2026.06.20</span></summary>
+    <ul>
+      <li><strong>전체 UI 재설계</strong> — 다크/라이트 자동, 한 화면에 들어오는 컴팩트 레이아웃(무스크롤)</li>
+      <li><strong>원클릭 "GIF 만들기"</strong> — 추가+변환을 한 번에. 여러 개는 "목록에 담기" 후 큐에서 일괄</li>
+      <li><strong>새 타임라인</strong> — 시간 눈금·현재 재생위치·핸들 시간버블, 편집 가능한 시작/끝 필드 + 프레임 ±스텝, 키보드(←/→·I/O)</li>
+      <li>긴 영상용 <strong>타임라인 확대/축소</strong>(미니맵·구간 확대·⌘+휠) — 1시간 영상에서도 2~3초 구간을 편하게</li>
+      <li>소스 입력 <strong>한 줄 + 붙여넣기 자동 로드</strong>, 앱 전체 <strong>드래그 &amp; 드롭</strong></li>
+      <li>의존성(ffmpeg·yt-dlp) <strong>앱 내장</strong> — 별도 설치 없이 실행, macOS <strong>DMG 배포</strong></li>
+    </ul>
+  </details>
+
+  <details class="cl-item">
     <summary><span class="cl-tag">NEW</span> 다운로더 &amp; 통합 큐 <span class="cl-date">2026.06.19</span></summary>
     <ul>
       <li>영상·음원 <strong>다운로더</strong> 추가 — 화질/음원(MP3·M4A) 선택, 진행률·속도·ETA, 취소·재시도</li>
