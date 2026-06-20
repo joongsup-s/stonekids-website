@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YTgif 사용법 — 넣고, 자르고, 만든다 | STONEKIDS Lab</title>
+<meta name="description" content="YTgif 사용 가이드 — 유튜브 링크를 붙여넣고, 타임라인에서 구간을 잡고, 버튼 하나로 GIF를 만드는 3단계. 설치(DMG)·단축키·팁까지 한 페이지에.">
+<link rel="canonical" href="https://stonekids.tv/ytgif-guide">
+<meta property="og:title" content="YTgif 사용법 — 넣고, 자르고, 만든다">
+<meta property="og:description" content="붙여넣기 자동 로드, 눈금·확대되는 타임라인으로 프레임 단위 구간 선택, 원클릭 변환. 설치·단축키·팁까지 한 페이지 가이드.">
+<meta property="og:image" content="https://stonekids.tv/assets/ytgif/overview-v2.png">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="assets/ytgif/ytgif-logo.svg">
+<meta name="theme-color" content="#6634d8">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white:#FFFFFF; --off-white:#FAFAFA; --black:#0A0A0A; --red:#E60012; --red-dark:#C4000F;
+    --gray-50:#F8F8F8; --gray-100:#F0F0F0; --gray-200:#E0E0E0; --gray-400:#999; --gray-600:#666; --gray-800:#333;
+    --vio:#7447EE; --vio-dark:#6634D8; --vio-soft:#F1ECFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Noto Sans KR',-apple-system,sans-serif; background:var(--white); color:var(--black); -webkit-font-smoothing:antialiased; line-height:1.6; }
+  img { display:block; max-width:100%; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(0,0,0,0.06); }
+  .nav-inner { max-width:1200px; margin:0 auto; padding:0 40px; height:72px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:5px; color:var(--black); text-decoration:none; display:flex; align-items:center; gap:12px; }
+  .logo-dot { width:10px; height:10px; border-radius:50%; background:var(--red); }
+  .nav-links { display:flex; gap:36px; }
+  .nav-links a { font-size:14px; font-weight:500; letter-spacing:0.5px; color:var(--gray-600); text-decoration:none; transition:color 0.3s; position:relative; }
+  .nav-links a:hover { color:var(--black); }
+  .nav-links a.active { color:var(--red); }
+  .nav-links a.active::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:2px; background:var(--red); }
+
+  .hero { padding:150px 40px 50px; max-width:1080px; margin:0 auto; }
+  .hero-top { display:flex; align-items:center; gap:22px; margin-bottom:28px; }
+  .hero-icon { width:86px; height:86px; border-radius:22px; box-shadow:0 14px 30px rgba(58,28,140,0.28); flex-shrink:0; }
+  .hero-eyebrow { font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--vio-dark); margin-bottom:8px; }
+  .hero-name { font-family:'Bebas Neue',sans-serif; font-size:52px; letter-spacing:2px; line-height:1; color:var(--black); }
+  .hero h1 { font-size:clamp(30px,5vw,52px); font-weight:900; letter-spacing:-1.5px; line-height:1.25; margin-bottom:22px; word-break:keep-all; }
+  .hero h1 .accent { color:var(--vio-dark); }
+  .hero .lede { font-size:18px; color:var(--gray-600); line-height:1.9; max-width:760px; word-break:keep-all; }
+  .hero-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:26px; }
+  .hero-meta span { font-size:12.5px; font-weight:600; color:var(--vio-dark); background:var(--vio-soft); padding:6px 13px; border-radius:100px; }
+  .hero-back { display:inline-block; margin-top:22px; font-size:14px; font-weight:700; color:var(--vio-dark); text-decoration:none; border-bottom:2px solid var(--vio-soft); }
+  .hero-back:hover { border-bottom-color:var(--vio); }
+
+  .shot { max-width:1080px; margin:0 auto; padding:0 40px; }
+  .shot-frame { border:1px solid var(--gray-200); border-radius:16px; overflow:hidden; background:var(--gray-50); box-shadow:0 24px 60px rgba(10,10,10,0.10); }
+  .shot-frame img { width:100%; }
+  .shot-cap { font-size:13px; color:var(--gray-400); text-align:center; margin-top:14px; }
+
+  /* INSTALL */
+  .install { max-width:820px; margin:0 auto; padding:80px 40px 20px; }
+  .install h2 { font-size:clamp(24px,3.6vw,32px); font-weight:800; letter-spacing:-0.8px; margin-bottom:22px; word-break:keep-all; }
+  .install ol { list-style:none; counter-reset:step; display:flex; flex-direction:column; gap:14px; }
+  .install ol li { counter-increment:step; position:relative; padding-left:44px; font-size:16px; color:var(--gray-800); line-height:1.8; word-break:keep-all; }
+  .install ol li::before { content:counter(step); position:absolute; left:0; top:1px; width:28px; height:28px; border-radius:50%; background:var(--vio-soft); color:var(--vio-dark); font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:center; }
+  .install ol li strong { color:var(--black); }
+  .code { display:block; margin:8px 0 2px; font-family:'SFMono-Regular',Menlo,Consolas,monospace; font-size:13.5px; background:#13101f; color:#d7c9ff; padding:12px 14px; border-radius:8px; overflow-x:auto; }
+  .note { font-size:13.5px; color:var(--gray-600); background:var(--gray-50); border-left:3px solid var(--vio); padding:14px 16px; border-radius:0 8px 8px 0; margin-top:20px; line-height:1.7; word-break:keep-all; }
+
+  /* STEPS (reuses feature card style) */
+  .features { max-width:1080px; margin:0 auto; padding:40px 40px 40px; }
+  .features-head { text-align:center; margin-bottom:40px; }
+  .features-head .kicker { font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gray-400); margin-bottom:12px; }
+  .features-head h2 { font-size:clamp(26px,4vw,38px); font-weight:900; letter-spacing:-1px; word-break:keep-all; }
+  .feat { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; padding:46px 0; border-top:1px solid var(--gray-100); }
+  .feat:nth-child(even) .feat-media { order:2; }
+  .feat-num { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:2px; color:var(--vio); margin-bottom:10px; }
+  .feat-body h3 { font-size:23px; font-weight:800; letter-spacing:-0.5px; margin-bottom:14px; word-break:keep-all; }
+  .feat-body p { font-size:15.5px; color:var(--gray-800); line-height:1.9; margin-bottom:14px; word-break:keep-all; }
+  .feat-body ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .feat-body li { font-size:14.5px; color:var(--gray-600); padding-left:20px; position:relative; line-height:1.6; word-break:keep-all; }
+  .feat-body li::before { content:''; position:absolute; left:0; top:8px; width:7px; height:7px; border-radius:2px; background:var(--vio); }
+  .feat-body li strong { color:var(--vio-dark); }
+  .feat-media { border:1px solid var(--gray-200); border-radius:14px; overflow:hidden; background:var(--gray-50); box-shadow:0 14px 36px rgba(10,10,10,0.08); }
+  .feat-media img { width:100%; }
+
+  /* SHORTCUTS */
+  .keys { max-width:820px; margin:0 auto; padding:50px 40px 30px; }
+  .keys h2 { font-size:clamp(24px,4vw,32px); font-weight:900; letter-spacing:-1px; margin-bottom:8px; }
+  .keys-intro { font-size:15px; color:var(--gray-600); margin-bottom:24px; }
+  .keys-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px 28px; }
+  .keys-grid .row { display:flex; align-items:baseline; gap:12px; padding:10px 0; border-bottom:1px solid var(--gray-100); }
+  .kbd { flex-shrink:0; font-family:'SFMono-Regular',Menlo,monospace; font-size:12.5px; font-weight:700; color:var(--vio-dark); background:var(--vio-soft); border:1px solid #e2d8ff; border-radius:6px; padding:3px 8px; white-space:nowrap; }
+  .keys-grid .desc { font-size:14.5px; color:var(--gray-800); line-height:1.5; word-break:keep-all; }
+
+  .tips { max-width:820px; margin:0 auto; padding:10px 40px 40px; }
+  .tips ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .tips li { font-size:15px; color:var(--gray-800); line-height:1.8; padding-left:22px; position:relative; word-break:keep-all; }
+  .tips li::before { content:'›'; position:absolute; left:0; top:0; color:var(--vio); font-weight:800; }
+  .tips li strong { color:var(--vio-dark); }
+
+  .cta { background:var(--black); color:var(--white); padding:90px 40px; text-align:center; }
+  .cta h2 { font-size:clamp(24px,4vw,34px); font-weight:800; letter-spacing:-1px; margin-bottom:16px; word-break:keep-all; }
+  .cta p { color:rgba(255,255,255,0.85); font-size:15px; margin-bottom:32px; }
+  .cta-row { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .cta a { display:inline-flex; align-items:center; gap:8px; font-size:15px; font-weight:700; padding:15px 30px; border-radius:100px; text-decoration:none; transition:transform 0.2s; }
+  .cta a.primary { background:var(--white); color:var(--black); }
+  .cta a.ghost { background:transparent; color:var(--white); border:1px solid rgba(255,255,255,0.3); }
+  .cta a:hover { transform:translateY(-2px); }
+
+  footer { background:var(--gray-50); padding:48px 40px; text-align:center; }
+  .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:6px; display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:18px; }
+  .footer-contact { font-size:14px; color:var(--gray-600); margin-bottom:8px; }
+  .footer-contact a { color:var(--red); text-decoration:none; font-weight:500; }
+  .footer-copy { font-size:12px; color:var(--gray-400); letter-spacing:1px; }
+
+  @media (max-width:820px) {
+    .nav-inner { padding:0 24px; }
+    .nav-links { gap:18px; }
+    .hero { padding:118px 24px 36px; }
+    .hero-icon { width:64px; height:64px; border-radius:16px; }
+    .hero-name { font-size:40px; }
+    .shot, .features { padding-left:24px; padding-right:24px; }
+    .install, .keys, .tips { padding-left:24px; padding-right:24px; }
+    .feat { grid-template-columns:1fr; gap:22px; padding:38px 0; }
+    .feat:nth-child(even) .feat-media { order:0; }
+    .keys-grid { grid-template-columns:1fr; }
+    .cta { padding:70px 24px; }
+  }
+  @media (max-width:600px) { .nav-links a:nth-child(1) { display:none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-dot"></span>STONEKIDS</a>
+    <div class="nav-links">
+      <a href="index.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="devlog.html" class="active">Lab</a>
+      <a href="about.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-top">
+    <img class="hero-icon" src="assets/ytgif/ytgif-logo.svg" alt="YTgif 앱 아이콘">
+    <div>
+      <div class="hero-eyebrow">Stone Kids Lab · 사용 가이드</div>
+      <div class="hero-name">YTgif</div>
+    </div>
+  </div>
+  <h1>쓰는 법은 셋 — <span class="accent">넣고, 자르고, 만든다.</span></h1>
+  <p class="lede">유튜브 링크를 붙여넣고, 타임라인에서 원하는 구간을 잡고, 버튼 하나로 GIF로 뽑습니다. 위에서 아래로 ① 소스 → ② 구간 → ③ 모양 → 만들기, 한 화면에서 끝납니다.</p>
+  <div class="hero-meta">
+    <span>붙여넣기 자동 로드</span><span>프레임 단위 구간</span><span>확대되는 타임라인</span><span>원클릭 변환</span><span>DMG 설치</span>
+  </div>
+  <a class="hero-back" href="ytgif.html">← YTgif 소개로 돌아가기</a>
+</header>
+
+<section class="shot">
+  <div class="shot-frame">
+    <img src="assets/ytgif/overview-v2.png" alt="YTgif 전체 화면 — 위에서 아래로 ① 소스 넣기 ② 구간 잡기 ③ 모양 고르기, 그리고 GIF 만들기 버튼" loading="lazy">
+  </div>
+  <p class="shot-cap">한 화면에 다 들어옵니다 — 스크롤 없이 ① 소스 · ② 구간 · ③ 모양 · 만들기</p>
+</section>
+
+<section class="install">
+  <h2>먼저, 설치</h2>
+  <ol>
+    <li><strong>YTgif.dmg</strong>를 열고 <strong>YTgif 앱을 Applications 폴더로</strong> 끌어다 놓습니다.</li>
+    <li>처음 한 번은 미서명 앱 경고가 뜹니다. 터미널에 아래 한 줄을 붙여넣어 격리를 풀어줍니다(동봉된 변환 도구까지 함께 해제됩니다).
+      <code class="code">xattr -dr com.apple.quarantine /Applications/YTgif.app</code>
+    </li>
+    <li>이제 <strong>더블클릭</strong>으로 실행하면 됩니다. 이후엔 경고 없이 바로 열립니다.</li>
+  </ol>
+  <p class="note">변환 엔진(ffmpeg)과 유튜브 다운로더(yt-dlp)는 앱에 <strong>내장</strong>되어 있어 따로 설치할 필요가 없습니다. 단, macOS 기본 <strong>명령어 도구(python3)</strong>는 필요합니다 — 대부분의 맥에 이미 있고, 없으면 첫 실행 때 설치 안내가 한 번 뜹니다.</p>
+</section>
+
+<section class="features">
+  <div class="features-head">
+    <div class="kicker">How to use</div>
+    <h2>3단계, 그리고 만들기</h2>
+  </div>
+
+  <div class="feat">
+    <div class="feat-media"><img src="assets/ytgif/guide-source.png" alt="① 소스 넣기 — 유튜브 주소 붙여넣기 자동 로드, 불러오기, 파일 열기" loading="lazy"></div>
+    <div class="feat-body">
+      <div class="feat-num">STEP 01</div>
+      <h3>소스 넣기 — 붙여넣으면 끝</h3>
+      <p>유튜브 주소를 입력칸에 <strong>붙여넣기(⌘V)만 하면 바로 로드</strong>됩니다. 불러오기 버튼을 누를 필요도 없습니다. 손에 있는 영상 파일은 <strong>앱 화면 어디에든 끌어다 놓으면</strong> 전면 오버레이로 받아주고, "파일 열기"로 직접 골라도 됩니다.</p>
+      <ul>
+        <li>링크 <strong>붙여넣기 → 자동 파싱·로드</strong> (불러오기 클릭 불필요)</li>
+        <li>영상 파일 <strong>전체 화면 드래그 &amp; 드롭</strong> · mp4·mov·mkv·webm·avi</li>
+        <li>웹뷰가 막힌 영상은 <strong>"원본 받기"</strong>로 내려받아 그대로 미리보기·변환 (진행률 표시)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="feat-media"><img src="assets/ytgif/timeline-zoom.png" alt="② 구간 잡기 — 시간 눈금, IN/OUT 핸들과 시간 버블, 구간 확대(줌), 정밀 시간 필드와 프레임 스텝" loading="lazy"></div>
+    <div class="feat-body">
+      <div class="feat-num">STEP 02</div>
+      <h3>구간 잡기 — 어디인지 보면서, 정확히</h3>
+      <p>트랙에 <strong>시간 눈금</strong>이 깔려 있고, IN/OUT 핸들마다 <strong>현재 시각이 버블</strong>로 붙어 어디를 잡았는지 한눈에 보입니다. 재생하다가 "시작/끝" 버튼으로 현재 위치를 찍거나, 핸들을 직접 끌면 됩니다. 1시간짜리 영상에서 2~3초를 뽑을 땐 <strong>"구간 확대"</strong>로 줌인 — 위쪽 미니맵이 전체 위치를, 아래 확대된 트랙이 정밀 조작을 맡습니다.</p>
+      <ul>
+        <li>핸들 드래그 · 트랙 클릭으로 탐색 · 시간 버블로 위치 확인</li>
+        <li>편집 가능한 <strong>시작/끝 시간 필드 + 프레임 ±버튼</strong>으로 정밀 보정</li>
+        <li><strong>⌘+휠</strong> 확대/축소, 확대 중 <strong>가로 스와이프</strong>로 이동</li>
+        <li>키보드: <strong>←/→</strong> 1프레임(Shift 10), <strong>I / O</strong> 현재 위치를 시작/끝점</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="feat">
+    <div class="feat-media"><img src="assets/ytgif/guide-make.png" alt="③ 모양 고르기 + GIF 만들기 — 프리셋 드롭다운, 예상 용량·시간, 세부 조정, GIF 만들기·목록에 담기" loading="lazy"></div>
+    <div class="feat-body">
+      <div class="feat-num">STEP 03</div>
+      <h3>모양 고르고 — 버튼 하나로</h3>
+      <p>프리셋(Instagram·Discord·Telegram·카카오·직접 설정)을 고르면 해상도·FPS·색상이 한 번에 맞춰집니다. 예상 용량·변환 시간이 바로 옆에 뜨고, 더 손보고 싶으면 <strong>"세부 조정"</strong>에서 해상도·색상 수·디더링까지 만집니다. 그리고 <strong>"GIF 만들기" 한 번</strong>이면 추가와 변환이 끝 — 결과는 큐에서 확인합니다.</p>
+      <ul>
+        <li>프리셋 한 번으로 플랫폼별 권장값 적용 · 예상 용량/시간 표시</li>
+        <li><strong>"GIF 만들기"</strong>: 추가 + 변환을 한 번에 (원클릭)</li>
+        <li>여러 개는 <strong>"목록에 담기"</strong> 후 큐 서랍에서 <strong>"대기열 전체 만들기"</strong>로 일괄</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="keys">
+  <h2>단축키</h2>
+  <p class="keys-intro">마우스 없이도 빠르게. 타임라인·플레이어에서 바로 통합니다.</p>
+  <div class="keys-grid">
+    <div class="row"><span class="kbd">⌘V</span><span class="desc">링크 붙여넣기 → 자동 로드</span></div>
+    <div class="row"><span class="kbd">I</span><span class="desc">현재 재생 위치를 시작점으로</span></div>
+    <div class="row"><span class="kbd">O</span><span class="desc">현재 재생 위치를 끝점으로</span></div>
+    <div class="row"><span class="kbd">← / →</span><span class="desc">선택한 핸들 1프레임 이동</span></div>
+    <div class="row"><span class="kbd">Shift + ← / →</span><span class="desc">10프레임 이동</span></div>
+    <div class="row"><span class="kbd">⌘(Ctrl) + 휠</span><span class="desc">타임라인 확대 / 축소</span></div>
+    <div class="row"><span class="kbd">가로 스와이프</span><span class="desc">확대된 타임라인 좌우 이동</span></div>
+    <div class="row"><span class="kbd">⌘V (붙여넣기)</span><span class="desc">입력칸 밖에서도 링크면 자동 로드</span></div>
+  </div>
+</section>
+
+<section class="tips">
+  <ul>
+    <li><strong>큐 서랍</strong> — 우상단 "큐"를 누르면 만든 GIF·저장한 영상 목록이 옆에서 열립니다. 진행률·열기·폴더·삭제를 한곳에서.</li>
+    <li><strong>고급설정</strong> — 저장 위치, 완료 후 동작(파일 열기 / 파인더에서 보기), 동시 작업 수·엔진, 완료 알림을 한 번에 설정합니다.</li>
+    <li><strong>다크/라이트 자동</strong> — macOS 시스템 테마를 그대로 따라갑니다. 따로 설정할 게 없습니다.</li>
+    <li><strong>권리 있는 소재만</strong> — 다운로드 기능은 본인 권리가 있는 영상(CC·사내·위탁 제작물 등)에만 쓰세요. 받은 파일의 사용 책임은 사용자에게 있습니다.</li>
+  </ul>
+</section>
+
+<section class="cta">
+  <h2>스톤키즈는 영상 프로덕션입니다.</h2>
+  <p>여기 있는 도구들은 더 좋은 영상을 만들려다 직접 만든 결과물입니다. 촬영·편집·라이브 중계 등 영상 제작이 필요하시면 편하게 연락 주세요.</p>
+  <div class="cta-row">
+    <a class="primary" href="about.html#contact">영상 제작 문의하기 →</a>
+    <a class="ghost" href="ytgif.html">YTgif 소개 보기</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><span class="logo-dot"></span>STONEKIDS</div>
+  <div class="footer-contact"><a href="tel:1600-2867">1600-2867</a> · <a href="mailto:pm@stonekids.tv">pm@stonekids.tv</a></div>
+  <div class="footer-copy">© 2016-2026 STONEKIDS. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
