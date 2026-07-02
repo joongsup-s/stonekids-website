@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /nameserver_check.log
+Disallow: /experiments/
+
+Sitemap: https://stonekids.tv/sitemap.xml
