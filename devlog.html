@@ -113,6 +113,30 @@
 
   <article class="log-item">
     <div class="log-meta">
+      <span class="log-status status-live">현장 운용</span>
+      <span class="log-period">2026 ~</span>
+    </div>
+    <div class="log-body">
+      <h2>Gemini 음성 반응 비주얼</h2>
+      <p class="sub">나레이션에 실시간 반응하는 무대 LED 비주얼 (행사 연출용)</p>
+      <p class="desc">행사 오프닝에서 <strong>사회자의 목소리에 실시간으로 반응하는</strong> Gemini 스타일 비주얼을 무대 LED에 올리기 위해 직접 개발했습니다. 마이크 입력의 음성 주파수 스펙트럼에 맞춰 스파클과 성운이 피어나고 잦아듭니다. 구글 <a href="https://design.google/library/gemini-ai-visual-design" target="_blank" rel="noopener">Gemini 비주얼 디자인</a>의 문법(그라디언트·스파클·부드러운 모션)을 차용했고, 1920×1080 규격으로 송출합니다.</p>
+      <figure class="log-shot">
+        <img src="assets/gcp-kickoff/demo-poster.jpg" alt="행사장 메인 LED에 실시간 송출된 Gemini 음성 반응 비주얼" loading="lazy">
+        <figcaption>Google Cloud Partner Kick Off 2026 — 무대 메인 LED에 실시간 송출된 실제 화면</figcaption>
+      </figure>
+      <ul class="log-feats">
+        <li>마이크 입력 → 음성 주파수 스펙트럼 실시간 반응</li>
+        <li>Gemini 스파클(4각별) + 성운 파티클, 부드러운 보간(lerp) 모션</li>
+        <li>화이트/블랙 테마 · 마이크 선택 · 전체화면 · 1920×1080 송출</li>
+        <li>오프라인 단독 실행(.app) — 현장 네트워크와 무관하게 구동</li>
+      </ul>
+      <div class="log-stack"><span>Electron</span><span>Three.js</span><span>Web Audio API</span><span>GLSL</span></div>
+      <a class="log-link" href="gcp-kickoff.html">현장 적용 사례 보기 →</a>
+    </div>
+  </article>
+
+  <article class="log-item">
+    <div class="log-meta">
       <span class="log-status status-live">운영 중</span>
       <span class="log-period">2026 ~</span>
     </div>

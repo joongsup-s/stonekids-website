@@ -554,7 +554,7 @@
   </p>
   <div class="hero-count">
     <div class="hero-count-item">
-      <div class="hero-count-num">11</div>
+      <div class="hero-count-num">12</div>
       <div class="hero-count-label">References</div>
     </div>
     <div class="hero-count-item">
@@ -568,7 +568,7 @@
 <section class="section">
   <div class="section-header fade-up">
     <h2 class="section-title">REFERENCES</h2>
-    <span class="section-index">01 — 11</span>
+    <span class="section-index">01 — 12</span>
   </div>
 
   <div class="video-grid" id="videoGrid">
@@ -600,6 +600,13 @@
 
 <script>
 const videos = [
+  {
+    cover: "assets/gcp-kickoff/demo-poster.jpg",
+    title: "Google Cloud Partner Kick Off 2026 — 현장 중계·LED·Gemini 음성 비주얼",
+    tag: "Live Production",
+    featured: true,
+    page: "gcp-kickoff.html"
+  },
   {
     id: "1147566419",
     title: "강원후평 AX — 행사 주제영상",
@@ -671,6 +678,7 @@ const videos = [
 ];
 
 function getThumb(v) {
+  if (v.cover) return v.cover;
   if (v.platform === "vimeo") {
     return `https://vumbnail.com/${v.id}.jpg`;
   }
@@ -693,8 +701,8 @@ videos.forEach((v, i) => {
 
   card.innerHTML = `
     <div class="thumb-wrap">
-      <img src="${getThumb(v)}" alt="${v.title}" loading="lazy" 
-           onerror="this.src='https://img.youtube.com/vi/${v.id}/hqdefault.jpg'">
+      <img src="${getThumb(v)}" alt="${v.title}" loading="lazy"${v.cover ? '' : `
+           onerror="this.src='https://img.youtube.com/vi/${v.id}/hqdefault.jpg'"`}>
       <div class="play-btn"></div>
     </div>
     <div class="video-meta">
@@ -703,11 +711,15 @@ videos.forEach((v, i) => {
         <div class="video-title">${v.title}</div>
         <span class="video-tag">${v.tag}</span>
         ${v.link ? `<a class="video-making" href="${v.link}">제작기 보기 →</a>` : ``}
+        ${v.page ? `<a class="video-making" href="${v.page}">현장 보기 →</a>` : ``}
       </div>
     </div>
   `;
 
-  card.addEventListener('click', () => openLightbox(v));
+  card.addEventListener('click', () => {
+    if (v.page) { window.location.href = v.page; return; }
+    openLightbox(v);
+  });
   const making = card.querySelector('.video-making');
   if (making) making.addEventListener('click', (e) => e.stopPropagation());
   grid.appendChild(card);

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Cloud Partner Kick Off 2026 — 현장 프로덕션 | STONEKIDS</title>
+<meta name="description" content="AICLRUN이 주최한 Google Cloud Partner Kick Off 2026. 스톤키즈가 멀티캠 현장 중계, LED·스크린 운용, 그리고 자체 개발한 Gemini 음성 반응 비주얼로 오프닝 나레이션을 연출한 현장 기록.">
+<link rel="canonical" href="https://stonekids.tv/gcp-kickoff">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://stonekids.tv/gcp-kickoff">
+<meta property="og:title" content="Google Cloud Partner Kick Off 2026 — 현장 프로덕션">
+<meta property="og:description" content="멀티캠 중계 · LED 운용 · 자체 개발 Gemini 음성 반응 비주얼. 스톤키즈가 무대 위에서 만든 하루.">
+<meta property="og:image" content="https://stonekids.tv/assets/gcp-kickoff/demo-poster.jpg">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="STONEKIDS">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23E60012'/></svg>">
+<meta name="theme-color" content="#0A0A0A">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white:#FFFFFF; --off-white:#FAFAFA; --black:#0A0A0A; --red:#E60012; --red-dark:#C4000F;
+    --gray-50:#F8F8F8; --gray-100:#F0F0F0; --gray-200:#E0E0E0; --gray-400:#999; --gray-600:#666; --gray-800:#333;
+    --g-blue:#4285F4; --g-red:#EA4335; --g-yellow:#FBBC04; --g-green:#34A853;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Noto Sans KR',-apple-system,sans-serif; background:var(--white); color:var(--black); -webkit-font-smoothing:antialiased; line-height:1.6; }
+
+  /* NAV */
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(0,0,0,0.06); }
+  .nav-inner { max-width:1200px; margin:0 auto; padding:0 40px; height:72px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:5px; color:var(--black); text-decoration:none; display:flex; align-items:center; gap:12px; }
+  .logo-dot { width:10px; height:10px; border-radius:50%; background:var(--red); }
+  .nav-links { display:flex; gap:36px; }
+  .nav-links a { font-size:14px; font-weight:500; letter-spacing:0.5px; color:var(--gray-600); text-decoration:none; transition:color 0.3s; position:relative; }
+  .nav-links a:hover { color:var(--black); }
+  .nav-links a.active { color:var(--red); }
+  .nav-links a.active::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:2px; background:var(--red); }
+
+  /* HERO */
+  .hero { padding:150px 40px 46px; max-width:1000px; margin:0 auto; }
+  .hero-eyebrow { display:inline-block; font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gray-600); margin-bottom:20px; padding:8px 16px; background:var(--gray-100); border-radius:4px; }
+  .hero h1 { font-size:clamp(36px,7vw,74px); font-weight:900; letter-spacing:-2px; line-height:1.06; margin-bottom:22px; word-break:keep-all; }
+  .hero h1 .accent { color:var(--red); }
+  .hero .lead { font-size:clamp(18px,2.4vw,22px); font-weight:700; color:var(--black); line-height:1.6; max-width:720px; word-break:keep-all; margin-bottom:22px; }
+  .hero-meta { display:flex; flex-wrap:wrap; gap:10px 22px; font-size:13.5px; color:var(--gray-600); }
+  .hero-meta span { display:inline-flex; align-items:center; gap:7px; }
+  .hero-meta span::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--red); }
+
+  /* STAGE POSTER */
+  .stage { max-width:1100px; margin:0 auto; padding:14px 40px 10px; }
+  .poster { position:relative; display:block; width:100%; aspect-ratio:16/9; background:#000; border-radius:14px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.22); }
+  .poster img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .poster-cap { text-align:center; margin-top:14px; font-size:13px; color:var(--gray-400); letter-spacing:0.3px; word-break:keep-all; }
+
+  /* ARTICLE */
+  .article { max-width:1000px; margin:0 auto; padding:40px 40px 24px; }
+  .chapter { padding:56px 0; border-top:1px solid var(--gray-200); }
+  .chapter:first-child { border-top:0; }
+  .ch-num { font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:3px; color:var(--red); margin-bottom:10px; }
+  .chapter h2 { font-size:clamp(26px,4vw,38px); font-weight:800; letter-spacing:-1px; line-height:1.25; margin-bottom:20px; word-break:keep-all; }
+  .chapter p { font-size:16.5px; color:var(--gray-800); line-height:1.95; margin-bottom:18px; word-break:keep-all; }
+  .chapter p .hl { color:var(--black); font-weight:700; box-shadow:inset 0 -10px 0 rgba(230,0,18,0.10); }
+  .chapter p strong { color:var(--black); font-weight:700; }
+  .chapter p a { color:var(--red); font-weight:600; text-decoration:none; border-bottom:1px solid rgba(230,0,18,0.30); }
+  .chapter p a:hover { border-bottom-color:var(--red); }
+
+  /* FIGURE */
+  figure.shot { margin:30px 0 8px; border:1px solid var(--gray-200); border-radius:14px; overflow:hidden; background:var(--gray-50); }
+  figure.shot img { display:block; width:100%; height:auto; }
+  figure.shot figcaption { font-size:13px; color:var(--gray-400); padding:13px 16px; border-top:1px solid var(--gray-200); line-height:1.55; word-break:keep-all; }
+  .fig-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:30px 0 8px; }
+  .fig-grid figure.shot { margin:0; }
+  @media (max-width:720px){ .fig-grid { grid-template-columns:1fr; } }
+
+  /* STEPS */
+  .steps { list-style:none; display:flex; flex-direction:column; gap:0; margin:26px 0 6px; border:1px solid var(--gray-200); border-radius:14px; overflow:hidden; }
+  .steps li { display:grid; grid-template-columns:54px 1fr; gap:16px; padding:18px 20px; border-top:1px solid var(--gray-200); align-items:start; }
+  .steps li:first-child { border-top:0; }
+  .steps .si { font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--red); line-height:1; }
+  .steps .st { font-size:15px; color:var(--gray-800); line-height:1.7; }
+  .steps .st b { color:var(--black); }
+
+  /* PULL QUOTE */
+  blockquote.pull { margin:34px 0; padding:30px 34px; background:var(--black); color:var(--white); border-radius:16px; }
+  blockquote.pull p { font-size:clamp(19px,2.6vw,25px); font-weight:700; line-height:1.55; color:var(--white); margin:0; word-break:keep-all; }
+  blockquote.pull cite { display:block; margin-top:14px; font-size:13px; font-style:normal; color:rgba(255,255,255,0.55); letter-spacing:0.5px; }
+
+  /* STACK TAGS */
+  .stack { display:flex; flex-wrap:wrap; gap:8px; margin:28px 0 0; }
+  .stack span { font-size:12.5px; font-weight:600; color:var(--gray-800); background:var(--gray-100); padding:7px 13px; border-radius:7px; }
+  .stack span.ai { background:rgba(230,0,18,0.07); color:var(--red); }
+
+  /* NATIVE VIDEO */
+  .stage-end { margin-top:8px; }
+  .stage-end .end-eyebrow { text-align:center; font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:3px; color:var(--red); margin-bottom:9px; }
+  .stage-end .end-title { text-align:center; font-size:clamp(22px,3.4vw,30px); font-weight:800; letter-spacing:-0.5px; margin-bottom:24px; word-break:keep-all; }
+  .video-native { position:relative; width:100%; aspect-ratio:16/9; background:#000; border-radius:14px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.22); }
+  .video-native video { width:100%; height:100%; display:block; object-fit:cover; background:#000; }
+  .watch-sub { display:block; text-align:center; margin-top:14px; font-size:13px; color:var(--gray-400); letter-spacing:0.3px; }
+  .credits { text-align:center; margin-top:24px; font-size:13px; color:var(--gray-600); line-height:1.9; }
+  .credits b { color:var(--black); font-weight:700; }
+  .credits .sep { color:var(--gray-200); margin:0 9px; }
+
+  /* CTA */
+  .cta { background:var(--black); color:var(--white); padding:84px 40px; text-align:center; }
+  .cta h2 { font-size:clamp(24px,4vw,34px); font-weight:800; letter-spacing:-1px; margin-bottom:14px; word-break:keep-all; }
+  .cta p { color:rgba(255,255,255,0.82); font-size:15px; margin-bottom:30px; word-break:keep-all; }
+  .cta-row { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+  .cta a { display:inline-flex; align-items:center; gap:8px; font-size:15px; font-weight:700; padding:15px 30px; border-radius:100px; text-decoration:none; transition:transform 0.2s; }
+  .cta a.primary { background:var(--white); color:var(--black); }
+  .cta a.ghost { background:transparent; color:var(--white); border:1px solid rgba(255,255,255,0.3); }
+  .cta a:hover { transform:translateY(-2px); }
+
+  /* FOOTER */
+  footer { background:var(--gray-50); padding:48px 40px; text-align:center; }
+  .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:6px; display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:18px; }
+  .footer-contact { font-size:14px; color:var(--gray-600); margin-bottom:8px; }
+  .footer-contact a { color:var(--red); text-decoration:none; font-weight:500; }
+  .footer-copy { font-size:12px; color:var(--gray-400); letter-spacing:1px; }
+
+  @media (max-width:760px) {
+    .nav-inner { padding:0 22px; }
+    .nav-links { gap:18px; }
+    .hero { padding:116px 22px 30px; }
+    .stage { padding:8px 22px; }
+    .article { padding:20px 22px; }
+    .cta { padding:64px 22px; }
+  }
+  @media (max-width:600px) { .nav-links a:nth-child(1) { display:none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-dot"></span>STONEKIDS</a>
+    <div class="nav-links">
+      <a href="index.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="devlog.html">Lab</a>
+      <a href="about.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-eyebrow">On-site Production · 현장 프로덕션</div>
+  <h1>Google Cloud <span class="accent">Partner</span><br>Kick Off 2026</h1>
+  <p class="lead">구글 클라우드와 파트너사가 한자리에 모인 킥오프. 스톤키즈는 이 무대를 매끄럽게 <span class="hl">중계</span>하고, 무대 위 LED에 ‘들리는 나레이션’을 ‘보이는 장면’으로 바꿔 올렸습니다.</p>
+  <div class="hero-meta">
+    <span>주최 · AICLRUN (Google Cloud Partner)</span>
+    <span>2026. 07. 02.</span>
+    <span>멀티캠 중계</span>
+    <span>LED · 스크린 운용</span>
+    <span>Gemini 음성 반응 비주얼</span>
+  </div>
+</header>
+
+<!-- 상단: 대표 컷 — 무대 LED에 송출된 우리 프로그램 -->
+<section class="stage">
+  <div class="poster">
+    <img src="assets/gcp-kickoff/demo-poster.jpg" alt="행사장 메인 LED에 송출된 스톤키즈의 Gemini 음성 반응 비주얼 — 좌우에 Google Cloud Partner Kick Off 2026 배너" loading="eager">
+  </div>
+  <p class="poster-cap">행사장 메인 LED에 실시간 송출된 스톤키즈의 <b>Gemini 음성 반응 비주얼</b> — 오프닝 나레이션에 맞춰 반응합니다.</p>
+</section>
+
+<main class="article">
+
+  <!-- ① 발단 -->
+  <article class="chapter">
+    <div class="ch-num">CHAPTER 01 — 발단</div>
+    <h2>구글 클라우드 파트너들의 출발선</h2>
+    <p><strong>AICLRUN</strong>이 주최한 <span class="hl">Google Cloud Partner Kick Off 2026</span>. 구글 클라우드와 파트너사가 한 해의 시작을 함께 여는 자리였습니다. 스톤키즈에 주어진 몫은 세 가지였습니다 — 행사를 놓치는 순간 없이 <strong>중계</strong>하고, 무대의 <strong>LED와 스크린</strong>을 운용하며, 오프닝을 <strong>기억에 남는 한 장면</strong>으로 여는 것.</p>
+    <p>흔한 방식이라면 오프닝에 로고와 자막을 띄웠겠죠. 하지만 주제가 ‘AI’인 행사에서, 우리는 한 걸음 더 갔습니다. 사회자의 나레이션이 흐르는 동안 <span class="hl">그 목소리에 실시간으로 반응하는 Gemini 스타일 비주얼</span>을 우리가 직접 만들어 무대 정면 LED에 올렸습니다.</p>
+  </article>
+
+  <!-- ② 중계 -->
+  <article class="chapter">
+    <div class="ch-num">CHAPTER 02 — 현장 중계</div>
+    <h2>여러 대의 카메라를, 한 줄기 방송으로</h2>
+    <p>무대·발표자·객석을 동시에 담기 위해 <strong>여러 대의 방송 카메라</strong>를 배치했습니다. 각 카메라 신호는 <strong>DeckLink 8K Pro</strong>로 캡처해 <span class="hl">vMix 4K</span> 라이브 스위처 한 대로 모았고, 발표 슬라이드·중계 화면·오디오까지 실시간으로 섞어 한 줄기 방송으로 내보냈습니다.</p>
+    <ul class="steps">
+      <li><span class="si">01</span><span class="st"><b>멀티캠 배치</b> — 무대 정면·측면·객석 앵글을 블랙매직 방송 카메라로 커버.</span></li>
+      <li><span class="si">02</span><span class="st"><b>신호 통합</b> — DeckLink 8K Pro로 각 카메라를 캡처, vMix 4K 한 대로 스위칭.</span></li>
+      <li><span class="si">03</span><span class="st"><b>실시간 운용</b> — 슬라이드·중계 화면·오디오 믹싱을 현장에서 라이브로.</span></li>
+    </ul>
+    <div class="fig-grid">
+      <figure class="shot">
+        <img src="assets/gcp-kickoff/photo-1.jpg" alt="스톤키즈 중계 콘솔 — vMix 4K 라이브 스위칭 화면과 오디오 인터페이스" loading="lazy">
+        <figcaption>스톤키즈 중계 콘솔 — vMix 4K 멀티 입력 스위칭 · 오디오 믹싱. 화면엔 킥오프 오프닝 슬라이드.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/gcp-kickoff/photo-3.jpg" alt="객석에서 무대를 향한 방송 카메라 — 뷰파인더에 1080p 라이브 프리뷰" loading="lazy">
+        <figcaption>방송 카메라 뷰파인더 — 무대를 향한 라이브 프리뷰(1080p). 여러 앵글을 동시에 잡았습니다.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/gcp-kickoff/photo-4.jpg" alt="메인 스크린을 향해 세팅된 방송 카메라" loading="lazy">
+        <figcaption>메인 스크린을 잡는 또 다른 카메라 — 발표와 그래픽을 함께 담기 위한 구도.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/gcp-kickoff/photo-5.jpg" alt="행사장 후면에 배치된 블랙매직 방송 카메라 라인" loading="lazy">
+        <figcaption>후면 카메라 라인 — 넓은 객석 풀샷과 무대 클로즈업을 나눠 담았습니다.</figcaption>
+      </figure>
+    </div>
+    <div class="stack">
+      <span>vMix 4K</span>
+      <span>Blackmagic Cameras</span>
+      <span>DeckLink 8K Pro</span>
+      <span>라이브 오디오 믹싱</span>
+    </div>
+  </article>
+
+  <!-- ③ LED -->
+  <article class="chapter">
+    <div class="ch-num">CHAPTER 03 — LED · 스크린 운용</div>
+    <h2>무대 전체를 하나의 화면처럼</h2>
+    <p>무대 중앙의 <span class="hl">대형 LED월</span>과 좌우 <strong>프로젝션 스크린</strong>을 함께 운용했습니다. 발표 자료, 중계 화면, 그리고 오프닝 비주얼까지 — 어느 자리에 앉아도 내용이 선명하게 읽히도록 화면을 배분하고, 발표 흐름에 맞춰 실시간으로 전환했습니다.</p>
+    <div class="fig-grid">
+      <figure class="shot">
+        <img src="assets/gcp-kickoff/photo-6.jpg" alt="무대 중앙 대형 LED월과 좌우 프로젝션 스크린 — Google Cloud Partner Kick Off 2026" loading="lazy">
+        <figcaption>메인 LED월 + 좌우 스크린 — 무대 전체를 하나의 캔버스로.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/gcp-kickoff/photo-2.jpg" alt="객석에서 바라본 행사장 전경 — 좌우 대형 스크린과 중계 카메라" loading="lazy">
+        <figcaption>객석에서 바라본 행사장 — 어느 자리에서도 화면이 선명하게 읽히도록 화면을 배분했습니다.</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <!-- ④ Gemini 비주얼 -->
+  <article class="chapter">
+    <div class="ch-num">CHAPTER 04 — 나레이션을 ‘보이게’</div>
+    <h2>우리가 만든, Gemini 음성 반응 비주얼</h2>
+    <p>이번 행사의 하이라이트는 오프닝이었습니다. 사회자의 <strong>나레이션</strong>이 시작되면, 무대 정면 LED에 떠 있는 <span class="hl">Gemini 스타일의 스파클과 성운</span>이 그 목소리에 <strong>실시간으로 반응</strong>합니다. 말이 커지면 별이 피어나고, 잦아들면 잔잔히 숨을 고르는 식으로요.</p>
+    <p>중요한 건, 이 비주얼이 미리 만들어 둔 영상이 아니라 <span class="hl">스톤키즈가 직접 개발한 실시간 프로그램</span>이라는 점입니다. 마이크 입력을 받아 주파수 스펙트럼에 맞춰 반응하도록 <strong>Electron · Three.js</strong>로 만들었고, 구글 <a href="https://design.google/library/gemini-ai-visual-design" target="_blank" rel="noopener">Gemini 비주얼 디자인</a>의 문법(그라디언트·스파클·부드러운 모션)을 차용했습니다. 개발 과정은 <a href="devlog.html">스톤키즈 Lab</a>에 정리해 두었습니다.</p>
+    <blockquote class="pull">
+      <p>“나레이션은 귀로 듣는 것. 그걸 눈으로도 보이게 만들면, 오프닝은 한 장면이 됩니다.”</p>
+      <cite>— 제작 노트</cite>
+    </blockquote>
+    <div class="stack">
+      <span class="ai">Gemini Visual — 자체 개발</span>
+      <span>Electron</span>
+      <span>Three.js</span>
+      <span>Web Audio · 실시간 음성 반응</span>
+      <span>1920×1080 송출</span>
+    </div>
+  </article>
+
+  <!-- ⑤ 마무리 -->
+  <article class="chapter">
+    <div class="ch-num">CHAPTER 05 — 마무리</div>
+    <h2>현장 프로덕션과, 직접 만든 도구</h2>
+    <p>여러 대의 카메라를 한 줄기 방송으로 묶는 <strong>중계 운영</strong>, 무대 전체를 하나로 다루는 <strong>LED 운용</strong>, 그리고 목소리에 반응하는 <strong>자체 개발 비주얼</strong>. 스톤키즈는 촬영·중계 같은 현장 역량에 <span class="hl">직접 만든 소프트웨어</span>를 더해, 남의 장비를 빌려 쓰는 대신 ‘우리만 할 수 있는 연출’을 무대에 올립니다.</p>
+  </article>
+
+</main>
+
+<!-- 시연 영상 -->
+<section class="stage stage-end">
+  <div class="end-eyebrow">On Stage — 시연 영상</div>
+  <h2 class="end-title">무대 LED 위의 Gemini 비주얼</h2>
+  <div class="video-native">
+    <video controls playsinline preload="none" poster="assets/gcp-kickoff/demo-poster.jpg">
+      <source src="assets/gcp-kickoff/demo.mp4" type="video/mp4">
+      브라우저가 영상을 지원하지 않습니다.
+    </video>
+  </div>
+  <p class="watch-sub">행사장 시연 · 스톤키즈 자체 개발 Gemini 음성 반응 비주얼</p>
+  <p class="credits">
+    Host <b>AICLRUN</b><span class="sep">·</span>Event <b>Google Cloud Partner Kick Off 2026</b><br>
+    Production <b>(주)스톤키즈 (STONEKIDS)</b> — 현장 중계 · LED·스크린 운용 · Gemini 음성 반응 비주얼
+  </p>
+</section>
+
+<section class="cta">
+  <h2>행사 중계·LED, 그리고 그 이상.</h2>
+  <p>멀티캠 중계부터 무대 그래픽, 필요하면 직접 만든 실시간 비주얼까지. 행사 프로덕션이 필요하시면 편하게 연락 주세요.</p>
+  <div class="cta-row">
+    <a class="primary" href="about.html#contact">행사 프로덕션 문의 →</a>
+    <a class="ghost" href="devlog.html">자체 개발 도구 보기</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo"><span class="logo-dot"></span>STONEKIDS</div>
+  <div class="footer-contact"><a href="tel:1600-2867">1600-2867</a> · <a href="mailto:pm@stonekids.tv">pm@stonekids.tv</a></div>
+  <div class="footer-copy">© 2016-2026 STONEKIDS. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
