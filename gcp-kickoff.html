@@ -184,6 +184,62 @@
     <h2>카메라 3대와 PC 4대를, 하나의 시스템으로</h2>
     <p>영상 소스는 둘로 나뉘었습니다. 무대·발표자·객석을 담는 <strong>카메라 3대(SDI)</strong>, 그리고 발표·구글 화면·나레이션을 띄우는 <strong>PC 4대(HDMI)</strong>. 이 <span class="hl">7개의 소스를 중계 컴퓨터 한 대에 모두 연결</span>했습니다.</p>
     <p>클라이언트의 요청은 분명했습니다 — <strong>어떤 소스로 넘어가든 끊김 없이(seamless) 전환될 것</strong>. 카메라 컷, 발표 슬라이드, 나레이션 비주얼 사이를 한 시스템 안에서 매끄럽게 오가며 <strong>중계하고, 동시에 녹화</strong>했습니다. 최종 출력은 <strong>분배기</strong>를 거쳐 LED와 프롬프터로 동시에 나갔습니다.</p>
+
+    <figure class="shot" style="background:#fff;">
+      <svg viewBox="0 0 1040 400" role="img" aria-label="시스템 구성도 — 카메라 3대(SDI)와 PC 4대(HDMI)를 중계 컴퓨터로 모아 분배기를 거쳐 LED·프롬프터로 송출" style="display:block; width:100%; height:auto; font-family:'Noto Sans KR',sans-serif;">
+        <defs>
+          <marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 z" fill="#C0C0C0"/></marker>
+          <marker id="ahr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 z" fill="#E60012"/></marker>
+        </defs>
+        <!-- 입력 → 중계컴 (회색) -->
+        <g fill="none" stroke="#CFCFCF" stroke-width="1.6" marker-end="url(#ah)">
+          <path d="M220,71 C300,71 322,213 356,213"/>
+          <path d="M220,115 C300,115 322,213 356,213"/>
+          <path d="M220,159 C300,159 322,213 356,213"/>
+          <path d="M220,227 C300,227 322,213 356,213"/>
+          <path d="M220,271 C300,271 322,213 356,213"/>
+          <path d="M220,315 C300,315 322,213 356,213"/>
+          <path d="M220,359 C300,359 322,213 356,213"/>
+        </g>
+        <!-- 중계컴 → 분배기 → 출력 (신호 경로, 레드) -->
+        <g fill="none" stroke="#E60012" stroke-width="2.2" marker-end="url(#ahr)">
+          <path d="M580,213 L640,213"/>
+          <path d="M788,213 C820,213 824,138 844,138"/>
+          <path d="M788,213 C820,213 824,213 844,213"/>
+          <path d="M788,213 C820,213 824,288 844,288"/>
+        </g>
+        <!-- 그룹 라벨 -->
+        <text x="130" y="38" text-anchor="middle" font-size="13" font-weight="700" fill="#8A8A8A" letter-spacing="1">카메라 · SDI</text>
+        <text x="130" y="196" text-anchor="middle" font-size="13" font-weight="700" fill="#8A8A8A" letter-spacing="1">PC · HDMI</text>
+        <text x="932" y="94" text-anchor="middle" font-size="13" font-weight="700" fill="#8A8A8A" letter-spacing="1">출력</text>
+        <!-- 입력 노드 -->
+        <g font-size="15" fill="#333" text-anchor="middle">
+          <rect x="40" y="52"  width="180" height="38" rx="9" fill="#F4F4F6" stroke="#E3E3E7"/><text x="130" y="76">캠 1</text>
+          <rect x="40" y="96"  width="180" height="38" rx="9" fill="#F4F4F6" stroke="#E3E3E7"/><text x="130" y="120">캠 2</text>
+          <rect x="40" y="140" width="180" height="38" rx="9" fill="#F4F4F6" stroke="#E3E3E7"/><text x="130" y="164">캠 3</text>
+          <rect x="40" y="208" width="180" height="38" rx="9" fill="#F4F4F6" stroke="#E3E3E7"/><text x="130" y="232">발표자 PC 1</text>
+          <rect x="40" y="252" width="180" height="38" rx="9" fill="#F4F4F6" stroke="#E3E3E7"/><text x="130" y="276">발표자 PC 2</text>
+          <rect x="40" y="296" width="180" height="38" rx="9" fill="#F4F4F6" stroke="#E3E3E7"/><text x="130" y="320">구글 화면 PC</text>
+          <rect x="40" y="340" width="180" height="38" rx="9" fill="#F4F4F6" stroke="#E3E3E7"/><text x="130" y="364">나레이션 PC · Mac</text>
+        </g>
+        <!-- 중계 컴퓨터 (허브) -->
+        <rect x="360" y="150" width="220" height="126" rx="13" fill="#fff" stroke="#E60012" stroke-width="2.5"/>
+        <text x="470" y="199" text-anchor="middle" font-size="19" font-weight="800" fill="#0A0A0A">중계 컴퓨터</text>
+        <text x="470" y="225" text-anchor="middle" font-size="12" fill="#666">vMix · Seamless 전환</text>
+        <text x="470" y="247" text-anchor="middle" font-size="12.5" font-weight="700" fill="#E60012">중계 + 녹화</text>
+        <!-- 분배기 -->
+        <rect x="640" y="181" width="148" height="64" rx="11" fill="#E60012"/>
+        <text x="714" y="219" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">분배기</text>
+        <!-- 출력 -->
+        <g text-anchor="middle" font-size="15" font-weight="700" fill="#0A0A0A">
+          <rect x="844" y="112" width="172" height="52" rx="11" fill="#fff" stroke="#E60012" stroke-width="1.8"/><text x="930" y="143">LED</text>
+          <rect x="844" y="187" width="172" height="52" rx="11" fill="#fff" stroke="#E60012" stroke-width="1.8"/><text x="930" y="218">프롬프터 1</text>
+          <rect x="844" y="262" width="172" height="52" rx="11" fill="#fff" stroke="#E60012" stroke-width="1.8"/><text x="930" y="293">프롬프터 2</text>
+        </g>
+      </svg>
+      <figcaption>행사 시스템 구성 — 카메라 3대(SDI)와 PC 4대(HDMI)를 <b style="color:#0A0A0A">중계 컴퓨터</b> 한 대로 모아 <b style="color:#0A0A0A">seamless 전환·중계·녹화</b>하고, 분배기를 거쳐 LED·프롬프터로 동시에 송출했습니다.</figcaption>
+    </figure>
+
     <ul class="steps">
       <li><span class="si">01</span><span class="st"><b>입력 통합</b> — 카메라 3대(SDI) + PC 4대(HDMI: 발표자 2 · 구글 화면 · 나레이션 Mac)를 중계 컴퓨터 한 대로.</span></li>
       <li><span class="si">02</span><span class="st"><b>Seamless 전환</b> — 요청에 따라 어떤 소스든 끊김 없이 전환되도록 하나의 시스템으로 구성.</span></li>
