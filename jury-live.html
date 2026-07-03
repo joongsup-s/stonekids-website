@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>설계공모 심사 중계 — 서비스 제작기 | STONEKIDS</title>
+<meta name="description" content="공공 설계공모 심사 생중계 서비스 제작기 — 운영지침이 요구하는 실시간 공개와 녹화·녹음, 선택적 라우팅, 로컬 AI 전사·결과보고서까지. 심사에 개입하지 않고 빠짐없이 기록하는 스톤키즈의 방식.">
+<link rel="canonical" href="https://stonekids.tv/jury-live">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://stonekids.tv/jury-live">
+<meta property="og:title" content="설계공모 심사 중계 — 서비스 제작기">
+<meta property="og:description" content="공공 설계공모 심사 생중계 서비스 제작기 — 운영지침이 요구하는 실시간 공개와 녹화·녹음, 선택적 라우팅, 로컬 AI 전사·결과보고서까지. 심사에 개입하지 않고 빠짐없이 기록하는 스톤키즈의 방식.">
+<meta property="og:image" content="https://stonekids.tv/assets/jury-live/jury-room.jpg">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="STONEKIDS">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23E60012'/></svg>">
+<meta name="theme-color" content="#0A0A0A">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white:#FFFFFF; --off-white:#FAFAFA; --black:#0A0A0A; --red:#E60012; --red-dark:#C4000F;
+    --gray-50:#F8F8F8; --gray-100:#F0F0F0; --gray-200:#E0E0E0; --gray-400:#999; --gray-600:#666; --gray-800:#333;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Noto Sans KR',-apple-system,sans-serif; background:var(--white); color:var(--black); -webkit-font-smoothing:antialiased; line-height:1.6; }
+
+  /* NAV */
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-bottom:1px solid rgba(0,0,0,0.06); }
+  .nav-inner { max-width:1200px; margin:0 auto; padding:0 40px; height:72px; display:flex; align-items:center; justify-content:space-between; }
+  .logo { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:5px; color:var(--black); text-decoration:none; display:flex; align-items:center; gap:12px; }
+  .logo-dot { width:10px; height:10px; border-radius:50%; background:var(--red); }
+  .nav-links { display:flex; gap:36px; }
+  .nav-links a { font-size:14px; font-weight:500; letter-spacing:0.5px; color:var(--gray-600); text-decoration:none; transition:color 0.3s; position:relative; }
+  .nav-links a:hover { color:var(--black); }
+
+  /* HERO */
+  .hero { padding:150px 40px 50px; max-width:1000px; margin:0 auto; }
+  .hero-eyebrow { display:inline-block; font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gray-600); margin-bottom:20px; padding:8px 16px; background:var(--gray-100); border-radius:4px; }
+  .hero h1 { font-size:clamp(40px,8vw,82px); font-weight:900; letter-spacing:-2px; line-height:1.05; margin-bottom:22px; word-break:keep-all; }
+  .hero h1 .accent { color:var(--red); }
+  .hero .lead { font-size:clamp(17px,2.2vw,21px); font-weight:700; color:var(--black); line-height:1.6; max-width:920px; word-break:keep-all; margin-bottom:22px; }
+  .hero .lead .ln { display:block; text-wrap:pretty; }
+  .hero-meta { display:flex; flex-wrap:wrap; gap:10px 22px; font-size:13.5px; color:var(--gray-600); }
+  .hero-meta span { display:inline-flex; align-items:center; gap:7px; }
+  .hero-meta span::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--red); }
+
+  /* STAGE */
+  .stage { max-width:1100px; margin:0 auto; padding:14px 40px 10px; }
+  .video-poster { position:relative; display:block; width:100%; aspect-ratio:16/9; background:#000; border-radius:14px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.22); }
+  .video-poster img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .video-poster .live-badge { position:absolute; top:18px; left:18px; display:inline-flex; align-items:center; gap:8px; background:rgba(10,10,10,0.72); color:#fff; font-size:12.5px; font-weight:700; letter-spacing:1.5px; padding:8px 14px; border-radius:100px; backdrop-filter:blur(4px); }
+  .video-poster .live-badge::before { content:''; width:8px; height:8px; border-radius:50%; background:var(--red); animation:blink 1.4s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+  .poster-cap { text-align:center; margin-top:14px; font-size:13px; color:var(--gray-400); letter-spacing:0.3px; }
+
+  /* ARTICLE */
+  .article { max-width:1000px; margin:0 auto; padding:40px 40px 40px; }
+  .chapter { padding:56px 0; border-top:1px solid var(--gray-200); }
+  .chapter:first-child { border-top:0; }
+  .ch-num { font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:3px; color:var(--red); margin-bottom:10px; }
+  .chapter h2 { font-size:clamp(26px,4vw,38px); font-weight:800; letter-spacing:-1px; line-height:1.25; margin-bottom:20px; word-break:keep-all; text-wrap:balance; }
+  .chapter p { font-size:16.5px; color:var(--gray-800); line-height:1.95; margin-bottom:18px; word-break:keep-all; max-width:740px; text-wrap:pretty; }
+  .law-quote { max-width:740px; margin:26px 0; padding:22px 26px; border-left:3px solid var(--red); background:var(--gray-50); border-radius:0 12px 12px 0; font-size:16.5px; line-height:1.8; color:var(--black); font-weight:600; word-break:keep-all; text-wrap:pretty; }
+  .law-quote cite { display:block; margin-top:10px; font-size:12.5px; color:var(--gray-400); font-style:normal; font-weight:400; }
+  .chapter p .hl { color:var(--black); font-weight:700; box-shadow:inset 0 -10px 0 rgba(230,0,18,0.10); }
+  .chapter p strong { color:var(--black); font-weight:700; }
+  .chapter p a { color:var(--red); font-weight:600; text-decoration:none; border-bottom:1px solid rgba(230,0,18,0.30); }
+  .chapter p a:hover { border-bottom-color:var(--red); }
+
+  figure.shot { margin:30px 0 8px; border:1px solid var(--gray-200); border-radius:14px; overflow:hidden; background:var(--gray-50); }
+  figure.shot.dark { background:#0A0A0C; border-color:#1c1c20; }
+  figure.shot img, figure.shot video { display:block; width:100%; height:auto; }
+  figure.shot figcaption { font-size:13px; color:var(--gray-400); padding:13px 16px; border-top:1px solid var(--gray-200); line-height:1.55; }
+  figure.shot.dark figcaption { border-top-color:#1c1c20; color:#8a8a92; }
+  .fig-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:30px 0 8px; }
+  .fig-grid figure.shot { margin:0; }
+  @media (max-width:720px){ .fig-grid { grid-template-columns:1fr; } }
+
+  .steps { list-style:none; display:flex; flex-direction:column; gap:0; margin:26px 0 6px; border:1px solid var(--gray-200); border-radius:14px; overflow:hidden; }
+  .steps li { display:grid; grid-template-columns:54px 1fr; gap:16px; padding:18px 20px; border-top:1px solid var(--gray-200); align-items:start; }
+  .steps li:first-child { border-top:0; }
+  .steps .si { font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--red); line-height:1; }
+  .steps .st { font-size:15px; color:var(--gray-800); line-height:1.7; text-wrap:pretty; }
+  .steps .st b { color:var(--black); }
+
+  blockquote.pull { margin:34px 0; padding:30px 34px; background:var(--black); color:var(--white); border-radius:16px; }
+  blockquote.pull p { font-size:clamp(19px,2.6vw,25px); font-weight:700; line-height:1.55; color:var(--white); margin:0; word-break:keep-all; text-wrap:balance; }
+  blockquote.pull cite { display:block; margin-top:14px; font-size:13px; font-style:normal; color:rgba(255,255,255,0.55); letter-spacing:0.5px; }
+
+  .stack { display:flex; flex-wrap:wrap; gap:8px; margin:28px 0 0; }
+  .stack span { font-size:12.5px; font-weight:600; color:var(--gray-800); background:var(--gray-100); padding:7px 13px; border-radius:7px; }
+  .stack span.ai { background:rgba(230,0,18,0.07); color:var(--red); }
+
+  /* ===== 보고서 재현(비식별) ===== */
+  .report-wrap { margin:30px 0 8px; overflow-x:auto; }
+  .report-mock { max-width:640px; margin:0 auto; background:#fff; border:1px solid var(--gray-200); border-radius:4px; box-shadow:0 24px 60px rgba(0,0,0,0.14); padding:44px 46px 40px; font-family:'AppleMyungjo','Batang','Noto Sans KR',serif; color:#111; }
+  .report-mock .r-head { text-align:right; font-size:11.5px; color:#333; margin-bottom:14px; }
+  .report-mock .r-title { border:1.6px solid #111; background:#FFF9CC; text-align:center; font-weight:700; font-size:15.5px; line-height:1.5; padding:12px 14px; margin-bottom:16px; word-break:keep-all; }
+  .report-mock .r-overview { border-top:3px double #111; border-bottom:3px double #111; background:#EDF6E5; font-size:12.5px; line-height:1.75; padding:11px 16px; margin-bottom:22px; word-break:keep-all; }
+  .report-mock .r-sec { font-weight:700; font-size:14px; border-bottom:1.4px solid #111; padding-bottom:5px; margin:20px 0 10px; }
+  .report-mock .r-line { font-size:12.5px; line-height:1.85; padding-left:14px; word-break:keep-all; }
+  .report-mock .r-line.l2 { padding-left:30px; }
+  .report-mock table { width:100%; border-collapse:collapse; margin:10px 0 6px; font-size:12px; }
+  .report-mock th, .report-mock td { border:1px solid #444; padding:6px 8px; text-align:center; }
+  .report-mock th { background:#DAEEF3; font-weight:700; }
+  .redact { display:inline-block; background:#1c1c1e; color:transparent; border-radius:2px; user-select:none; height:0.95em; vertical-align:text-bottom; }
+  .report-note { text-align:center; font-size:12.5px; color:var(--gray-400); margin-top:16px; }
+
+  /* ===== 전사 재현 ===== */
+  .transcript-mock { max-width:640px; margin:30px auto 8px; background:#0C0C0F; border:1px solid #1c1c20; border-radius:12px; padding:26px 28px; font-family:'SF Mono',ui-monospace,Menlo,monospace; }
+  .transcript-mock .t-head { font-size:11px; letter-spacing:2px; color:#6a6a72; margin-bottom:14px; text-transform:uppercase; }
+  .transcript-mock .t-line { font-size:12.5px; line-height:2.05; color:#c9c9cf; word-break:keep-all; }
+  .transcript-mock .t-line .ts { color:var(--red); font-weight:600; margin-right:8px; }
+  .transcript-mock .redact { background:#3a3a40; }
+
+  /* ===== 시스템 다이어그램 ===== */
+  .sysdia { margin:30px 0 8px; border:1px solid var(--gray-200); border-radius:14px; background:var(--gray-50); padding:26px 20px 18px; overflow-x:auto; }
+  .sysdia svg { display:block; min-width:760px; width:100%; height:auto; }
+  .sysdia-cap { font-size:13px; color:var(--gray-400); padding:12px 4px 0; text-align:center; }
+
+  /* CTA / FOOTER */
+  .cta { background:var(--black); color:var(--white); padding:84px 40px; text-align:center; }
+  .cta h2 { font-size:clamp(24px,4vw,34px); font-weight:800; letter-spacing:-1px; margin-bottom:14px; word-break:keep-all; text-wrap:balance; }
+  .cta p { color:rgba(255,255,255,0.82); font-size:15px; margin-bottom:30px; word-break:keep-all; text-wrap:pretty; }
+  .cta-row { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+  .cta a { display:inline-flex; align-items:center; gap:8px; font-size:15px; font-weight:700; padding:15px 30px; border-radius:100px; text-decoration:none; transition:transform 0.2s; }
+  .cta a.primary { background:var(--white); color:var(--black); }
+  .cta a:hover { transform:translateY(-2px); }
+  footer { background:var(--gray-50); padding:48px 40px; text-align:center; }
+  .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:6px; display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:18px; }
+  .footer-contact { font-size:14px; color:var(--gray-600); margin-bottom:8px; }
+  .footer-contact a { color:var(--red); text-decoration:none; font-weight:500; }
+  .footer-copy { font-size:12px; color:var(--gray-400); letter-spacing:1px; }
+
+  @media (max-width:760px) {
+    .nav-inner { padding:0 22px; }
+    .nav-links { gap:18px; }
+    .hero { padding:116px 22px 30px; }
+    .stage { padding:8px 22px; }
+    .article { padding:20px 22px; }
+    .cta { padding:64px 22px; }
+    .report-mock { padding:30px 22px 28px; }
+  }
+  @media (max-width:600px) { .nav-links a:nth-child(1) { display:none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-dot"></span>STONEKIDS</a>
+    <div class="nav-links">
+      <a href="index.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="devlog.html">Lab</a>
+      <a href="about.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-eyebrow">Service · 서비스 제작기</div>
+  <h1>설계공모 심사,<br><span class="accent">그림자</span>처럼 기록합니다</h1>
+  <p class="lead"><span class="ln">코로나19 이후 지금까지, 공공기관의 설계공모 심사 현장을 중계해왔습니다.</span> <span class="ln">눈에 띄지 않게 설치하고, 개입하지 않고, 빠짐없이 기록합니다.</span> <span class="ln">이제 AI 전사와 결과보고서까지.</span></p>
+  <div class="hero-meta">
+    <span>공공 설계공모 심사 생중계</span>
+    <span>코로나19 이후 — 현재</span>
+    <span>촬영 · 음향 · PIP · 선택적 라우팅</span>
+    <span>NEW · AI 전사 · 결과보고서(HWP 계열)</span>
+  </div>
+</header>
+
+<section class="stage">
+  <div class="video-poster">
+    <img src="assets/jury-live/jury-room.jpg" alt="설계공모 심사장 중계 세팅 전경 (비식별 처리)" loading="eager">
+    <span class="live-badge">ON AIR</span>
+  </div>
+</section>
+
+<main class="article">
+
+  <!-- ① 왜 중계하는가 -->
+  <article class="chapter">
+    <div class="ch-num">CHAPTER 01 — 왜 중계하는가</div>
+    <h2>‘비공개 원칙’이 ‘실시간 공개 의무’가 되었습니다</h2>
+    <p>설계공모 심사의 공개는 이제 선택이 아니라 규정입니다. 국토교통부 <a href="https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000221364" target="_blank" rel="noopener">「건축 설계공모 운영지침」</a>의 심사위원회 조항은 한때 <strong>“비공개를 원칙으로 하되”</strong>로 시작했지만, <a href="https://www.molit.go.kr/USR/NEWS/m_71/dtl.jsp?id=95082213" target="_blank" rel="noopener">2021년 개정</a>에서 <span class="hl">“공개해야 하며”로 뒤집혔고</span>, 2023년 4월부터는 이렇게 적혀 있습니다.</p>
+    <blockquote class="law-quote">“심사위원회의 진행은 정보통신 매체 등을 통해 실시간으로 공개해야 하며, 심사내용을 녹화 또는 녹음하여야 한다.”<cite>— 「건축 설계공모 운영지침」 제13조 제4항</cite></blockquote>
+    <p>변화를 앞당긴 건 코로나19였습니다. 2020년 조달청이 <a href="https://www.dnews.co.kr/uhtml/view.jsp?idxno=202003051458140880832" target="_blank" rel="noopener">심사를 온라인으로 전환</a>했고, LH가 공공기관 최초로 심사 전 과정을 유튜브로 열었으며, 지금 조달청은 <a href="https://www.koscaj.com/news/articleView.html?idxno=308153" target="_blank" rel="noopener">심사 과정 전부를 생중계</a>합니다. <strong>“투명한 집행과 공정한 심사는 깨질 수 없는 원칙”</strong> — 조달청장의 말입니다.</p>
+    <p>우리는 그 시기부터 이 현장을 지켜왔습니다. <span class="hl">심사 생중계는 행사가 아니라, 조문이 현장에서 작동하는 방식</span> — 그래서 우리는 이 일을 공모 공정성을 지키는 <strong>참관자의 역할</strong>로 정의합니다.</p>
+  </article>
+
+  <!-- ② 그림자 설치 -->
+  <article class="chapter">
+    <div class="ch-num">CHAPTER 02 — 설치의 규율</div>
+    <h2>가장 좋은 장비는, 보이지 않는 장비입니다</h2>
+    <p>심사장의 주인공은 심사위원과 작품입니다. 우리의 설치 기준은 하나 — <span class="hl">그림자처럼. 눈에 띄지 않게, 깔끔하게, 동선 밖으로.</span></p>
+    <p>그 뒤에서 우리가 책임지는 범위는 다섯 가지입니다.</p>
+    <ul class="steps">
+      <li><span class="si">01</span><span class="st"><b>현장 촬영 · 녹화</b> — 다중 카메라 실황 촬영, 전 구간 녹화.</span></li>
+      <li><span class="si">02</span><span class="st"><b>회의 마이크 · 음향 확성</b> — 발언 수음과 현장 확성까지. 기록의 품질은 소리의 품질입니다.</span></li>
+      <li><span class="si">03</span><span class="st"><b>발표자료 PIP</b> — 자료는 풀스크린, 발표자는 PIP. ‘자료와 사람’을 동시에.</span></li>
+      <li><span class="si">04</span><span class="st"><b>중계 ON · OFF</b> — 공개의 경계는 발주기관이 정하고, 실행은 지연 없이.</span></li>
+      <li><span class="si">05</span><span class="st"><b>선택적 라우팅</b> — 송출과 기록의 경로를 분리해, 채널별로 골라 담습니다.</span></li>
+    </ul>
+    <figure class="shot">
+      <img src="assets/jury-live/operator.jpg" alt="중계 오퍼레이션 데스크 — 스위처와 멀티뷰 (비식별 처리)" loading="lazy">
+    </figure>
+  </article>
+
+  <!-- ③ 포인터 -->
+  <article class="chapter">
+    <div class="ch-num">CHAPTER 03 — 디테일</div>
+    <h2>화면에 없는 마우스 포인터를, 그려 넣었습니다</h2>
+    <p>발표자료를 캡처 신호로 송출하면 화면은 깨끗하지만, <span class="hl">그 화면에는 마우스 포인터가 담기지 않습니다.</span> 발표자가 “이 부분이…” 하며 도면을 짚어도, 시청자의 화면에서는 아무것도 움직이지 않습니다.</p>
+    <p>그래서 캡처 화면 위에 <strong>포인터를 오버레이해 함께 송출</strong>합니다. 클라이언트가 요구한 사양이 아니라, 시청자의 자리에 앉아 봐야 보이는 문제였습니다.</p>
+    <figure class="shot dark">
+      <video src="assets/jury-live/pointer-demo.mp4" autoplay loop muted playsinline poster="assets/jury-live/pointer-poster.jpg"></video>
+    </figure>
+    <p>작은 기능이지만 — <span class="hl">시청자가 발표의 초점을 놓치는 순간, 공개는 반쪽이 됩니다.</span></p>
+  </article>
+
+  <!-- ④ 온에어의 규율 -->
+  <article class="chapter">
+    <div class="ch-num">CHAPTER 04 — 온에어의 규율</div>
+    <h2>스위치는 우리 손에, 결정은 심사장에</h2>
+    <p>심사 도중 “이 부분은 비공개로 논의하자”는 판단은 언제든 나올 수 있습니다. 실제 그런 순간, 요청과 동시에 <span class="hl">마이크 송출만 즉시 차단</span>했고, 규칙대로 기록 채널은 유지했으며, 논의 후 위원장이 결론만 낭독하는 것으로 중계는 끊김 없이 이어졌습니다.</p>
+    <p><strong>스위치는 우리 손에 있었지만, 결정은 처음부터 끝까지 심사장에 있었습니다.</strong> 송출·기록·확성을 독립된 경로로 두고 <span class="hl">경로 단위로 열고 닫는 것</span> — 선택적 라우팅의 이 유연함이 곧 신뢰가 됩니다.</p>
+    <div class="sysdia">
+      <svg viewBox="0 0 940 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="중계 시스템 신호 흐름도">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#999"/>
+          </marker>
+        </defs>
+        <style>
+          .bx { fill:#fff; stroke:#E0E0E0; rx:10; }
+          .bx-red { fill:#fff; stroke:#E60012; }
+          .tt { font:700 14px 'Noto Sans KR',sans-serif; fill:#0A0A0A; }
+          .tس { font:400 11px sans-serif; }
+          .ts { font:400 11.5px 'Noto Sans KR',sans-serif; fill:#666; }
+          .lb { font:600 10.5px 'Noto Sans KR',sans-serif; fill:#999; letter-spacing:1.5px; }
+          .ln { stroke:#999; stroke-width:1.6; fill:none; marker-end:url(#arr); }
+        </style>
+        <!-- 현장 -->
+        <text x="70" y="22" class="lb">FIELD · 현장</text>
+        <rect x="20" y="34" width="150" height="52" class="bx" rx="10"/>
+        <text x="36" y="57" class="tt">카메라 n대</text><text x="36" y="75" class="ts">심사 실황 촬영</text>
+        <rect x="20" y="98" width="150" height="52" class="bx" rx="10"/>
+        <text x="36" y="121" class="tt">회의 마이크</text><text x="36" y="139" class="ts">위원 발언 · 확성</text>
+        <rect x="20" y="162" width="150" height="52" class="bx" rx="10"/>
+        <text x="36" y="185" class="tt">발표 PPT</text><text x="36" y="203" class="ts">자료 화면 캡처</text>
+        <!-- 스위칭 -->
+        <text x="270" y="22" class="lb">SWITCH · 합성</text>
+        <rect x="230" y="80" width="170" height="90" class="bx" rx="10"/>
+        <text x="248" y="110" class="tt">스위처 · PIP 합성</text>
+        <text x="248" y="130" class="ts">화면 전환 · 오디오 믹스</text>
+        <text x="248" y="148" class="ts">현장 확성 별도 경로</text>
+        <!-- 라우팅 -->
+        <text x="490" y="22" class="lb">ROUTE · 선택적 라우팅</text>
+        <rect x="460" y="80" width="180" height="90" class="bx bx-red" rx="10"/>
+        <text x="478" y="110" class="tt" fill="#E60012">채널별 ON / OFF</text>
+        <text x="478" y="130" class="ts">송출 경로 ↔ 기록 경로 분리</text>
+        <text x="478" y="148" class="ts">비공개 구간 즉시 차단</text>
+        <!-- 출력 -->
+        <text x="740" y="22" class="lb">OUTPUT · 산출</text>
+        <rect x="700" y="34" width="220" height="52" class="bx" rx="10"/>
+        <text x="716" y="57" class="tt">유튜브 라이브</text><text x="716" y="75" class="ts">심사 실황 생중계</text>
+        <rect x="700" y="98" width="220" height="52" class="bx" rx="10"/>
+        <text x="716" y="121" class="tt">전 구간 녹화 · 녹음</text><text x="716" y="139" class="ts">아카이브 원본</text>
+        <rect x="700" y="162" width="220" height="52" class="bx bx-red" rx="10"/>
+        <text x="716" y="185" class="tt" fill="#E60012">AI 전사 → 결과보고서</text><text x="716" y="203" class="ts">로컬 Whisper + LLM 검증</text>
+        <!-- 연결선 -->
+        <path d="M170,60 C205,60 205,100 230,102" class="ln"/>
+        <path d="M170,124 L230,124" class="ln"/>
+        <path d="M170,188 C205,188 205,150 230,148" class="ln"/>
+        <path d="M400,125 L460,125" class="ln"/>
+        <path d="M640,102 C670,100 670,60 700,60" class="ln"/>
+        <path d="M640,125 L700,124" class="ln"/>
+        <path d="M700,188 C670,188 670,150 640,148" class="ln" transform="scale(1)"/>
+      </svg>
+      <div class="sysdia-cap">신호 흐름 — 현장의 모든 소스는 합성·라우팅을 거쳐 ‘송출’과 ‘기록’으로 갈라집니다. 갈림길의 스위치가 우리의 일입니다.</div>
+    </div>
+  </article>
+
+  <!-- ⑤ AI 전사·보고서 -->
+  <article class="chapter">
+    <div class="ch-num">CHAPTER 05 — 새로 만든 것</div>
+    <h2>다섯 시간의 심사를, 읽을 수 있는 보고서로</h2>
+    <p>운영지침 제14조는 참가자가 요청하면 <strong>심사과정의 녹취록·동영상을 열람</strong>할 수 있도록 보장합니다. 기록은 의무가 됐는데, 그 기록을 정리하는 담당자의 일은 그대로입니다 — 길게는 5~6시간짜리 녹화본을 처음부터 돌려 보는 일. 그래서 우리는 <span class="hl">AI 전사와 결과보고서 자동 작성</span>을 중계에 더했습니다.</p>
+    <ul class="steps">
+      <li><span class="si">01</span><span class="st"><b>로컬 Whisper 전사</b> — 전 구간을 타임스탬프와 함께. 음성은 외부 서버로 나가지 않습니다.</span></li>
+      <li><span class="si">02</span><span class="st"><b>LLM 교정 · 구조화</b> — 오인식을 문맥으로 바로잡고, 보고서 구조로 정리합니다.</span></li>
+      <li><span class="si">03</span><span class="st"><b>근거 검증</b> — 문장마다 전사 원문과 대조. 근거가 없으면 삭제하거나 ‘확인 필요’로 표시합니다.</span></li>
+      <li><span class="si">04</span><span class="st"><b>산출물</b> — 결과보고서(HWP 계열) + 전사 전문.</span></li>
+    </ul>
+    <p>분명히 해 둘 것 — 이 보고서는 <strong>참고용</strong>입니다. 확정 문서는 반드시 담당자의 확인을 거쳐야 하고, 그래서 보고서가 <span class="hl">추정 표기와 미확인 항목을 스스로 남기도록</span> 설계했습니다.</p>
+    <div class="report-wrap">
+      <div class="report-mock" aria-label="AI 결과보고서 양식 재현 (내용 비식별)">
+        <div class="r-head">(20○○. ○. ○., 심사 결과보고, 주식회사 스톤키즈)</div>
+        <div class="r-title">○○ <span class="redact" style="width:9ch"></span> 건립사업 설계공모 심사 결과보고</div>
+        <div class="r-overview">◇ 응모 ○개 작품 심사 결과, 심사번호 ○번 「<span class="redact" style="width:11ch"></span>」이 당선작으로 선정됨 (설계권 부여)<br>◇ 1인 2표제 1차 투표로 결선 진출작 선정 후 결선 투표로 확정 — 최우수작·우수작 상금 지급</div>
+        <div class="r-sec">Ⅰ. 심사 개요</div>
+        <div class="r-line">○ 회 의 명: 20○○년 제○회 ○○ 설계공모위원회</div>
+        <div class="r-line">○ 일시·장소: 20○○. ○. ○. 14:00 / <span class="redact" style="width:7ch"></span></div>
+        <div class="r-line">○ 참 석 자: 심사위원 ○인, 간사 1인</div>
+        <div class="r-line l2">- 위원장: <span class="redact" style="width:4ch"></span>(<span class="redact" style="width:8ch"></span>) — 위원 중 호선, 회의 주재</div>
+        <div class="r-line l2">※ 위원 성명·소속은 음성 전사 기반 추정 표기 — 위촉 명단 대조 필요</div>
+        <div class="r-sec">Ⅱ. 심사 결과</div>
+        <div class="r-line">□ 최종 순위 및 부상</div>
+        <table>
+          <tr><th>구분</th><th>심사번호</th><th>응모사</th><th>부상</th></tr>
+          <tr><td>당선작</td><td>○번</td><td><span class="redact" style="width:12ch"></span></td><td>설계권 부여</td></tr>
+          <tr><td>최우수작</td><td>○번</td><td><span class="redact" style="width:14ch"></span></td><td>상금 ○○○만 원</td></tr>
+          <tr><td>우수작</td><td>○번</td><td><span class="redact" style="width:10ch"></span></td><td>상금 ○○○만 원</td></tr>
+        </table>
+        <div class="r-line">※ 응모사 명칭은 음성 전사 기반 추정 표기 — 원본 응모 서류 대조 필요</div>
+      </div>
+      <p class="report-note">초등학교 시절 컴퓨터학원에서 배운 공문서 작성법에서 시작해, 공공기관과 일하며 얻은 템플릿으로 정리했습니다.</p>
+    </div>
+    <div class="transcript-mock" aria-label="AI 전사문 발췌 재현 (내용 비식별)">
+      <div class="t-head">Transcript · Whisper (Local) — 발췌 재현</div>
+      <div class="t-line"><span class="ts">[00:02:55]</span><span class="redact" style="width:4ch"></span> 위원님을 위원장으로 추천합니다</div>
+      <div class="t-line"><span class="ts">[00:03:12]</span>이의가 없으므로 <span class="redact" style="width:4ch"></span> 위원님께서 위원장으로 선출하도록 하겠습니다</div>
+      <div class="t-line"><span class="ts">[00:19:01]</span>간사께서는 투표 용지를 두시고, 위원님들께서는 1인 2표를 기표해 주시기 바랍니다</div>
+      <div class="t-line"><span class="ts">[00:24:56]</span>2차 투표 결과 심사번호 ○번이 선정되었습니다</div>
+    </div>
+    <p style="margin-top:26px">달라지는 것은 담당자의 시간입니다. 녹화본을 돌려 보며 ‘작성’하던 일이, 완성된 초안을 <strong>‘검토’하는 일</strong>로 바뀝니다.</p>
+    <div class="stack">
+      <span>현장 촬영 · 녹화</span>
+      <span>음향 · 확성</span>
+      <span>PIP 합성</span>
+      <span>선택적 라우팅</span>
+      <span class="ai">Whisper · 로컬 전사</span>
+      <span class="ai">LLM · 교정 / 구조화 / 근거 검증</span>
+      <span>HWP 보고서</span>
+    </div>
+  </article>
+
+  <!-- ⑥ 맺음 -->
+  <article class="chapter">
+    <div class="ch-num">CHAPTER 06 — 조력자의 자리</div>
+    <h2>우리는 심사에 개입하지 않는다. 다만 전부 기록한다.</h2>
+    <p>심사 중계는 화려한 일이 아닙니다. 잘될수록 아무도 우리를 기억하지 못하는 일입니다. 심사가 끝나면, 기록과 보고서가 조용히 담당자의 책상 위에 놓입니다.</p>
+    <blockquote class="pull">
+      <p>“공정성은 선언이 아니라 기록에서 나온다. 우리는 그 기록을 맡는 사람들이다.”</p>
+      <cite>— 스톤키즈, 심사 중계 노트</cite>
+    </blockquote>
+    <p>임시방편으로 시작된 심사 중계는 이제 공공 조달의 일상적인 풍경이 되어 갑니다. 그 풍경 속에서 우리는 같은 자리를 지키려 합니다. <span class="hl">조력자로서, 참관자로서, 그림자로서.</span></p>
+  </article>
+
+</main>
+
+<section class="cta">
+  <h2>다음 심사의 중계와 기록, 맡겨 주십시오</h2>
+  <p>공공 심사의 생중계·기록·AI 보고서까지 한 팀이 맡습니다. 일정과 심사장 여건을 알려 주시면 운영 방안을 먼저 제안드립니다.</p>
+  <div class="cta-row">
+    <a class="primary" href="about.html#contact">심사 중계 문의 →</a>
+  </div>
+</section>
+
+<footer>
+  <p style="font-size:12px; color:var(--gray-400); margin-bottom:22px;">본 페이지의 현장 이미지·영상에 포함된 발주기관·사업·인물 정보는 비식별 처리되었습니다.</p>
+  <div class="footer-logo"><span class="logo-dot"></span>STONEKIDS</div>
+  <div class="footer-contact"><a href="tel:1600-2867">1600-2867</a> · <a href="mailto:pm@stonekids.tv">pm@stonekids.tv</a></div>
+  <div class="footer-copy">© 2016-2026 STONEKIDS. All rights reserved.</div>
+</footer>
+
+<script>
+(() => {
+  const v = document.querySelector('figure.shot video');
+  if (!v) return;
+  new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) v.play().catch(() => {});
+    else v.pause();
+  }), { threshold: 0.2 }).observe(v);
+})();
+</script>
+
+</body>
+</html>
