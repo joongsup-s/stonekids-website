@@ -14,9 +14,15 @@
   </url>
   <url>
     <loc>https://stonekids.tv/devlog.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://stonekids.tv/nas-review.html</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://stonekids.tv/jury-live.html</loc>
