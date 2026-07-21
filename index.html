@@ -561,6 +561,7 @@
     </a>
     <div class="nav-links">
       <a href="index.html" class="active">Portfolio</a>
+      <a href="#concept">Concept</a>
       <a href="about.html">About</a>
       <a href="devlog.html">Lab</a>
       <a href="about.html#contact">Contact</a>
@@ -596,6 +597,19 @@
   </div>
 
   <div class="video-grid" id="videoGrid">
+  </div>
+</section>
+
+<!-- CONCEPT · 제안 콘텐츠 (소통용 별도 카테고리) -->
+<section class="section" id="concept">
+  <div class="section-header fade-up">
+    <h2 class="section-title">CONCEPT</h2>
+    <span class="section-index">제안 · 콘셉트</span>
+  </div>
+  <p class="hero-sub" style="margin:-8px 0 34px;">
+    제안·소통용 콘셉트 작업입니다. 납품된 레퍼런스와 구분해 따로 모았습니다.
+  </p>
+  <div class="video-grid" id="conceptGrid">
   </div>
 </section>
 
@@ -743,6 +757,41 @@ videos.forEach((v, i) => {
   const making = card.querySelector('.video-making');
   if (making) making.addEventListener('click', (e) => e.stopPropagation());
   grid.appendChild(card);
+});
+
+// CONCEPT · 제안 콘텐츠 (별도 카테고리)
+const conceptWorks = [
+  {
+    cover: "assets/makdak-webtoon/cover.jpg",
+    title: "밥은 먹었니 — 2026 춘천막국수닭갈비축제 콘셉트 웹툰",
+    tag: "Concept Webtoon",
+    featured: true,
+    page: "makdak-webtoon.html"
+  }
+];
+const conceptGrid = document.getElementById('conceptGrid');
+conceptWorks.forEach((v, i) => {
+  const card = document.createElement('div');
+  card.className = `video-card${v.featured ? ' featured' : ''}`;
+  card.style.transitionDelay = `${i * 0.08}s`;
+  card.innerHTML = `
+    <div class="thumb-wrap">
+      <img src="${v.cover}" alt="${v.title}" loading="lazy">
+      <div class="play-btn"></div>
+    </div>
+    <div class="video-meta">
+      <span class="video-num">C${String(i + 1).padStart(2, '0')}</span>
+      <div class="video-info">
+        <div class="video-title">${v.title}</div>
+        <span class="video-tag">${v.tag}</span>
+        <a class="video-making" href="${v.page}">웹툰 보기 →</a>
+      </div>
+    </div>
+  `;
+  card.addEventListener('click', () => { window.location.href = v.page; });
+  const making = card.querySelector('.video-making');
+  if (making) making.addEventListener('click', (e) => e.stopPropagation());
+  conceptGrid.appendChild(card);
 });
 
 // Lightbox
