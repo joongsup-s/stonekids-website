@@ -1,1 +1,14 @@
 .DS_Store
+
+# 로컬 운영·점검 스크립트와 그 로그는 커밋하지 않는다.
+# (웹훅 URL·API 키·토큰이 그대로 섞여 들어가 공개 리포에 노출된 사례가 있었음)
+*.sh
+*.log
+
+# 자격증명 파일 일반
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.json
