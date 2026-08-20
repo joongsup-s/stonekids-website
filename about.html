@@ -813,7 +813,7 @@
       <button class="inq-submit" type="submit" id="inqSubmit">문의 보내기 →</button>
       <p class="inq-status" id="inqStatus" role="status" aria-live="polite"></p>
     </form>
-    <p class="inq-alt">또는 바로 — <a href="mailto:pm@stonekids.tv">pm@stonekids.tv</a> · <a href="tel:1600-2687">1600-2687</a></p>
+    <p class="inq-alt">또는 바로 — <a href="mailto:support@stonekids.tv">support@stonekids.tv</a> · <a href="tel:1600-2687">1600-2687</a></p>
   </div>
 </section>
 
@@ -876,7 +876,7 @@
         throw new Error(json.message || 'submit failed');
       }
     } catch (err) {
-      status.textContent = '전송에 실패했어요. 잠시 후 다시 시도하시거나 pm@stonekids.tv 로 보내주세요.';
+      status.textContent = '전송에 실패했어요. 잠시 후 다시 시도하시거나 support@stonekids.tv 로 보내주세요.';
       status.classList.add('err');
     } finally {
       btn.disabled = false; btn.textContent = original;
