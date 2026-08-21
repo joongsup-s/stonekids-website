@@ -672,7 +672,8 @@ const videos = [
     title: "2026 춘천 세계태권도 품새선수권대회 홍보영상",
     tag: "Promotional",
     platform: "youtube",
-    page: "poomsae-story.html"
+    page: "poomsae-story.html",
+    pageLabel: "후기 보기"
   },
   {
     id: "wWrbixQDLjc",
@@ -752,7 +753,7 @@ videos.forEach((v, i) => {
         <div class="video-title">${v.title}</div>
         <span class="video-tag">${v.tag}</span>
         ${v.link ? `<a class="video-making" href="${v.link}">제작기 보기 →</a>` : ``}
-        ${v.page ? `<a class="video-making" href="${v.page}">현장 보기 →</a>` : ``}
+        ${v.page ? `<a class="video-making" href="${v.page}">${v.pageLabel || '현장 보기'} →</a>` : ``}
       </div>
     </div>
   `;
