@@ -63,13 +63,6 @@
   .roles li::before { content:''; position:absolute; left:0; top:22px; width:7px; height:1px; background:var(--red); }
   .roles li b { color:var(--black); font-weight:700; }
 
-  /* 큐시트 타임라인 */
-  .run { list-style:none; margin:26px 0 6px; border:1px solid var(--gray-200); border-radius:14px; overflow:hidden; }
-  .run li { display:grid; grid-template-columns:78px 1fr; gap:16px; padding:15px 18px; border-top:1px solid var(--gray-200); align-items:center; font-size:14.5px; }
-  .run li:first-child { border-top:0; }
-  .run .t { font-family:'Bebas Neue',sans-serif; font-size:18px; color:var(--gray-400); letter-spacing:1px; }
-  .run .n { color:var(--gray-800); }
-
   /* MEDIA */
   .m-full { border-radius:14px; overflow:hidden; background:#000; border:1px solid var(--gray-200); margin:26px 0 8px; }
   .m-full img { display:block; width:100%; height:auto; }
@@ -112,7 +105,6 @@
     .article { padding:14px 22px; }
     .cta { padding:64px 22px; }
     .m-grid { grid-template-columns:1fr; }
-    .run li { grid-template-columns:64px 1fr; gap:12px; }
     .chapter p { font-size:16px; line-height:1.95; }
   }
   @media (max-width:600px) { .nav-links a:nth-child(1) { display:none; } }
@@ -164,15 +156,7 @@
     <div class="ch-num">02 — 여섯 개의 의도</div>
     <h2>연출 설계는 여섯 칸으로 나뉘어 있었습니다</h2>
     <p>이 행사의 연출 설계에는 뼈대가 있었습니다. 오프닝 「THE NEXT 100」은 감정·상징·기대감, 인사말은 감사·초대·격려, 「VISION 2030 Plus」는 17개 분과가 3년간 할 일, 「CENTENNIAL 2116」은 왜 지금 시작해야 하는가, 발전재단은 그것을 지속시킬 구조, 그리고 선언. 여섯 순서가 각자 다른 의도를 맡아, 같은 말을 반복하지 않게 짜여 있었습니다.</p>
-    <ul class="run">
-      <li><span class="t">19:20</span><span class="n">오프닝 영상 「THE NEXT 100」</span></li>
-      <li><span class="t">19:34</span><span class="n">회장 인사말 · 축사 — IMAG 중계</span></li>
-      <li><span class="t">19:44</span><span class="n">비전 영상 「VISION 2030 Plus」</span></li>
-      <li><span class="t">19:47</span><span class="n">비전 · 센테니얼 · 발전재단 발표 P/T</span></li>
-      <li><span class="t">19:54</span><span class="n">센테니얼 영상 「FROM THE FUTURE」</span></li>
-      <li><span class="t">20:35</span><span class="n">선언문 낭독</span></li>
-    </ul>
-    <p style="margin-top:26px;">우리 영상 세 편은 그 설계 안에서 각자의 질문 하나씩을 받았습니다.</p>
+    <p>우리 영상 세 편은 그 설계 안에서 각자의 질문 하나씩을 받았습니다.</p>
     <ul class="roles">
       <li><b>「THE NEXT 100」</b> 오프닝 (60초) — 무엇을 느끼게 할 것인가</li>
       <li><b>「VISION 2030 Plus」</b> (2분 15초) — 무엇을 할 것인가</li>
@@ -210,9 +194,15 @@
     <h2>콘솔 한쪽에는 우리가 만든 장비가 있었습니다</h2>
     <p>행사 당일, 영상을 만든 팀이 그대로 중계 콘솔에 앉았습니다. 사전영상 재생부터 LED 운용, 연단 양옆 스크린 송출까지 한자리에서 맡았습니다.</p>
     <p>직접 개발한 중계 영상 모니터링 장비도 이날 함께 썼습니다. 송출 화면의 밝기와 색 상태를 실시간으로 확인하는 장비입니다. 본 행사 조명은 리허설 때와 달랐고, 행사 내내 이 장비로 화면 상태를 살폈습니다. 장비를 만든 과정은 따로 정리하겠습니다.</p>
-    <div class="m-full">
-      <img src="assets/cau-next100/console.jpg" alt="멀티뷰 9분할 모니터와 스위처, 타임코드가 표시된 노트북, 스코프를 띄운 태블릿이 놓인 중계 콘솔 풀샷" loading="lazy">
-      <div class="m-cap">타임코드 16:45, 행사 두 시간 반 전. 오른쪽 아래가 그 모니터링 시스템입니다</div>
+    <div class="m-grid">
+      <div class="m-cell">
+        <img src="assets/cau-next100/console.jpg" alt="멀티뷰 9분할 모니터와 스위처, 타임코드가 표시된 노트북, 스코프를 띄운 태블릿이 놓인 중계 콘솔 풀샷" loading="lazy">
+        <div class="m-cap">타임코드 16:45, 행사 두 시간 반 전의 콘솔입니다</div>
+      </div>
+      <div class="m-cell">
+        <img src="assets/cau-next100/device-scope.jpg" alt="중계 콘솔 위 태블릿 — 송출 화면 멀티뷰와 밝기·색 상태 그래프가 한 화면에 표시된 모니터링 장비" loading="lazy">
+        <div class="m-cap">그 장비입니다. 송출 화면과 밝기·색 상태가 한 화면에 뜹니다</div>
+      </div>
     </div>
   </article>
 
