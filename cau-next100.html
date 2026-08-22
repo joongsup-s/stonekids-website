@@ -46,13 +46,8 @@
   .hero-meta span { display:inline-flex; align-items:center; gap:7px; }
   .hero-meta span::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--red); }
 
-  /* STAGE — 히어로 직하 전경 */
-  .stage-shot { width:100%; background:#000; }
-  .stage-shot img { display:block; width:100%; height:auto; }
-  .stage-cap { max-width:1000px; margin:0 auto; padding:14px 40px 0; font-size:13px; color:var(--gray-400); text-align:center; line-height:1.6; }
-
   /* ARTICLE */
-  .article { max-width:1000px; margin:0 auto; padding:20px 40px 40px; }
+  .article { max-width:1000px; margin:0 auto; padding:36px 40px 40px; }
   .chapter { padding:56px 0; border-top:1px solid var(--gray-200); }
   .chapter:first-child { border-top:0; }
   .ch-num { font-family:'Bebas Neue',sans-serif; font-size:15px; letter-spacing:3px; color:var(--red); margin-bottom:10px; }
@@ -114,7 +109,6 @@
     .nav-inner { padding:0 22px; }
     .nav-links { gap:18px; }
     .hero { padding:116px 22px 26px; }
-    .stage-cap { padding:14px 22px 0; }
     .article { padding:14px 22px; }
     .cta { padding:64px 22px; }
     .m-grid { grid-template-columns:1fr; }
@@ -140,10 +134,10 @@
 
 <header class="hero">
   <div class="hero-eyebrow">Live Production · 제작기</div>
-  <h1>다시 찍을 수 없는 행사가 있습니다</h1>
+  <h1>남의 기억을 그리는 일</h1>
   <p class="lead">
     <span class="ln">2026년 8월 19일, 중앙대학교총동문회 비전선포식 「THE NEXT 100」.</span>
-    <span class="ln">영상 세 편을 만들고, 그 팀이 그대로 현장에 들어가 중계와 LED까지 운용했습니다.</span>
+    <span class="ln">사전영상 세 편과 현장 중계, LED 운용까지 — 그날 저녁의 화면 전부가 우리 일이었습니다.</span>
   </p>
   <div class="hero-meta">
     <span>현장 중계 · IMAG</span>
@@ -153,27 +147,26 @@
   </div>
 </header>
 
-<!-- 히어로 직하 — 행사장 전경 -->
-<section class="stage-shot">
-  <img src="assets/cau-next100/hero-pond.jpg" alt="해질녘 청룡연못과 캠퍼스가 수면에 반영된 초와이드 화면" loading="eager">
-</section>
-<p class="stage-cap">오프닝 「THE NEXT 100」 중 — 3840×1120, 화면비 24:7</p>
-
 <main class="article">
 
   <!-- 01 -->
   <article class="chapter">
-    <div class="ch-num">01 — 이 행사의 무게</div>
-    <h2>리허설은 있어도, 두 번째 기회는 없습니다</h2>
-    <p>동문회 행사는 회사 행사와 다릅니다. 참석자들이 월급을 받고 앉아 있는 자리가 아니라, 저녁 시간을 내서 모교의 이름 아래 모인 사람들입니다. 20대 신입 동문부터 원로 동문까지 세대가 한 공간에 섞이고, 그 앞에서 조직은 "다음 100년"을 선언합니다.</p>
-    <p>이런 자리의 영상과 중계는 한 번에 끝나야 합니다. 개막 60초의 오프닝이 밀리면 식순 전체가 밀리고, 중계가 끊기면 그 순간은 다시 오지 않습니다. 우리가 이 행사에서 맡은 것은 영상 세 편이 아니라, 그날 저녁의 화면 전부였습니다.</p>
+    <div class="ch-num">01 — 청룡연못</div>
+    <h2>우리는 중앙대를 다닌 적이 없습니다</h2>
+    <p>첫 주문은 이것이었습니다. "청룡연못에서 문을 열어주세요."</p>
+    <p>중앙대 동문이라면 누구나 아는 연못입니다. 문제는 우리가 중앙대를 다닌 적이 없다는 것이었습니다. 동문들의 기억 속에 있는 그 연못과 청룡상을, 그 기억이 없는 사람이 그려야 합니다. 상징물 하나를 잘못 이해하고 그리면 동문들의 눈에는 바로 보입니다. 여기가 어디지. 원래랑 다른데. AI로 만들었네.</p>
+    <p>그 한마디가 나오는 순간 오프닝은 실패합니다. 그래서 제작 기간의 상당 부분을 그리는 일이 아니라 찾아보는 일에 썼습니다. 연못의 사진과 영상 자료를 모으고, 동문들이 이 장소를 어떤 시선으로 기억하는지부터 이해하려 했습니다.</p>
+    <div class="m-full">
+      <img src="assets/cau-next100/hero-pond.jpg" alt="해질녘 청룡연못과 캠퍼스가 수면에 반영된 초와이드 화면" loading="eager">
+      <div class="m-cap">오프닝의 첫 장면. 동문들이 아는 그 연못이어야 했습니다</div>
+    </div>
   </article>
 
   <!-- 02 -->
   <article class="chapter">
-    <div class="ch-num">02 — 큐시트에서 시작한 설계</div>
-    <h2>'비전'이라는 말이 여섯 번 나오는 큐시트</h2>
-    <p>행사 큐시트를 받아 보면, 오프닝 영상·회장 인사말·비전 영상·발표 PT·센테니얼 영상·선언문까지 '비전'이 여섯 번 등장합니다. 각 순서가 같은 말을 반복하면 관객은 세 번째부터 듣지 않습니다.</p>
+    <div class="ch-num">02 — 여섯 개의 의도</div>
+    <h2>연출 설계는 여섯 칸으로 나뉘어 있었습니다</h2>
+    <p>이 행사의 연출 설계에는 뼈대가 있었습니다. 오프닝은 감정·상징·기대감, 인사말은 감사·초대·격려, 비전 영상은 17개 분과가 3년간 할 일, 센테니얼 영상은 왜 지금 시작해야 하는가, 발전재단은 그것을 지속시킬 구조, 그리고 선언. 여섯 순서가 각자 다른 의도를 맡아, 같은 말을 반복하지 않게 짜여 있었습니다.</p>
     <ul class="run">
       <li><span class="t">19:20</span><span class="n">오프닝 영상 「THE NEXT 100」</span></li>
       <li><span class="t">19:34</span><span class="n">회장 인사말 · 축사 — IMAG 중계</span></li>
@@ -182,108 +175,60 @@
       <li><span class="t">19:54</span><span class="n">센테니얼 영상 「FROM THE FUTURE」</span></li>
       <li><span class="t">20:35</span><span class="n">선언문 낭독</span></li>
     </ul>
-    <p style="margin-top:26px;">그래서 영상 세 편에 각각 다른 질문 하나씩만 맡겼습니다.</p>
+    <p style="margin-top:26px;">우리 영상 세 편은 그 설계 안에서 각자의 질문 하나씩을 받았습니다.</p>
     <ul class="roles">
-      <li><b>오프닝 (60초)</b> — 무엇을 느끼게 할 것인가. 설명 없이 감정과 기대감만.</li>
-      <li><b>비전 영상 (2분 15초)</b> — 무엇을 할 것인가. 17개 분과가 3년간 할 일.</li>
-      <li><b>센테니얼 영상 (3분 12초)</b> — 왜 지금인가. 2116년에서 오늘로 되감는 이유.</li>
+      <li><b>오프닝 (60초)</b> — 무엇을 느끼게 할 것인가</li>
+      <li><b>비전 영상 (2분 15초)</b> — 무엇을 할 것인가</li>
+      <li><b>센테니얼 영상 (3분 12초)</b> — 왜 지금인가</li>
     </ul>
-    <p>말하는 순서가 다르니 길이도 달라집니다. 감정을 만드는 편이 가장 짧고, 이유를 설명하는 편이 가장 깁니다.</p>
-
-    <div class="m-grid">
-      <div class="m-cell">
-        <img src="assets/cau-next100/motion-nodes.webp" alt="별자리처럼 흩어진 노드가 선으로 연결되어 하나의 수평선으로 수렴하는 장면" loading="lazy" width="520" height="293">
-        <div class="m-cap">비전 영상 중 — 17개 분과가 하나의 선으로 모입니다</div>
-      </div>
-      <div class="m-cell">
-        <img src="assets/cau-next100/motion-map.webp" alt="선이 뻗어 한국 지도를 그리고 이어서 세계 지도와 해외 거점이 점등되는 장면" loading="lazy" width="560" height="315">
-        <div class="m-cap">같은 선이 국내에서 해외 거점으로 뻗습니다</div>
-      </div>
-      <div class="m-cell">
-        <img src="assets/cau-next100/c2-line.jpg" alt="1955년 제1회 석사학위수여식 기록사진 하단으로 선이 그어지며 지나가는 화면" loading="lazy">
-        <div class="m-cap">1955년 제1회 석사학위수여식 기록사진</div>
-      </div>
-      <div class="m-cell">
-        <img src="assets/cau-next100/c2-nodes.jpg" alt="별자리처럼 펼쳐진 17개 노드와 ‘하나의 플랫폼으로 연결됩니다’ 자막" loading="lazy">
-        <div class="m-cap">17개 분과가 하나의 플랫폼으로</div>
-      </div>
-      <div class="m-cell">
-        <img src="assets/cau-next100/c2-timeline.jpg" alt="2026 구조 전환기, 2027 상반기 네트워크 확장기, 2027 하반기 브랜드 자산화기 세 마일스톤이 놓인 수평 타임라인" loading="lazy">
-        <div class="m-cap">3년 마일스톤 — 2028년까지</div>
-      </div>
-      <div class="m-cell">
-        <img src="assets/cau-next100/c2-hand.jpg" alt="비어 있는 손이 관객을 향해 내밀어진 화면" loading="lazy">
-        <div class="m-cap">비전 영상의 마지막 컷</div>
-      </div>
-    </div>
   </article>
 
   <!-- 03 -->
   <article class="chapter">
-    <div class="ch-num">03 — 현장이 던진 문제 둘</div>
-    <h3>무대 화면이 보통 화면의 세 배 넓이였습니다</h3>
-    <p>행사장 정면 LED는 24:7 — 일반 영상(16:9)의 세 배 가까이 넓은 화면입니다. 16:9 영상을 그냥 올리면 양옆이 비거나 사람 얼굴이 잘립니다.</p>
-    <p>그래서 오프닝과 발표 배경은 LED의 실제 해상도 3840×1120에 맞춰 따로 만들었습니다. 소재도 처음부터 다르게 골랐습니다. 연못의 반영, 캠퍼스 파노라마, 운동장 조감 — 옆으로 넓게 펼쳐지는 장면들입니다. 넓은 화면은 약점이 아니라, 그 화면에서만 나오는 그림이 있습니다.</p>
-    <div class="m-full">
-      <img src="assets/cau-next100/c1-clouds.jpg" alt="구름 위로 떠오른 캠퍼스 조감을 담은 초와이드 화면" loading="lazy">
-      <div class="m-cap">옆으로 넓게 펼쳐지는 소재만 골랐습니다</div>
-    </div>
-
-    <h3>오프닝에 주어진 시간은 60초였습니다</h3>
-    <p>큐시트가 오프닝에 배정한 슬롯은 1분. 그 안에 110년의 역사와 다음 100년을 함께 올려야 합니다. 설명할 시간이 없어서, 흑백 기록사진과 물살이 솟구쳐 타이틀이 되는 장면 — 상징 두 개만 남기고 전부 덜어냈습니다.</p>
-    <div class="m-full">
-      <img src="assets/cau-next100/c1-archive.jpg" alt="구름 속 실루엣을 배경으로 흑백 기록사진이 폴라로이드 카드처럼 전경에 놓인 초와이드 화면" loading="lazy">
-      <div class="m-cap">오프닝 중 — 흑백 기록사진 카드</div>
-    </div>
+    <div class="ch-num">03 — 와우포인트</div>
+    <h2>"행사 영상에는 무조건 와우포인트가 필요하다"</h2>
+    <p>만들면서 계속 했던 말입니다. 식전 행사장의 웅성거림을 멈추게 하는 순간이 한 번은 있어야 합니다.</p>
     <div class="m-full">
       <img src="assets/cau-next100/motion-water.webp" alt="연못에서 물살이 솟구쳐 타이틀까지 이어지는 초와이드 장면" loading="lazy" width="720" height="210">
-      <div class="m-cap">물살이 솟구쳐 타이틀이 됩니다</div>
+      <div class="m-cap">물살이 솟구쳐 타이틀이 되는 장면</div>
+    </div>
+    <p>오프닝에서는 연못의 물살이 솟구쳐 타이틀이 되는 장면에 그 역할을 걸었습니다. 행사장 정면 LED가 일반 화면의 세 배 가까이 넓은 24:7이라, 그 화면을 꽉 채우는 와이드 장면들을 처음부터 따로 설계했습니다. 넓은 화면은 다루기 까다롭지만, 제대로 쓰면 그 화면에서만 나오는 압도감이 있습니다.</p>
+    <div class="m-full">
+      <img src="assets/cau-next100/c1-clouds.jpg" alt="구름 위로 떠오른 캠퍼스 조감을 담은 초와이드 화면" loading="lazy">
+      <div class="m-cap">3840×1120, 화면비 24:7</div>
     </div>
     <div class="m-full">
       <img src="assets/cau-next100/motion-title.webp" alt="백색 플래시 뒤 타이틀이 한 프레임에 나타나는 초와이드 장면" loading="lazy" width="720" height="210">
       <div class="m-cap">타이틀이 꽂히는 프레임</div>
     </div>
-
-    <div class="m-grid">
-      <div class="m-cell">
-        <img src="assets/cau-next100/c3-jacket.jpg" alt="야구점퍼 등판에 SINCE 1916 문구와 청룡 자수가 놓인 화면" loading="lazy">
-        <div class="m-cap">센테니얼 영상 중 — 2116년의 캠퍼스</div>
-      </div>
-      <div class="m-cell">
-        <img src="assets/cau-next100/c3-plaque.jpg" alt="THE NEXT 100과 2026. 8. 19.이 새겨진 금빛 명판에 손을 뻗는 학생, ‘이분들은 무엇을 시작했을까요?’ 자막" loading="lazy">
-        <div class="m-cap">센테니얼 영상 중 — "이분들은 무엇을 시작했을까요?"</div>
-      </div>
-      <div class="m-cell">
-        <img src="assets/cau-next100/c3-particles.jpg" alt="두 손에 금빛 입자를 받아 든 학생의 클로즈업" loading="lazy">
-        <div class="m-cap">센테니얼 영상 중 — 두 손에 받아 든 빛</div>
-      </div>
-      <div class="m-cell">
-        <img src="assets/cau-next100/motion-hands.webp" alt="선배와 후배가 손을 맞잡고 금빛 입자가 번지는 장면" loading="lazy" width="560" height="315">
-        <div class="m-cap">센테니얼 영상 중 — 맞잡은 손</div>
-      </div>
-    </div>
-    <div class="stack">
-      <span class="on">3840×1120 · 24:7</span><span class="on">1920×1080 · 16:9</span><span>LED Full 운용</span><span>IMAG 송출</span>
+    <div class="m-full">
+      <img src="assets/cau-next100/c1-archive.jpg" alt="구름 속 실루엣을 배경으로 흑백 기록사진이 폴라로이드 카드처럼 전경에 놓인 초와이드 화면" loading="lazy">
+      <div class="m-cap">흑백 아카이브 카드</div>
     </div>
   </article>
 
   <!-- 04 -->
   <article class="chapter">
-    <div class="ch-num">04 — 그날 저녁, 콘솔에서</div>
-    <h2>영상을 만든 사람이 큐를 넘기면 달라지는 것</h2>
-    <p>행사 당일, 영상 세 편을 만든 팀이 그대로 중계 콘솔에 앉았습니다. 사전영상 재생, LED 운용, 연단 좌우 스크린의 실시간 송출, 내빈 소개 화면까지 한 콘솔에서 처리했습니다.</p>
+    <div class="ch-num">04 — 처음 켠 장비</div>
+    <h2>이 현장에는 우리가 처음 켜보는 시스템이 하나 있었습니다</h2>
+    <p>행사 당일, 영상을 만든 팀이 그대로 중계 콘솔에 앉았습니다. 사전영상 재생, LED 운용, 연단 좌우 스크린 송출까지 한 콘솔에서 처리했습니다.</p>
+    <p>이 현장에는 하나가 더 있었습니다. 자체 개발해 온 중계 영상 모니터링 시스템을 처음 실전에 투입한 날이었습니다. 송출 화면의 노출과 색감을 실시간으로 확인하기 위한 시스템인데, 첫 실전 테스트로는 더할 나위 없는 무대였습니다. 이 시스템 이야기는 따로 정리할 생각입니다.</p>
     <div class="m-full">
       <img src="assets/cau-next100/console.jpg" alt="멀티뷰 9분할 모니터와 스위처, 타임코드가 표시된 노트북, 스코프를 띄운 태블릿이 놓인 중계 콘솔 풀샷" loading="lazy">
-      <div class="m-cap">타임코드 16:45 — 행사 시작 두 시간 반 전, 카운트다운 리허설 중</div>
+      <div class="m-cap">타임코드 16:45, 행사 두 시간 반 전. 오른쪽 아래가 그 모니터링 시스템입니다</div>
     </div>
-    <p>영상을 직접 만든 사람은 어느 프레임에서 화면을 넘겨야 하는지 압니다. 오프닝의 마지막 프레임이 몇 초에 꽂히는지, 비전 영상이 끝나고 몇 박자 뒤에 발표 화면으로 넘어가야 하는지 — 큐시트에 적을 수 없는 타이밍이 현장의 품질을 가릅니다. 만든 팀과 넘기는 팀이 같으면, 그 타이밍이 어긋나지 않습니다.</p>
   </article>
 
   <!-- 05 -->
   <article class="chapter">
-    <div class="ch-num">05 — 그날의 끝</div>
-    <h2>행사는 기립박수로 끝났습니다</h2>
-    <p>선언문 낭독을 정점으로 행사가 마무리됐고, 그날의 기록은 3분짜리 애프터무비로 정리해 함께 납품했습니다.</p>
+    <div class="ch-num">05 — 고맙다는 말</div>
+    <h2>그 노래가 아직 머리에 맴돕니다</h2>
+    <p>센테니얼 영상에는 노래가 한 곡 들어갑니다. 만드는 동안 수없이 반복해 들었고, 행사가 끝난 지금도 가끔 머리에 맴돕니다.</p>
+    <div class="m-full">
+      <img src="assets/cau-next100/motion-hands.webp" alt="선배와 후배가 손을 맞잡고 금빛 입자가 번지는 장면" loading="lazy" width="560" height="315">
+      <div class="m-cap">센테니얼 영상 중 — 맞잡은 손</div>
+    </div>
+    <p>행사는 선언문 낭독을 정점으로 기립박수 속에 끝났습니다. 그리고 고맙다는 말을 들었습니다. 이 영상들에는 AI로 만든 장면과 소리가 섞여 있습니다. 도구가 무엇이었든, 받는 사람에게 좋은 메시지로 닿았다면 그걸로 된 일입니다. 그날의 고맙다는 말이 그 답이었다고 생각합니다.</p>
     <div class="m-grid">
       <div class="m-cell">
         <img src="assets/cau-next100/ovation.jpg" alt="객석 전체가 일어서서 박수를 보내는 장면" loading="lazy">
@@ -297,17 +242,16 @@
 
     <div class="credit">
       <span class="cr-label">CREDIT</span>
-      제작 — <b>스톤키즈</b><br>
+      제작 — 스톤키즈<br>
       현장 중계(IMAG · 내빈 Still · Live) · 사전영상 3편 · 현장 VJ(LED 운용) · 현장기록영상
     </div>
   </article>
 
 </main>
 
-<!-- CTA -->
+<!-- 마무리 -->
 <section class="cta">
-  <h2>행사 화면 전부를 한 팀에</h2>
-  <p>사전영상 제작사 따로, 중계 업체 따로, LED 오퍼레이터 따로 — 조율은 담당자의 몫이 됩니다. 저희는 그 전부를 한 콘솔에서 끝냅니다.</p>
+  <p>이 페이지는 그날의 제작에 대한 우리의 기억이고,<br>앞으로 만날 클라이언트에게 보내는 우리의 진심입니다.</p>
   <div class="cta-row">
     <a class="primary" href="about.html#contact">프로젝트 문의</a>
     <a class="ghost" href="index.html">포트폴리오 보기</a>
