@@ -32,7 +32,7 @@
   "name": "스톤키즈",
   "alternateName": "STONEKIDS",
   "url": "https://stonekids.tv",
-  "description": "강원도 춘천의 영상제작 스튜디오. 브랜드 필름, 홍보영상, 행사 중계·녹화, LED 운용, 실시간 반응형 콘텐츠 개발.",
+  "description": "강원도 춘천의 영상 제작·중계 팀. 설계공모 심사 중계, 안전한국훈련 중계, 홍보영상, 행사 중계·녹화, LED 운용, 실시간 반응형 콘텐츠 개발. 전국 출장.",
   "telephone": "1600-2687",
   "email": "support@stonekids.tv",
   "foundingDate": "2016",
@@ -44,7 +44,15 @@
     "addressCountry": "KR"
   },
   "areaServed": "KR",
-  "knowsAbout": ["영상제작", "브랜드 필름", "홍보영상", "행사 중계", "라이브 스트리밍", "LED 운용", "실시간 미디어아트"]
+  "knowsAbout": ["설계공모 심사 중계", "안전한국훈련 중계", "공공기관 생중계", "영상제작", "브랜드 필름", "홍보영상", "행사 중계", "라이브 스트리밍", "드론 촬영", "LED 운용", "실시간 미디어아트"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "전문 중계 서비스",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "설계공모 심사 중계", "url": "https://stonekids.tv/design-competition-live"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "안전한국훈련 중계", "url": "https://stonekids.tv/safety-drill-live"}}
+    ]
+  }
 }
 </script>
 
@@ -548,6 +556,13 @@
     opacity: 1;
     transform: translateY(0);
   }
+  .svc-links { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .svc-links a { display:block; padding:28px 28px 26px; border:1px solid var(--gray-200); border-radius:14px; text-decoration:none; color:var(--black); background:#fff; transition:border-color .2s, transform .2s; }
+  .svc-links a:hover { border-color:var(--red); transform:translateY(-2px); }
+  .svc-links strong { display:block; font-size:20px; font-weight:700; letter-spacing:-0.5px; margin-bottom:8px; word-break:keep-all; }
+  .svc-links strong::after { content:' →'; color:var(--red); }
+  .svc-links span { font-size:14px; color:var(--gray-600); line-height:1.6; word-break:keep-all; }
+  @media (max-width:720px){ .svc-links { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -610,6 +625,18 @@
     제안·소통용 콘셉트 작업입니다. 납품된 레퍼런스와 구분해 따로 모았습니다.
   </p>
   <div class="video-grid" id="conceptGrid">
+  </div>
+</section>
+
+<!-- SERVICES · 전문 중계 서비스 -->
+<section class="section" id="services">
+  <div class="section-header fade-up">
+    <h2 class="section-title">SERVICES</h2>
+    <span class="section-index">공공 전문 중계</span>
+  </div>
+  <div class="svc-links">
+    <a href="design-competition-live.html"><strong>설계공모 심사 중계</strong><span>교육청·지자체 설계공모 심사위원회 생중계, 녹화, AI 회의록</span></a>
+    <a href="safety-drill-live.html"><strong>안전한국훈련 중계</strong><span>현장훈련과 토론훈련장 실시간 연결, 드론 촬영, 종합영상</span></a>
   </div>
 </section>
 
